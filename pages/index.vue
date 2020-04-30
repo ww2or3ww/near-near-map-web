@@ -1,75 +1,257 @@
 <template>
-  <v-layout column justify-center align-center>
-    <v-flex xs12 sm8 md6>
-      <div class="text-center">
-        <logo />
-        <vuetify-logo />
-      </div>
+  <v-layout justify-center>
+    <v-flex xs12 sm12 md12>
       <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
+        <v-card-title class="index-card-title">
+          <p class="index-p-card-title" style="margin:0px;">
+            にゃーにゃー is なに
+          </p>
+        </v-card-title>
+
+        <v-card class="index-card-content">
+          <v-card-subtitle>
+            <p class="index-p-card-subtitle" style="margin: 0px;">
+              ねこ の なきごえ
+            </p>
+          </v-card-subtitle>
+          <v-card-text class="index-card-text">
+            <p class="index-p-card-text" style="margin: 0px;">
+              ねこ は『にゃーにゃー』と なく。
+            </p>
+            <p class="index-p-card-text" style="margin: 0px;">
+              かわいい。
+            </p>
+          </v-card-text>
+        </v-card>
+
+        <v-card class="index-card-content">
+          <v-card-subtitle>
+            <p class="index-p-card-subtitle" style="margin: 0px;">
+              Stay NEAR, Safe NEAR
+            </p>
+          </v-card-subtitle>
+          <v-card-text class="index-card-text">
+            <p class="index-p-card-text" style="margin: 0px;">
+              なるべく移動をせず、家の近くで過ごそう。
+            </p>
+            <p class="index-p-card-text" style="margin: 0px;">
+              近くのお店を利用して、地域経済の活性化に貢献しよう。
+            </p>
+          </v-card-text>
+        </v-card>
+      </v-card>
+
+      <v-card>
+        <v-card-title class="index-card-title">
+          <p class="index-p-card-title" style="margin:0px;">
+            みなさまの にゃーにゃー生活に お役立てください！！
+          </p>
+        </v-card-title>
+
+        <v-card class="index-card-content">
+          <v-card-subtitle>
+            <p class="index-p-card-subtitle" style="margin: 0px;">
+              フード
+            </p>
+          </v-card-subtitle>
+          <v-card-text class="index-card-text">
+            <p class="index-p-card-text" style="margin: 0px;">
+              家でご飯を食べよう。
+            </p>
+            <p class="index-p-card-text" style="margin: 0px;">
+              近所のお店の、テイクアウト・デリバリーを利用しよう。
+            </p>
+          </v-card-text>
+        </v-card>
+
+        <v-card class="index-card-content">
+          <v-card-subtitle>
+            <p class="index-p-card-subtitle" style="margin: 0px;">
+              ドリンク
+            </p>
+          </v-card-subtitle>
+          <v-card-text class="index-card-text">
+            <p class="index-p-card-text" style="margin: 0px;">
+              家でのもう。
+            </p>
+            <p class="index-p-card-text" style="margin: 0px;">
+              コーヒー、お茶、ジュース、タピオカ、アルコール、、。
+            </p>
+          </v-card-text>
+        </v-card>
+
+        <v-card class="index-card-content">
+          <v-card-subtitle>
+            <p class="index-p-card-subtitle" style="margin: 0px;">
+              デザート
+            </p>
+          </v-card-subtitle>
+          <v-card-text class="index-card-text">
+            <p class="index-p-card-text" style="margin: 0px;">
+              デザートは別腹。
+            </p>
+            <p class="index-p-card-text" style="margin: 0px;">
+              自分へのご褒美・特別な日のお供に。
+            </p>
+          </v-card-text>
+        </v-card>
+
+        <v-card class="index-card-content">
+          <v-card-subtitle>
+            <p class="index-p-card-subtitle" style="margin: 0px;">
+              マスク
+            </p>
+          </v-card-subtitle>
+          <v-card-text class="index-card-text">
+            <p class="index-p-card-text" style="margin: 0px;">
+              マスクをしよう。
+            </p>
+            <p class="index-p-card-text" style="margin: 0px;">
+              オシャレなマスクで差をつけよう。
+            </p>
+          </v-card-text>
+        </v-card>
+
+        <v-card class="index-card-content">
+          <v-card-subtitle>
+            <p class="index-p-card-subtitle" style="margin: 0px;">
+              プラント
+            </p>
+          </v-card-subtitle>
+          <v-card-text class="index-card-text">
+            <p class="index-p-card-text" style="margin: 0px;">
+              花を愛でよう。植物を育てよう。
+            </p>
+            <p class="index-p-card-text" style="margin: 0px;">
+              植物のある空間ってステキじゃないですか。
+            </p>
+          </v-card-text>
+        </v-card>
+
+        <v-card class="index-card-content">
+          <v-card-subtitle>
+            <p class="index-p-card-subtitle" style="margin: 0px;">
+              スタディ
+            </p>
+          </v-card-subtitle>
+          <v-card-text class="index-card-text">
+            <p class="index-p-card-text" style="margin: 0px;">
+              成長しよう。
+            </p>
+            <p class="index-p-card-text" style="margin: 0px;">
+              オンライン、もしくは適切な環境で、学ぼう。
+            </p>
+          </v-card-text>
+        </v-card>
+
+        <v-card class="index-card-content">
+          <v-card-subtitle>
+            <p class="index-p-card-subtitle" style="margin: 0px;">
+              ファイヤー
+            </p>
+          </v-card-subtitle>
+          <v-card-text class="index-card-text">
+            <p class="index-p-card-text" style="margin: 0px;">
+              庭で花火しようぜ。
+            </p>
+            <p class="index-p-card-text" style="margin: 0px;">
+              ちょっといい特別な花火しようぜ。
+            </p>
+          </v-card-text>
+        </v-card>
+      </v-card>
+
+      <v-card>
+        <v-card-title>
+          <v-btn
+            class="mx-2"
+            fab
+            small
+            color="white"
+            href="https://twitter.com/w2or3w"
+            target="_blank"
+          >
+            <v-icon color="#333333" size="24px">mdi-twitter</v-icon>
+          </v-btn>
+          <v-btn
+            class="mx-2"
+            fab
+            small
+            color="white"
+            href="https://www.facebook.com/w2or3w"
+            target="_blank"
+          >
+            <v-icon color="#333333" size="24px">mdi-facebook</v-icon>
+          </v-btn>
+          <v-btn
+            class="mx-2"
+            fab
+            small
+            color="white"
+            href="https://www.instagram.com/w2or3w"
+            target="_blank"
+          >
+            <v-icon color="#333333" size="24px">mdi-instagram</v-icon>
+          </v-btn>
         </v-card-title>
         <v-card-text>
-          <p>
-            Vuetify is a progressive Material Design component framework for
-            Vue.js. It was designed to empower developers to create amazing
-            applications.
+          <p class="index-foot" style="margin: 0px;">
+            near-near-map.w2or3w.com
           </p>
-          <p>
-            For more information on Vuetify, check out the
-            <a href="https://vuetifyjs.com" target="_blank"> documentation </a>.
-          </p>
-          <p>
-            If you have questions, please join the official
-            <a href="https://chat.vuetifyjs.com/" target="_blank" title="chat">
-              discord </a
-            >.
-          </p>
-          <p>
-            Find a bug? Report it on the github
-            <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              title="contribute"
-            >
-              issue board </a
-            >.
-          </p>
-          <p>
-            Thank you for developing with Vuetify and I look forward to bringing
-            more exciting features in the future.
-          </p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
-          </div>
-          <hr class="my-3" />
-          <a href="https://nuxtjs.org/" target="_blank">
-            Nuxt Documentation
-          </a>
-          <br />
-          <a href="https://github.com/nuxt/nuxt.js" target="_blank">
-            Nuxt GitHub
-          </a>
+          <router-link to="policy" style="text-decoration: none;">
+            <p class="index-foot" style="margin: 0px;">
+              PRIVACY POLICY
+            </p>
+          </router-link>
         </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn color="primary" nuxt to="/inspire">
-            Continue
-          </v-btn>
-        </v-card-actions>
       </v-card>
     </v-flex>
   </v-layout>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
-
 export default {
-  components: {
-    Logo,
-    VuetifyLogo
-  }
+  components: {},
+  data() {
+    return {}
+  },
+  methods: {}
 }
 </script>
+<style>
+.index-foot {
+  width: 100%;
+  margin: 0px;
+  color: white;
+  border: 0px solid;
+}
+.index-card-title {
+  padding: 0px;
+  padding-left: 16px;
+  border: 0px solid;
+}
+.index-p-card-title {
+  padding: 0px;
+  font-family: 'Nico Moji';
+  font-size: 20px;
+  border: 0px solid;
+}
+.index-card-content {
+  border: 0px solid;
+}
+.index-p-card-subtitle {
+  font-family: 'Nico Moji';
+  font-size: 16px;
+  line-height: 0px;
+}
+.index-p-card-text {
+  font-size: 12px;
+  margin: 0px;
+  padding: 0px;
+  margin-left: 12px;
+  border: 0px solid;
+}
+.index-card-text {
+  margin-left: 8px;
+}
+</style>
