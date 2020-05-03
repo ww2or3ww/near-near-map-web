@@ -1,12 +1,10 @@
 <template>
   <v-layout column justify-center align-center>
-    <v-btn @click="onClickGetCurrentPositon">get current position</v-btn>
-    <p>{{ currentLoc.coords }}</p>
     <GmapMap
       ref="gmp"
       class="map-panel"
       map-type-id="roadmap"
-      style="width: 100%; height: 480px"
+      style="width: 100%; height: 560px"
       :draggable="true"
       :center="maplocation"
       :zoom="15"
@@ -18,63 +16,63 @@
         :opened="infoWinOpen"
         @closeclick="infoWinOpen = false"
       >
-        <v-card class="map-info-card" min-width="160" max-width="240">
+        <v-card class="map-info-card" min-width="240" max-width="320">
           <v-container class="map-info-container">
             <v-card-subtitle class="map-info-subtitle">
               <p class="map-info-p-subtitle" style="margin: 0px;">
-                {{ infoContent.title }}
+                {{ marker.content.title }}
               </p>
             </v-card-subtitle>
 
             <v-row justify="space-between" class="map-info-row">
-              <v-col v-if="infoContent.image" class="map-info-col">
-                <v-img :src="infoContent.image"></v-img>
+              <v-col v-if="marker.content.image" class="map-info-col">
+                <v-img :src="marker.content.image"></v-img>
               </v-col>
             </v-row>
             <v-row justify="space-between" class="map-info-row">
-              <v-col v-if="infoContent.homepage" class="map-info-col">
+              <v-col v-if="marker.content.homepage" class="map-info-col">
                 <v-btn
                   fab
                   width="28px"
                   height="28px"
                   color="#888888"
-                  :href="infoContent.homepage"
+                  :href="marker.content.homepage"
                   target="_blank"
                 >
                   <v-icon size="24px">mdi-home</v-icon>
                 </v-btn>
               </v-col>
-              <v-col v-if="infoContent.facebook" class="map-info-col">
+              <v-col v-if="marker.content.facebook" class="map-info-col">
                 <v-btn
                   fab
                   width="28px"
                   height="28px"
                   color="#888888"
-                  :href="infoContent.facebook"
+                  :href="marker.content.facebook"
                   target="_blank"
                 >
                   <v-icon size="24px">mdi-facebook</v-icon>
                 </v-btn>
               </v-col>
-              <v-col v-if="infoContent.instagram" class="map-info-col">
+              <v-col v-if="marker.content.instagram" class="map-info-col">
                 <v-btn
                   fab
                   width="28px"
                   height="28px"
+                  :href="marker.content.instagram"
                   color="#888888"
-                  :href="infoContent.instagram"
                   target="_blank"
                 >
                   <v-icon size="24px">mdi-instagram</v-icon>
                 </v-btn>
               </v-col>
-              <v-col v-if="infoContent.twitter" class="map-info-col">
+              <v-col v-if="marker.content.twitter" class="map-info-col">
                 <v-btn
                   fab
                   width="28px"
                   height="28px"
                   color="#888888"
-                  :href="infoContent.twitter"
+                  :href="marker.content.twitter"
                   target="_blank"
                 >
                   <v-icon size="24px">mdi-twitter</v-icon>
@@ -82,46 +80,102 @@
               </v-col>
             </v-row>
             <v-row justify="space-between" class="map-info-row">
-              <v-col class="map-info-col" style="text-align: left;">
+              <v-col
+                class="map-info-col"
+                style="text-align: left;"
+                xl="6"
+                lg="6"
+                md="6"
+                sm="6"
+                xs="6"
+              >
                 <p
+                  v-if="marker.content.needReservation"
                   class="map-info-col-p"
-                  style="margin: 0px; padding: 0px; padding-left: 4px;"
+                  style="margin: 0px; padding: 0px; padding-left: 8px;"
                 >
-                  ✓ 要予約
+                  <v-icon size="16px" color="red darken-2">
+                    mdi-alert-circle-outline
+                  </v-icon>
+                  {{ $t('map.info.need_reservation') }}
                 </p>
                 <p
+                  v-else
                   class="map-info-col-p"
-                  style="margin: 0px; padding: 0px; padding-left: 4px;"
+                  style="margin: 0px; padding: 0px; padding-left: 8px;"
                 >
-                  ○ デリバリー
+                  <v-icon size="16px" color="green darken-2">
+                    mdi-check-circle-outline
+                  </v-icon>
+                  {{ $t('map.info.no_need_reservation') }}
                 </p>
                 <p
+                  v-if="marker.content.canDelivery"
                   class="map-info-col-p"
-                  style="margin: 0px; padding: 0px; padding-left: 4px;"
+                  style="margin: 0px; padding: 0px; padding-left: 8px;"
                 >
-                  ○ テイクアウト
+                  <v-icon size="16px" color="green darken-2">
+                    mdi-check-circle-outline
+                  </v-icon>
+                  {{ $t('map.info.delivery') }}
                 </p>
                 <p
+                  v-if="marker.content.canTakeout"
                   class="map-info-col-p"
-                  style="margin: 0px; padding: 0px; padding-left: 4px;"
+                  style="margin: 0px; padding: 0px; padding-left: 8px;"
                 >
-                  ○ ドライブスルー
+                  <v-icon size="16px" color="green darken-2">
+                    mdi-check-circle-outline
+                  </v-icon>
+                  {{ $t('map.info.takeout') }}
+                </p>
+                <p
+                  v-if="marker.content.canDriveThru"
+                  class="map-info-col-p"
+                  style="margin: 0px; padding: 0px; padding-left: 8px;"
+                >
+                  <v-icon size="16px" color="green darken-2">
+                    mdi-check-circle-outline
+                  </v-icon>
+                  {{ $t('map.info.drivethru') }}
                 </p>
               </v-col>
-              <v-col v-if="infoContent.tel" class="map-info-col padding: 0px;">
+              <v-col
+                v-if="marker.content.tel"
+                class="map-info-col padding: 0px;"
+              >
                 <v-btn
+                  style="margin-top: 8px; margin-bottom: 4px;"
                   fab
                   width="28px"
                   height="28px"
                   color="#888888"
-                  :href="'tel:' + infoContent.tel"
+                  :href="'tel:' + marker.content.tel"
                   target="_blank"
                 >
                   <v-icon size="24px">mdi-phone</v-icon>
                 </v-btn>
                 <p class="map-info-col-p" style="margin: 4px;">
-                  {{ infoContent.tel }}
+                  {{ marker.content.tel }}
                 </p>
+              </v-col>
+              <v-col class="map-info-col padding: 0px;">
+                <v-btn
+                  style="margin-top: 8px; margin-bottom: 4px;"
+                  fab
+                  width="28px"
+                  height="28px"
+                  color="#888888"
+                  :href="
+                    'https://www.google.com/maps/?q=' +
+                      marker.position.lat +
+                      ',' +
+                      marker.position.lng
+                  "
+                  target="_blank"
+                >
+                  <v-icon size="24px">mdi-google-maps</v-icon>
+                </v-btn>
               </v-col>
             </v-row>
           </v-container>
@@ -154,6 +208,7 @@ export default {
       currentLoc: {},
       maplocation: { lng: 0, lat: 0 },
       infoOptions: {
+        minWidth: 320,
         pixelOffset: {
           width: 0,
           height: -35
@@ -161,12 +216,23 @@ export default {
       },
       infoWindowPos: null,
       infoWinOpen: false,
-      infoContent: {
-        title: null,
-        imageurl: null,
-        pinicon: null,
-        address: null,
-        url: null
+      marker: {
+        position: { lng: 0, lat: 0 },
+        content: {
+          title: '',
+          image: '',
+          pinicon: '',
+          facebook: '',
+          twitter: '',
+          instagram: '',
+          homepage: '',
+          tel: '',
+          address: '',
+          needReservation: false,
+          canDelivery: false,
+          canTakeout: false,
+          canDriveThru: false
+        }
       },
       mapOptions: {
         streetViewControl: false,
@@ -223,7 +289,7 @@ export default {
     }
   },
   mounted() {
-    this.onClickGetCurrentPositon()
+    this.onClickCurrentPositon()
     this.markers.unshift({
       position: this.maplocation,
       content: {
@@ -243,7 +309,7 @@ export default {
       console.log(marker.position)
       this.$refs.gmp.panTo(marker.position)
       this.infoWindowPos = marker.position
-      this.infoContent = marker.content
+      this.marker = marker
       this.infoWinOpen = true
       const data = {}
       data.lat = marker.position.lat
@@ -251,7 +317,7 @@ export default {
       data.title = this.markers[index].content.title
       this.$set(this.currentLoc, 'coords', data)
     },
-    async onClickGetCurrentPositon() {
+    async onClickCurrentPositon() {
       const pos = await this.getCurrentPosition()
       console.log(pos)
       const data = {}

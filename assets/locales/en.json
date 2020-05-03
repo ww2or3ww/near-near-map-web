@@ -1,14 +1,13 @@
 {
   "title": "にゃーにゃー MAP",
-  "menu": {
-    "top": "Top",
-    "food": "Food",
-    "drink": "Drink",
-    "dessert": "Dessert",
-    "mask": "Mask",
-    "plant": "Plant",
-    "study": "Study",
-    "fire": "Firework"
+  "map": {
+    "info": {
+      "need_reservation": "Reservation Required",
+      "no_need_reservation": "No Need Reservation",
+      "delivery": "Delivery",
+      "takeout": "Take Out",
+      "drivethru": "Drive Thru"
+    }
   },
   "index": {
     "title": [
