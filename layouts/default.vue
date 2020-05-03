@@ -12,8 +12,6 @@
           v-for="(item, index) in $t('index.menu')"
           :key="index"
           :to="localePath(item.link)"
-          router
-          exact
           @click="onSwitchPage(index)"
         >
           <v-list-item-action>
@@ -51,13 +49,37 @@
     </v-content>
     <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
       <v-list>
-        <v-list-item @click.native="right = !right">
+        <v-list-item @click="right = !right">
           <v-list-item-action>
-            <v-icon light>
+            <v-icon>
               mdi-repeat
             </v-icon>
           </v-list-item-action>
-          <v-list-item-title>Switch drawer</v-list-item-title>
+          <v-list-item-content></v-list-item-content>
+        </v-list-item>
+        <v-list-item @click="onClickCurrentPosition">
+          <v-list-item-action>
+            <v-icon>
+              mdi-human-male
+            </v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title class="font-drawer-text">
+              現在地
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item @click="onClickSearch">
+          <v-list-item-action>
+            <v-icon>
+              mdi-selection-search
+            </v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title class="font-drawer-text">
+              再検索
+            </v-list-item-title>
+          </v-list-item-content>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -171,6 +193,12 @@ export default {
     },
     getImage(index) {
       return this.contents[index].image
+    },
+    onClickCurrentPosition() {
+      this.rightDrawer = false
+    },
+    onClickSearch() {
+      this.rightDrawer = false
     }
   }
 }
@@ -184,6 +212,10 @@ export default {
 .font-drawer-title {
   font-family: 'Nico Moji';
   font-size: 20px;
+}
+.font-drawer-text {
+  font-family: 'Nico Moji';
+  font-size: 16px;
 }
 .foot-text {
   font-family: 'Nico Moji';

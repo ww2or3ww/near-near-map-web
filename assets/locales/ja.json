@@ -1,5 +1,14 @@
 {
   "title": "にゃーにゃーまっぷ",
+  "map": {
+    "info": {
+      "need_reservation": "要予約",
+      "no_need_reservation": "予約不要",
+      "delivery": "デリバリー",
+      "takeout": "テイクアウト",
+      "drivethru": "ドライブスルー"
+    }
+  },
   "index": {
     "title": [
       "にゃーにゃー is なに",

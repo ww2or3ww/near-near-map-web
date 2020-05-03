@@ -1,14 +1,13 @@
 {
   "title": "にゃーにゃーまっぷ",
-  "menu": {
-    "top": "トップ",
-    "food": "フード",
-    "drink": "ドリンク",
-    "dessert": "デザート",
-    "mask": "マスク",
-    "plant": "プラント",
-    "study": "スタディ",
-    "fire": "ハナビ"
+  "map": {
+    "info": {
+      "need_reservation": "よやくひつよう",
+      "no_need_reservation": "よやくふよう",
+      "delivery": "でりばりー",
+      "takeout": "ていくあうと",
+      "drivethru": "どらいぶするー"
+    }
   },
   "index": {
     "title": [
