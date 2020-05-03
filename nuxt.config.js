@@ -44,7 +44,46 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: ['@nuxtjs/pwa'],
+  modules: [
+    '@nuxtjs/pwa',
+    [
+      'nuxt-i18n',
+      {
+        strategy: 'prefix_and_default',
+        detectBrowserLanguage: {
+          useCookie: true,
+          cookieKey: 'i18n_redirected'
+        },
+        defaultLocale: 'ja',
+        vueI18n: {
+          fallbackLocale: 'ja'
+        },
+        lazy: true,
+        langDir: 'assets/locales/',
+        locales: [
+          {
+            code: 'ja',
+            name: '日本語',
+            iso: 'ja_JP',
+            file: 'ja.json'
+          },
+          {
+            code: 'en',
+            name: 'English',
+            iso: 'en-US',
+            file: 'en.json'
+          },
+          {
+            code: 'ja-basic',
+            name: 'やさしいにほんご',
+            iso: 'ja-JP',
+            file: 'ja-basic.json'
+          }
+        ],
+        vueI18nLoader: true
+      }
+    ]
+  ],
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module
