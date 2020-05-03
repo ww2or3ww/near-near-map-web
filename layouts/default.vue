@@ -38,7 +38,7 @@
       <v-btn v-if="drawer" icon @click.stop="miniVariant = !miniVariant">
         <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
       </v-btn>
-      <v-toolbar-title class="font-title" v-text="title" />
+      <v-toolbar-title class="font-title" v-text="this.$t('title')" />
       <v-spacer />
       <v-btn icon @click.stop="rightDrawer = !rightDrawer">
         <v-icon>mdi-menu</v-icon>
@@ -134,8 +134,7 @@ export default {
       ],
       miniVariant: false,
       right: true,
-      rightDrawer: false,
-      title: this.$t('title')
+      rightDrawer: false
     }
   },
   created() {
@@ -180,7 +179,7 @@ export default {
 @import 'https://fonts.googleapis.com/earlyaccess/nicomoji.css';
 .font-title {
   font-family: 'Nico Moji';
-  font-size: 32px;
+  font-size: 28px;
 }
 .font-drawer-title {
   font-family: 'Nico Moji';
