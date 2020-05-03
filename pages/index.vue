@@ -2,163 +2,38 @@
   <v-layout justify-center>
     <v-flex xs12 sm12 md12>
       <v-card>
-        <v-card-title class="index-card-title">
-          <p class="index-p-card-title" style="margin:0px;">
-            にゃーにゃー is なに
+        <v-card-title class="common-card-title">
+          <p class="common-p-card-title" style="margin:0px;">
+            {{ $t('index.title[0]') }}
           </p>
         </v-card-title>
 
-        <v-card class="index-card-content">
-          <v-card-subtitle>
-            <p class="index-p-card-subtitle" style="margin: 0px;">
-              ねこ の なきごえ
-            </p>
-          </v-card-subtitle>
-          <v-card-text class="index-card-text">
-            <p class="index-p-card-text" style="margin: 0px;">
-              ねこ は『にゃーにゃー』と なく。
-            </p>
-            <p class="index-p-card-text" style="margin: 0px;">
-              かわいい。
-            </p>
-          </v-card-text>
-        </v-card>
-
-        <v-card class="index-card-content">
-          <v-card-subtitle>
-            <p class="index-p-card-subtitle" style="margin: 0px;">
-              Stay NEAR, Safe NEAR
-            </p>
-          </v-card-subtitle>
-          <v-card-text class="index-card-text">
-            <p class="index-p-card-text" style="margin: 0px;">
-              なるべく移動をせず、家の近くで過ごそう。
-            </p>
-            <p class="index-p-card-text" style="margin: 0px;">
-              近くのお店を利用して、地域経済の活性化に貢献しよう。
-            </p>
-          </v-card-text>
-        </v-card>
+        <subtitle-text2-card
+          v-for="index in 2"
+          :key="index"
+          :subtitle="$t('index.content[' + (index - 1) + '].title')"
+          :text1="$t('index.content[' + (index - 1) + '].text_1')"
+          :text2="$t('index.content[' + (index - 1) + '].text_2')"
+        >
+        </subtitle-text2-card>
       </v-card>
 
       <v-card>
-        <v-card-title class="index-card-title">
-          <p class="index-p-card-title" style="margin:0px;">
-            みなさまの にゃーにゃー生活に お役立てください！！
+        <v-card-title class="common-card-title">
+          <p class="common-p-card-title" style="margin:0px;">
+            {{ $t('index.title[1]') }}
           </p>
         </v-card-title>
 
-        <v-card class="index-card-content">
-          <v-card-subtitle>
-            <p class="index-p-card-subtitle" style="margin: 0px;">
-              フード
-            </p>
-          </v-card-subtitle>
-          <v-card-text class="index-card-text">
-            <p class="index-p-card-text" style="margin: 0px;">
-              家でご飯を食べよう。
-            </p>
-            <p class="index-p-card-text" style="margin: 0px;">
-              近所のお店の、テイクアウト・デリバリーを利用しよう。
-            </p>
-          </v-card-text>
-        </v-card>
-
-        <v-card class="index-card-content">
-          <v-card-subtitle>
-            <p class="index-p-card-subtitle" style="margin: 0px;">
-              ドリンク
-            </p>
-          </v-card-subtitle>
-          <v-card-text class="index-card-text">
-            <p class="index-p-card-text" style="margin: 0px;">
-              家でのもう。
-            </p>
-            <p class="index-p-card-text" style="margin: 0px;">
-              コーヒー、お茶、ジュース、タピオカ、アルコール、、。
-            </p>
-          </v-card-text>
-        </v-card>
-
-        <v-card class="index-card-content">
-          <v-card-subtitle>
-            <p class="index-p-card-subtitle" style="margin: 0px;">
-              デザート
-            </p>
-          </v-card-subtitle>
-          <v-card-text class="index-card-text">
-            <p class="index-p-card-text" style="margin: 0px;">
-              デザートは別腹。
-            </p>
-            <p class="index-p-card-text" style="margin: 0px;">
-              自分へのご褒美・特別な日のお供に。
-            </p>
-          </v-card-text>
-        </v-card>
-
-        <v-card class="index-card-content">
-          <v-card-subtitle>
-            <p class="index-p-card-subtitle" style="margin: 0px;">
-              マスク
-            </p>
-          </v-card-subtitle>
-          <v-card-text class="index-card-text">
-            <p class="index-p-card-text" style="margin: 0px;">
-              マスクをしよう。
-            </p>
-            <p class="index-p-card-text" style="margin: 0px;">
-              オシャレなマスクで差をつけよう。
-            </p>
-          </v-card-text>
-        </v-card>
-
-        <v-card class="index-card-content">
-          <v-card-subtitle>
-            <p class="index-p-card-subtitle" style="margin: 0px;">
-              プラント
-            </p>
-          </v-card-subtitle>
-          <v-card-text class="index-card-text">
-            <p class="index-p-card-text" style="margin: 0px;">
-              花を愛でよう。植物を育てよう。
-            </p>
-            <p class="index-p-card-text" style="margin: 0px;">
-              植物のある空間ってステキじゃないですか。
-            </p>
-          </v-card-text>
-        </v-card>
-
-        <v-card class="index-card-content">
-          <v-card-subtitle>
-            <p class="index-p-card-subtitle" style="margin: 0px;">
-              スタディ
-            </p>
-          </v-card-subtitle>
-          <v-card-text class="index-card-text">
-            <p class="index-p-card-text" style="margin: 0px;">
-              成長しよう。
-            </p>
-            <p class="index-p-card-text" style="margin: 0px;">
-              オンライン、もしくは適切な環境で、学ぼう。
-            </p>
-          </v-card-text>
-        </v-card>
-
-        <v-card class="index-card-content">
-          <v-card-subtitle>
-            <p class="index-p-card-subtitle" style="margin: 0px;">
-              ファイヤー
-            </p>
-          </v-card-subtitle>
-          <v-card-text class="index-card-text">
-            <p class="index-p-card-text" style="margin: 0px;">
-              庭で花火しようぜ。
-            </p>
-            <p class="index-p-card-text" style="margin: 0px;">
-              ちょっといい特別な花火しようぜ。
-            </p>
-          </v-card-text>
-        </v-card>
+        <subtitle-text2-clickable-card
+          v-for="index in 7"
+          :key="index"
+          :subtitle="$t('index.menu[' + index + '].title')"
+          :text1="$t('index.menu[' + index + '].text_1')"
+          :text2="$t('index.menu[' + index + '].text_2')"
+          @click="onSwitchPage(index)"
+        >
+        </subtitle-text2-clickable-card>
       </v-card>
 
       <v-card>
@@ -210,12 +85,21 @@
 </template>
 
 <script>
+import SubtitleText2Card from '@/components/cards/SubtitleText2Card.vue'
+import SubtitleText2ClickableCard from '@/components/cards/SubtitleText2ClickableCard.vue'
 export default {
-  components: {},
+  components: {
+    SubtitleText2Card,
+    SubtitleText2ClickableCard
+  },
   data() {
     return {}
   },
-  methods: {}
+  methods: {
+    onSwitchPage(index) {
+      this.$nuxt.$emit('onSwitchPage', index)
+    }
+  }
 }
 </script>
 <style>
@@ -223,17 +107,6 @@ export default {
   width: 100%;
   margin: 0px;
   color: white;
-  border: 0px solid;
-}
-.index-card-title {
-  padding: 0px;
-  padding-left: 16px;
-  border: 0px solid;
-}
-.index-p-card-title {
-  padding: 0px;
-  font-family: 'Nico Moji';
-  font-size: 20px;
   border: 0px solid;
 }
 .index-card-content {

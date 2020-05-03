@@ -9,16 +9,21 @@
     >
       <v-list>
         <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
+          v-for="(item, index) in $t('index.menu')"
+          :key="index"
+          :to="localePath(item.link)"
           router
           exact
-          @click="onClickLink(item, i)"
+          @click="onSwitchPage(index)"
         >
           <v-list-item-action>
-            <v-icon v-if="item.icon">{{ item.icon }}</v-icon>
-            <v-img v-if="item.url" :src="item.url" height="24" width="24">
+            <v-icon v-if="getIcon(index)">{{ getIcon(index) }}</v-icon>
+            <v-img
+              v-if="getImage(index)"
+              :src="getImage(index)"
+              height="24"
+              width="24"
+            >
             </v-img>
           </v-list-item-action>
           <v-list-item-content>
@@ -26,6 +31,7 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
+      <language-selector />
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
@@ -59,13 +65,13 @@
       <v-container fluid style="margin:0px; padding:0px; ">
         <div class="d-flex flex-row-reverse" style="align-items: center;">
           <div>
-            <p class="foot2" style="margin: 0px; padding: 0px;">
+            <p class="foot-cat" style="margin: 0px; padding: 0px;">
               &nbsp;∧ ∧&nbsp;&nbsp;
             </p>
-            <p class="foot2" style="margin: 0px; padding: 0px;">(ﾟーﾟ*)</p>
+            <p class="foot-cat" style="margin: 0px; padding: 0px;">(ﾟーﾟ*)</p>
           </div>
           <div>
-            <p class="foot1" style="margin: 0px; padding: 0px;">
+            <p class="foot-text" style="margin: 0px; padding: 0px;">
               {{ selectedTitle }}&nbsp;&nbsp;
             </p>
           </div>
@@ -76,75 +82,96 @@
 </template>
 
 <script>
+import LanguageSelector from '@/components/controls/LanguageSelector.vue'
 export default {
+  components: {
+    LanguageSelector
+  },
   data() {
     return {
       selectedTitle: '',
       clipped: false,
       drawer: false,
       fixed: false,
-      items: [
+      contents: [
         {
-          icon: 'mdi-home',
-          title: 'トップ',
-          to: '/'
+          link: '/',
+          icon: 'mdi-home'
         },
         {
-          icon: 'mdi-food',
-          title: 'フード',
-          to: '/food'
+          link: '/food',
+          icon: 'mdi-food'
         },
         {
-          icon: 'mdi-coffee',
-          title: 'ドリンク',
-          to: '/drink'
+          link: '/drink',
+          icon: 'mdi-coffee'
         },
         {
-          icon: 'mdi-cake',
-          title: 'デザート',
-          to: '/dessert'
+          link: '/dessert',
+          icon: 'mdi-cake'
         },
         {
-          icon: null,
-          url: require('~/assets/img/icon-mask.png'),
-          title: 'マスク',
-          to: '/mask'
+          link: '/mask',
+          icon: '',
+          image: require('~/assets/img/icon-mask.png')
         },
         {
-          icon: 'mdi-flower',
-          title: 'プラント',
-          to: '/plant'
+          link: '/plant',
+          icon: 'mdi-flower'
         },
         {
-          icon: 'mdi-lead-pencil',
-          title: 'スタディ',
-          to: '/study'
+          link: '/study',
+          icon: 'mdi-lead-pencil'
         },
         {
-          icon: 'mdi-fire',
-          title: 'ファイヤー',
-          to: '/fire'
+          link: '/plant',
+          icon: 'mdi-flower'
+        },
+        {
+          link: '/fire',
+          icon: 'mdi-fire'
         }
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'にゃーにゃーまっぷ'
+      title: this.$t('title')
     }
   },
+  created() {
+    this.setListener()
+  },
   mounted() {
-    const index = this.items.findIndex((e) => {
-      return e.to === this.$route.path
+    const index = this.$i18n.t('index.menu').findIndex((e) => {
+      const link = '/' + this.$i18n.locale + e.link
+      return e.link === this.$route.path || link === this.$route.path
     })
-    this.onClickLink(this.items[index], index)
+    if (index > 0) {
+      this.onSwitchPage(index)
+    }
   },
   methods: {
-    onClickLink(item, i) {
-      if (i === 0) {
+    setListener() {
+      this.$nuxt.$on('onSwitchPage', this.onSwitchPage)
+    },
+    onSwitchPage(index) {
+      const path = this.contents[index].link
+      if (path !== this.$route.path) {
+        this.$router.push(path)
+      }
+
+      if (index === 0) {
         this.selectedTitle = '♪'
       } else {
+        const item = this.$i18n.t('index.menu')[index]
         this.selectedTitle = item.title + '    }'
       }
+    },
+    getIcon(index) {
+      return this.contents[index].icon
+    },
+    getImage(index) {
+      return this.contents[index].image
     }
   }
 }
@@ -153,13 +180,13 @@ export default {
 @import 'https://fonts.googleapis.com/earlyaccess/nicomoji.css';
 .font-title {
   font-family: 'Nico Moji';
-  font-size: 24px;
+  font-size: 32px;
 }
 .font-drawer-title {
   font-family: 'Nico Moji';
   font-size: 20px;
 }
-.foot1 {
+.foot-text {
   font-family: 'Nico Moji';
   font-size: 16px;
   text-align: right;
@@ -167,12 +194,23 @@ export default {
   padding: 0px;
   border: 0px solid;
 }
-.foot2 {
+.foot-cat {
   font-size: 8px;
   text-align: right;
   color: white;
   margin: 0px;
   padding: 0px;
+  border: 0px solid;
+}
+.common-card-title {
+  padding: 0px;
+  padding-left: 16px;
+  border: 0px solid;
+}
+.common-p-card-title {
+  padding: 0px;
+  font-family: 'Nico Moji';
+  font-size: 20px;
   border: 0px solid;
 }
 </style>
