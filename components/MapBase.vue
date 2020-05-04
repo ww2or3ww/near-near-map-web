@@ -9,6 +9,7 @@
       :center="maplocation"
       :zoom="15"
       :options="mapOptions"
+      @click="onClickMap($event)"
     >
       <GmapInfoWindow
         :options="infoOptions"
@@ -167,7 +168,7 @@
                   height="28px"
                   color="#888888"
                   :href="
-                    'https://www.google.com/maps/?q=' +
+                    'https://www.google.com/maps/dir/?api=1&destination=' +
                       marker.position.lat +
                       ',' +
                       marker.position.lng
@@ -305,6 +306,11 @@ export default {
     })
   },
   methods: {
+    async onClickMap(event) {
+      console.log('------onClickMap---------')
+      console.log(event)
+      this.infoWinOpen = false
+    },
     async onClickMarker(index, marker) {
       console.log(marker.position)
       this.$refs.gmp.panTo(marker.position)
