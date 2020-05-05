@@ -146,8 +146,8 @@ export default {
           icon: 'mdi-lead-pencil'
         },
         {
-          link: '/plant',
-          icon: 'mdi-flower'
+          link: '/fire',
+          icon: 'mdi-fire'
         },
         {
           link: '/fire',

@@ -1,7 +1,6 @@
 <template>
-  <map-base :markers="markers"></map-base>
+  <map-base ref="mapBase" :markers="markers"></map-base>
 </template>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script>
 import MapBase from '@/components/MapBase.vue'
 export default {
@@ -10,16 +9,15 @@ export default {
   },
   data() {
     return {
-      fullheight: window.innerHeight + 'px',
       markers: []
     }
   },
   mounted() {
-    window.addEventListener('resize', this.resize)
+    this.getMarkersData()
   },
   methods: {
-    resize() {
-      this.fullheight = window.innerHeight + 'px'
+    async getMarkersData() {
+      this.markers = await this.$refs.mapBase.getMarkersData('drink')
     }
   }
 }
