@@ -1,7 +1,7 @@
 {
-  "name": "save-covid19-map",
+  "name": "near-near-map",
   "version": "1.0.0",
-  "description": "Nuxt.js project for save covid19 map",
+  "description": "Nuxt.js project for near near map",
   "author": "ww2or3ww",
   "private": true,
   "scripts": {

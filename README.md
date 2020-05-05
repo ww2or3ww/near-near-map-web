@@ -1,6 +1,6 @@
-# save-covid19-map
+# near-near-map
 
-> Nuxt.js project for save covid19 map
+> Nuxt.js project for near near map
 
 ## Build Setup
 
