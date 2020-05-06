@@ -148,10 +148,6 @@ export default {
         {
           link: '/fire',
           icon: 'mdi-fire'
-        },
-        {
-          link: '/fire',
-          icon: 'mdi-fire'
         }
       ],
       miniVariant: false,

@@ -321,7 +321,10 @@ export default {
       const requestAddress =
         'https://l8h2fp9jcf.execute-api.ap-northeast-1.amazonaws.com/work/near-near-map?type=' +
         type +
-        '&latlon=34.7277982,137.6691124'
+        '&latlon=' +
+        this.maplocation.lat +
+        ',' +
+        this.maplocation.lng
       const response = await this.$axios.$get(requestAddress)
       response.unshift({
         position: this.maplocation,
