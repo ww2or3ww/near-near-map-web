@@ -2,8 +2,9 @@
   "title": "にゃーにゃーまっぷ",
   "map": {
     "info": {
-      "need_reservation": "よやくひつよう",
-      "no_need_reservation": "よやくふよう",
+      "can_reservation": "よやく できる",
+      "need_reservation": "よやく ひつよう",
+      "not_accept_reservation": "よやく できない",
       "delivery": "でりばりー",
       "takeout": "ていくあうと",
       "drivethru": "どらいぶするー"

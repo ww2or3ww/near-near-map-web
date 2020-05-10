@@ -2,8 +2,9 @@
   "title": "にゃーにゃー MAP",
   "map": {
     "info": {
-      "need_reservation": "Reservation Required",
-      "no_need_reservation": "No Need Reservation",
+      "can_reservation": "Can Reservation",
+      "need_reservation": "Need Reservation",
+      "not_accept_reservation": "Not Accept Reservation",
       "delivery": "Delivery",
       "takeout": "Take Out",
       "drivethru": "Drive Thru"
