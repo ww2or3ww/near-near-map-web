@@ -9,7 +9,7 @@ export default {
     htmlAttrs: {
       prefix: 'og: http://ogp.me/ns#'
     },
-    titleTemplate: '%s - ' + process.env.npm_package_name,
+    titleTemplate: 'にゃーにゃーマップ',
     title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
@@ -117,8 +117,7 @@ export default {
   ],
   manifest: {
     name: 'にゃーにゃマップ',
-    description:
-      'Stay NEAR, Safe NEAR. なるべく移動をせず、家の近くで過ごそう。',
+    description: 'Stay NEAR, Safe NEAR ♪',
     theme_color: '#2300a0',
     background_color: '#000000',
     display: 'standalone',
