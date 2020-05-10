@@ -1,7 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
-  mode: 'universal',
+  mode: 'spa',
   /*
    ** Headers of the page
    */
@@ -38,8 +38,7 @@ export default {
       {
         hid: 'og:description',
         property: 'og:description',
-        content:
-          'Stay NEAR, Safe NEAR. なるべく移動をせず、家の近くで過ごそう。'
+        content: 'Stay NEAR, Safe NEAR ♪'
       },
       {
         hid: 'og:image',
