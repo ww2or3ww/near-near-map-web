@@ -149,6 +149,10 @@ export default {
         {
           link: '/fire',
           icon: 'mdi-fire'
+        },
+        {
+          link: '/about',
+          icon: 'mdi-map-marker-question-outline'
         }
       ],
       miniVariant: false,
