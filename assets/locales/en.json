@@ -69,6 +69,11 @@
         "title": "Firework",
         "text_1": "庭で花火しようぜ。",
         "text_2": "ちょっといい特別な花火しようぜ。"
+      },
+      {
+        "title": "About",
+        "text_1": "About this site",
+        "text_2": ""
       }
     ]
   }

@@ -17,12 +17,6 @@
           :text3="$t('index.content[' + (index - 1) + '].text_3')"
         >
         </subtitle-text2-card>
-
-        <v-card-subtitle>
-          <p class="p-card-subtitle" style="margin: 0px;">
-            ※現在トライアル中です。
-          </p>
-        </v-card-subtitle>
       </v-card>
 
       <v-card>
@@ -32,8 +26,14 @@
           </p>
         </v-card-title>
 
+        <p></p>
+        <p class="common-p-card-title" style="margin:0px; margin-left: 20px;">
+          ※現在トライアル中です※
+        </p>
+        <p></p>
+
         <subtitle-text2-clickable-card
-          v-for="index in 7"
+          v-for="index in 8"
           :key="index"
           :subtitle="$t('index.menu[' + index + '].title')"
           :text1="$t('index.menu[' + index + '].text_1')"
@@ -49,7 +49,10 @@
           <p class="index-foot" style="margin: 0px;">
             near-near-map.w2or3w.com
           </p>
-          <router-link to="policy" style="text-decoration: none;">
+          <router-link
+            :to="localePath('/about')"
+            style="text-decoration: none;"
+          >
             <p class="index-foot" style="margin: 0px;">
               PRIVACY POLICY
             </p>
@@ -91,7 +94,6 @@ export default {
 .index-p-card-subtitle {
   font-family: 'Nico Moji';
   font-size: 16px;
-  line-height: 0px;
 }
 .index-p-card-text {
   font-size: 12px;
