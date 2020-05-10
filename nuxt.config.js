@@ -116,7 +116,7 @@ export default {
     ]
   ],
   manifest: {
-    name: 'にゃーにゃマップ',
+    name: 'にゃーにゃーマップ',
     description: 'Stay NEAR, Safe NEAR ♪',
     theme_color: '#2300a0',
     background_color: '#000000',
