@@ -2,8 +2,9 @@
   "title": "にゃーにゃーまっぷ",
   "map": {
     "info": {
+      "can_reservation": "予約可",
       "need_reservation": "要予約",
-      "no_need_reservation": "予約不要",
+      "not_accept_reservation": "予約不可",
       "delivery": "デリバリー",
       "takeout": "テイクアウト",
       "drivethru": "ドライブスルー"
