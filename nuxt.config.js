@@ -1,11 +1,14 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
-  mode: 'spa',
+  mode: 'universal',
   /*
    ** Headers of the page
    */
   head: {
+    htmlAttrs: {
+      prefix: 'og: http://ogp.me/ns#'
+    },
     titleTemplate: '%s - ' + process.env.npm_package_name,
     title: process.env.npm_package_name || '',
     meta: [
@@ -15,6 +18,34 @@ export default {
         hid: 'description',
         name: 'description',
         content: process.env.npm_package_description || ''
+      },
+      {
+        hid: 'og:site_name',
+        property: 'og:site_name',
+        content: 'にゃーにゃマップ'
+      },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      {
+        hid: 'og:url',
+        property: 'og:url',
+        content: 'https://near-near-map.w2or3w.com'
+      },
+      {
+        hid: 'og:title',
+        property: 'og:title',
+        content: 'にゃーにゃーマップ'
+      },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content:
+          'Stay NEAR, Safe NEAR. なるべく移動をせず、家の近くで過ごそう。'
+      },
+      {
+        hid: 'og:image',
+        property: 'og:image',
+        content:
+          'https://near-near-map.s3-ap-northeast-1.amazonaws.com/images/resources/ogpimg.png'
       }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/img/favicon.png' }]

@@ -20,7 +20,7 @@
 
         <v-card-subtitle>
           <p class="p-card-subtitle" style="margin: 0px;">
-            ※現在トライヤル中です。
+            ※現在トライアル中です。
           </p>
         </v-card-subtitle>
       </v-card>
