@@ -17,7 +17,7 @@ export default {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/img/favicon.png' }]
   },
   /*
    ** Customize the progress-bar color
@@ -85,6 +85,22 @@ export default {
       }
     ]
   ],
+  manifest: {
+    name: 'にゃーにゃマップ',
+    description:
+      'Stay NEAR, Safe NEAR. なるべく移動をせず、家の近くで過ごそう。',
+    theme_color: '#2300a0',
+    background_color: '#000000',
+    display: 'standalone',
+    Scope: '/',
+    start_url: '/',
+    splash_pages: null
+  },
+  pwa: {
+    icon: {
+      iconSrc: 'static/img/pwaicon.png'
+    }
+  },
   axios: {},
   /*
    ** vuetify module configuration

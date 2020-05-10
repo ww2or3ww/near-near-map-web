@@ -1,6 +1,6 @@
 <template>
   <v-card class="card-content">
-    <v-card-subtitle>
+    <v-card-subtitle v-if="subtitle">
       <p class="p-card-subtitle" style="margin: 0px;">
         {{ subtitle }}
       </p>
@@ -11,6 +11,9 @@
       </p>
       <p class="p-card-text" style="margin: 0px;">
         {{ text2 }}
+      </p>
+      <p v-if="text3" class="p-card-text" style="margin: 0px;">
+        {{ text3 }}
       </p>
     </v-card-text>
   </v-card>
@@ -27,6 +30,10 @@ export default {
       default: ''
     },
     text2: {
+      type: String,
+      default: ''
+    },
+    text3: {
       type: String,
       default: ''
     },
