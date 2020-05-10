@@ -57,7 +57,7 @@
           </v-list-item-action>
           <v-list-item-content></v-list-item-content>
         </v-list-item>
-        <v-list-item @click="onClickCurrentPosition">
+        <v-list-item v-if="notSupportCtrl" @click="onClickCurrentPosition">
           <v-list-item-action>
             <v-icon>
               mdi-human-male
@@ -69,7 +69,7 @@
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item @click="onClickSearch">
+        <v-list-item v-if="notSupportCtrl" @click="onClickSearch">
           <v-list-item-action>
             <v-icon>
               mdi-selection-search
@@ -115,6 +115,7 @@ export default {
       clipped: false,
       drawer: false,
       fixed: false,
+      notSupportCtrl: false,
       contents: [
         {
           link: '/',
