@@ -173,7 +173,7 @@ export default {
       this.$nuxt.$on('onSwitchPage', this.onSwitchPage)
     },
     onSwitchPage(index) {
-      const path = this.contents[index].link
+      const path = this.localePath(this.contents[index].link)
       if (path !== this.$route.path) {
         this.$router.push(path)
       }
