@@ -78,6 +78,12 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     [
+      '@nuxtjs/google-analytics',
+      {
+        id: 'UA-166062268-1'
+      }
+    ],
+    [
       'nuxt-i18n',
       {
         strategy: 'prefix_and_default',
