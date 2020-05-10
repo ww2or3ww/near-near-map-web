@@ -1,6 +1,13 @@
 <template>
   <v-layout justify-center>
     <v-flex xs12 sm12 md12>
+      <p
+        class="common-p-card-title"
+        style="margin-bottom:8px; margin-left: 16px; font-size: 16px;"
+      >
+        ※現在トライアル中です※
+      </p>
+
       <v-card>
         <v-card-title class="common-card-title">
           <p class="common-p-card-title" style="margin:0px;">
@@ -25,12 +32,6 @@
             {{ $t('index.title[1]') }}
           </p>
         </v-card-title>
-
-        <p></p>
-        <p class="common-p-card-title" style="margin:0px; margin-left: 20px;">
-          ※現在トライアル中です※
-        </p>
-        <p></p>
 
         <subtitle-text2-clickable-card
           v-for="index in 8"
