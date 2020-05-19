@@ -2,9 +2,8 @@
   <v-layout column justify-center align-center>
     <GmapMap
       ref="gmp"
-      class="map-panel"
       map-type-id="roadmap"
-      style="width: 100%; height: 560px"
+      :style="styleMap"
       :draggable="true"
       :center="maplocation"
       :zoom="13"
@@ -17,115 +16,23 @@
         :opened="infoWinOpen"
         @closeclick="infoWinOpen = false"
       >
-        <v-card class="map-info-card" min-width="240" max-width="320">
-          <v-container class="map-info-container">
+        <v-card :style="styleMapInfoCard">
+          <v-container :style="styleMapInfoContainer">
+            <!-- TITLE -->
             <v-card-subtitle class="map-info-subtitle">
-              <p class="map-info-p-subtitle" style="margin: 0px;">
+              <p class="map-info-p-subtitle" style="margin: 4px;">
                 {{ marker.title }}
               </p>
             </v-card-subtitle>
 
-            <!-- IMAGE -->
-            <v-row justify="space-between" class="map-image-row">
+            <!-- IFRAME -->
+            <v-row justify="space-between" :style="styleMapIFrameRow">
               <v-col v-if="marker.image" class="map-info-col">
-                <v-img :src="marker.image" height="160px"></v-img>
-              </v-col>
-            </v-row>
-
-            <!-- INFO-1 -->
-            <v-row justify="space-between" class="map-info-row">
-              <v-col class="map-info-col-left" cols="6" xs="6" sm="6">
-                <p
-                  v-if="marker.reservation == 0"
-                  class="map-info-col-p"
-                  style="margin: 0px; padding: 0px; padding-left: 8px;"
-                >
-                  <v-icon size="16px" color="green darken-2">
-                    mdi-check-circle-outline
-                  </v-icon>
-                  {{ $t('map.info.can_reservation') }}
-                </p>
-                <p
-                  v-else-if="marker.reservation == 1"
-                  class="map-info-col-p"
-                  style="margin: 0px; padding: 0px; padding-left: 8px;"
-                >
-                  <v-icon size="16px" color="red darken-2">
-                    mdi-alert-circle-outline
-                  </v-icon>
-                  {{ $t('map.info.need_reservation') }}
-                </p>
-                <p
-                  v-else-if="marker.reservation == 2"
-                  class="map-info-col-p"
-                  style="margin: 0px; padding: 0px; padding-left: 8px;"
-                >
-                  <v-icon size="16px" color="red darken-2">
-                    mdi-alert-circle-outline
-                  </v-icon>
-                  {{ $t('map.info.not_accept_reservation') }}
-                </p>
-              </v-col>
-              <v-col class="map-info-col-left" cols="6" xs="6" sm="6">
-                <p
-                  v-if="marker.canTakeout"
-                  class="map-info-col-p"
-                  style="margin: 0px; padding: 0px; padding-left: 8px;"
-                >
-                  <v-icon size="16px" color="green darken-2">
-                    mdi-check-circle-outline
-                  </v-icon>
-                  {{ $t('map.info.takeout') }}
-                </p>
-                <p
-                  v-else
-                  class="map-info-col-p-neg"
-                  style="margin: 0px; padding: 0px; padding-left: 8px;"
-                >
-                  {{ $t('map.info.takeout') }}
-                </p>
-              </v-col>
-            </v-row>
-
-            <!-- INFO-2 -->
-            <v-row justify="space-between" class="map-info-row">
-              <v-col class="map-info-col-left" cols="6" xs="6" sm="6">
-                <p
-                  v-if="marker.canDelivery"
-                  class="map-info-col-p"
-                  style="margin: 0px; padding: 0px; padding-left: 8px;"
-                >
-                  <v-icon size="16px" color="green darken-2">
-                    mdi-check-circle-outline
-                  </v-icon>
-                  {{ $t('map.info.delivery') }}
-                </p>
-                <p
-                  v-else
-                  class="map-info-col-p-neg"
-                  style="margin: 0px; padding: 0px; padding-left: 8px;"
-                >
-                  {{ $t('map.info.delivery') }}
-                </p>
-              </v-col>
-              <v-col class="map-info-col-left" cols="6" xs="6" sm="6">
-                <p
-                  v-if="marker.canDriveThru"
-                  class="map-info-col-p"
-                  style="margin: 0px; padding: 0px; padding-left: 8px;"
-                >
-                  <v-icon size="16px" color="green darken-2">
-                    mdi-check-circle-outline
-                  </v-icon>
-                  {{ $t('map.info.drivethru') }}
-                </p>
-                <p
-                  v-else
-                  class="map-info-col-p-neg"
-                  style="margin: 0px; padding: 0px; padding-left: 8px;"
-                >
-                  {{ $t('map.info.drivethru') }}
-                </p>
+                <iframe
+                  :src="srcIFrame"
+                  class="map-info-iframe"
+                  sandbox="allow-scripts allow-same-origin"
+                ></iframe>
               </v-col>
             </v-row>
 
@@ -133,113 +40,131 @@
             <v-row
               justify="space-between"
               class="map-info-row"
-              style="padding-top: 8px; padding-bottom: 8px;"
+              style="padding-top: 4px; padding-bottom: 4px;"
             >
-              <v-col v-if="marker.homepage" class="map-info-col">
-                <v-btn
-                  fab
-                  width="32px"
-                  height="32px"
-                  color="#888888"
-                  :href="marker.homepage"
-                  target="_blank"
-                >
-                  <v-icon size="24px">mdi-home</v-icon>
-                </v-btn>
-              </v-col>
-              <v-col v-if="marker.media" class="map-info-col">
-                <v-btn
-                  fab
-                  width="32px"
-                  height="32px"
-                  color="#888888"
-                  :href="marker.media"
-                  target="_blank"
-                >
-                  <v-icon size="24px">mdi-newspaper-variant-outline</v-icon>
-                </v-btn>
-              </v-col>
-              <v-col v-if="marker.facebook" class="map-info-col">
-                <v-btn
-                  fab
-                  width="32px"
-                  height="32px"
-                  color="#888888"
-                  :href="marker.facebook"
-                  target="_blank"
-                >
-                  <v-icon size="24px">mdi-facebook</v-icon>
-                </v-btn>
-              </v-col>
-              <v-col v-if="marker.instagram" class="map-info-col">
-                <v-btn
-                  fab
-                  width="32px"
-                  height="32px"
-                  :href="marker.instagram"
-                  color="#888888"
-                  target="_blank"
-                >
-                  <v-icon size="24px">mdi-instagram</v-icon>
-                </v-btn>
-              </v-col>
-              <v-col v-if="marker.twitter" class="map-info-col">
-                <v-btn
-                  fab
-                  width="32px"
-                  height="32px"
-                  color="#888888"
-                  :href="marker.twitter"
-                  target="_blank"
-                >
-                  <v-icon size="24px">mdi-twitter</v-icon>
-                </v-btn>
+              <v-col class="map-info-col">
+                <div class="d-flex flex-row-reverse">
+                  <v-btn
+                    v-if="marker.homepage"
+                    class="map-info-btn"
+                    fab
+                    width="28px"
+                    height="28px"
+                    color="#888888"
+                    :href="marker.homepage"
+                    target="_blank"
+                  >
+                    <v-icon size="20px">mdi-home</v-icon>
+                  </v-btn>
+                  <v-btn
+                    v-if="marker.facebook"
+                    class="map-info-btn"
+                    fab
+                    width="28px"
+                    height="28px"
+                    color="#888888"
+                    :href="marker.facebook"
+                    target="_blank"
+                  >
+                    <v-icon size="20px">mdi-facebook</v-icon>
+                  </v-btn>
+                  <v-btn
+                    v-if="marker.instagram"
+                    class="map-info-btn"
+                    fab
+                    width="28px"
+                    height="28px"
+                    :href="marker.instagram"
+                    color="#888888"
+                    target="_blank"
+                  >
+                    <v-icon size="20px">mdi-instagram</v-icon>
+                  </v-btn>
+                  <v-btn
+                    v-if="marker.twitter"
+                    class="map-info-btn"
+                    fab
+                    width="28px"
+                    height="28px"
+                    color="#888888"
+                    :href="marker.twitter"
+                    target="_blank"
+                  >
+                    <v-icon size="20px">mdi-twitter</v-icon>
+                  </v-btn>
+                  <v-btn
+                    v-if="marker.media"
+                    class="map-info-btn"
+                    fab
+                    width="28px"
+                    height="28px"
+                    color="#888888"
+                    :href="marker.media"
+                    target="_blank"
+                  >
+                    <v-icon size="20px">mdi-newspaper-variant-outline</v-icon>
+                  </v-btn>
+                  <v-btn
+                    v-if="marker.media2"
+                    class="map-info-btn"
+                    fab
+                    width="28px"
+                    height="28px"
+                    color="#888888"
+                    :href="marker.media2"
+                    target="_blank"
+                  >
+                    <v-icon size="20px">mdi-newspaper-variant-outline</v-icon>
+                  </v-btn>
+                  <v-btn
+                    v-if="marker.media3"
+                    class="map-info-btn"
+                    fab
+                    width="28px"
+                    height="28px"
+                    color="#888888"
+                    :href="marker.media3"
+                    target="_blank"
+                  >
+                    <v-icon size="20px">mdi-newspaper-variant-outline</v-icon>
+                  </v-btn>
+                </div>
               </v-col>
             </v-row>
 
             <!-- ACCESS -->
             <v-row justify="space-between" class="map-info-row">
-              <v-col
-                class="map-info-col"
-                style="text-align: left;"
-                xl="6"
-                lg="6"
-                md="6"
-                sm="6"
-                xs="6"
-              ></v-col>
-              <v-col v-if="marker.tel" class="map-info-col padding: 0px;">
-                <v-btn
-                  style="margin-bottom: 4px;"
-                  fab
-                  width="32px"
-                  height="32px"
-                  color="#888888"
-                  :href="'tel:' + marker.tel"
-                  target="_blank"
-                >
-                  <v-icon size="24px">mdi-phone</v-icon>
-                </v-btn>
-                <p class="map-info-col-p" style="margin:0px; padding:0px;">
-                  {{ marker.tel }}
-                </p>
-              </v-col>
-              <v-col class="map-info-col padding: 0px;">
-                <v-btn
-                  fab
-                  width="32px"
-                  height="32px"
-                  color="#888888"
-                  :href="
-                    'https://www.google.com/maps/dir/?api=1&destination=' +
-                      marker.position.lat +
-                      ',' +
-                      marker.position.lng
-                  "
-                  target="_blank"
-                >
-                  <v-icon size="24px">mdi-google-maps</v-icon>
-                </v-btn>
+              <v-col class="map-info-col">
+                <div class="d-flex flex-row-reverse">
+                  <v-btn
+                    class="map-info-btn"
+                    fab
+                    width="28px"
+                    height="28px"
+                    color="#888888"
+                    :href="
+                      'https://www.google.com/maps/dir/?api=1&destination=' +
+                        marker.position.lat +
+                        ',' +
+                        marker.position.lng
+                    "
+                    target="_blank"
+                  >
+                    <v-icon size="20px">mdi-google-maps</v-icon>
+                  </v-btn>
+                  <v-btn
+                    v-if="marker.tel"
+                    class="map-info-btn"
+                    fab
+                    width="28px"
+                    height="28px"
+                    color="#888888"
+                    :href="'tel:' + marker.tel"
+                    target="_blank"
+                  >
+                    <v-icon size="20px">mdi-phone</v-icon>
+                  </v-btn>
+                </div>
               </v-col>
             </v-row>
           </v-container>
@@ -271,8 +196,35 @@ export default {
     return {
       currentLoc: {},
       maplocation: { lng: 0, lat: 0 },
+      styleMap: {
+        width: '100%',
+        height: '440px'
+      },
+      styleMapInfoCard: {
+        height: '340px',
+        margin: '0px',
+        padding: '0px',
+        border: '0px solid',
+        borderColor: 'red'
+      },
+      styleMapInfoContainer: {
+        height: '340px',
+        margin: '0px',
+        padding: '0px',
+        backgroundColor: 'rgba(255, 255, 255, 1)',
+        border: '0px solid',
+        borderColor: 'red'
+      },
+      styleMapIFrameRow: {
+        height: '160px',
+        margin: '0px',
+        padding: '0px',
+        border: '0px solid',
+        borderColor: 'green'
+      },
+      srcIFrame: '',
       infoOptions: {
-        minWidth: 320,
+        minWidth: 1024,
         pixelOffset: {
           width: 0,
           height: -35
@@ -320,7 +272,25 @@ export default {
   mounted() {
     this.onClickCurrentPositon()
   },
+  created() {
+    window.addEventListener('resize', this.handleResize)
+    this.handleResize()
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.handleResize)
+  },
   methods: {
+    handleResize() {
+      const mapHeight = window.innerHeight - 120
+      const infoHeight = window.innerHeight / 2
+      const iframeHeight = infoHeight - 128
+      console.log('infoHeight = ' + infoHeight)
+      console.log('iframeHeight = ' + iframeHeight)
+      this.styleMap.height = mapHeight + 'px'
+      this.styleMapInfoCard.height = infoHeight + 'px'
+      this.styleMapInfoContainer.height = infoHeight + 'px'
+      this.styleMapIFrameRow.height = iframeHeight + 'px'
+    },
     async onClickMap(event) {
       this.infoWinOpen = false
     },
@@ -328,12 +298,25 @@ export default {
       this.$refs.gmp.panTo(marker.position)
       this.infoWindowPos = marker.position
       this.marker = marker
+      this.srcIFrame = this.getIFrameSrc(marker)
       this.infoWinOpen = true
       const data = {}
       data.lat = marker.position.lat
       data.lng = marker.position.lng
       data.title = this.markers[index].title
       this.$set(this.currentLoc, 'coords', data)
+    },
+    getIFrameSrc(marker) {
+      let src = ''
+      if (marker.homepage) {
+        src = marker.homepage
+      } else if (marker.instagram) {
+        src = marker.instagram
+      } else if (marker.media) {
+        src = marker.media
+      }
+      console.log(src)
+      return src
     },
     async onClickCurrentPositon() {
       const pos = await this.getCurrentPosition()
@@ -374,17 +357,6 @@ export default {
 }
 </script>
 <style>
-.map-info-card {
-  margin: 0px;
-  padding: 0px;
-  border: 0px solid;
-}
-.map-info-container {
-  margin: 0px;
-  padding: 0px;
-  background-color: rgba(255, 255, 255, 1);
-  border: 0px solid;
-}
 .map-info-subtitle {
   margin: 0px;
   padding: 0px;
@@ -392,21 +364,15 @@ export default {
   border: 0px solid;
 }
 .map-info-p-subtitle {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
   margin: 0px;
   padding: 0px;
   color: rgba(8, 8, 8, 1);
 }
-.map-image-row {
-  margin: 0px;
-  padding: 0px;
-  border: 0px solid;
-  border-color: green;
-}
 .map-info-row {
   margin: 0px;
-  padding: 4px;
+  padding: 0px;
   border: 1px solid;
   border-color: lightgray;
   border-top: 0px solid;
@@ -414,30 +380,30 @@ export default {
 .map-info-col {
   text-align: center;
   margin: 0px;
-  padding: 2px;
+  margin-right: 12px;
+  padding: 0px;
   border: 0px solid;
   border-color: red;
 }
-.map-info-col-left {
-  text-align: left;
-  margin: 0px;
-  padding: 2px;
-  border: 0px solid;
-  border-color: blue;
+.map-info-btn {
+  margin: 4px;
 }
-.map-info-col-p {
-  font-size: 12px;
-  font-weight: bold;
-  margin: 0px;
-  padding: 0px;
-  color: rgba(80, 80, 80, 1);
+.map-info-iframe {
+  width: 200%;
+  height: 200%;
+  margin-right: 8px;
+  transform: scale(0.5);
+  -o-transform: scale(0.5);
+  -webkit-transform: scale(0.5);
+  -moz-transform: scale(0.5);
+  -ms-transform: scale(0.5);
+  transform-origin: 0 0;
+  -o-transform-origin: 0 0;
+  -webkit-transform-origin: 0 0;
+  -moz-transform-origin: 0 0;
+  -ms-transform-origin: 0 0;
 }
-.map-info-col-p-neg {
-  font-size: 12px;
-  font-weight: bold;
-  margin: 0px;
-  padding: 0px;
-  color: rgba(160, 160, 160, 1);
-  text-decoration: line-through;
+.gm-style-iw-d {
+  overflow: unset !important;
 }
 </style>
