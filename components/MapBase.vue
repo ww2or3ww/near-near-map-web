@@ -93,13 +93,13 @@
                     <v-icon size="20px">mdi-twitter</v-icon>
                   </v-btn>
                   <v-btn
-                    v-if="marker.media"
+                    v-if="marker.media1"
                     class="map-info-btn"
                     fab
                     width="28px"
                     height="28px"
                     color="#888888"
-                    :href="marker.media"
+                    :href="marker.media1"
                     target="_blank"
                   >
                     <v-icon size="20px">mdi-newspaper-variant-outline</v-icon>
@@ -269,9 +269,7 @@ export default {
       }
     }
   },
-  mounted() {
-    this.onClickCurrentPositon()
-  },
+  mounted() {},
   created() {
     window.addEventListener('resize', this.handleResize)
     this.handleResize()
@@ -284,8 +282,6 @@ export default {
       const mapHeight = window.innerHeight - 120
       const infoHeight = window.innerHeight / 2
       const iframeHeight = infoHeight - 128
-      console.log('infoHeight = ' + infoHeight)
-      console.log('iframeHeight = ' + iframeHeight)
       this.styleMap.height = mapHeight + 'px'
       this.styleMapInfoCard.height = infoHeight + 'px'
       this.styleMapInfoContainer.height = infoHeight + 'px'
@@ -310,12 +306,9 @@ export default {
       let src = ''
       if (marker.homepage) {
         src = marker.homepage
-      } else if (marker.instagram) {
-        src = marker.instagram
-      } else if (marker.media) {
-        src = marker.media
+      } else if (marker.media1) {
+        src = marker.media1
       }
-      console.log(src)
       return src
     },
     async onClickCurrentPositon() {
@@ -335,6 +328,8 @@ export default {
       })
     },
     async getMarkersData(type) {
+      await this.onClickCurrentPositon()
+
       const requestAddress =
         'https://l8h2fp9jcf.execute-api.ap-northeast-1.amazonaws.com/work/near-near-map?type=' +
         type +
