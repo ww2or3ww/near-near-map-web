@@ -12,21 +12,21 @@
   },
   "index": {
     "title": [
-      "What is にゃーにゃー",
-      "みなさまの にゃーにゃー生活に お役立てください！！"
+      "What is にゃーにゃー(Near-Near)",
+      "Please use this site to help you live a better Near-Near life!"
     ],
     "content": [
       {
         "title": "Cat's meow",
-        "text_1": "ねこ は『にゃーにゃー』と なく。",
-        "text_2": "Pretty",
+        "text_1": "The cat say 'nya-nya'.",
+        "text_2": "So Cute!",
         "text_3": ""
       },
       {
         "title": "Stay NEAR, Safe NEAR",
-        "text_1": "なるべく移動をせず、家の近くで過ごそう。",
-        "text_2": "近くのお店を利用して、地域経済の活性化に貢献しよう。",
-        "text_3": "ソーシャルディスタンスは保っても、心の距離はNEARやでぇ〜♪"
+        "text_1": "Try to stay as close to home as possible without moving around.",
+        "text_2": "Take advantage of the shops near you and help revitalize the local economy.",
+        "text_3": "Keep the social distance, but keep micro-tourism in mind ♪"
       }
     ],
     "menu": [
@@ -37,8 +37,8 @@
       },
       {
         "title": "Food",
-        "text_1": "家で食べよう。",
-        "text_2": "近所のお店の、テイクアウト・デリバリーを利用しよう。"
+        "text_1": "Let's eat at near store. Let's take it back.",
+        "text_2": "Take advantage of take-out delivery."
       },
       {
         "title": "Drink",
