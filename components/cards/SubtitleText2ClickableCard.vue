@@ -1,8 +1,11 @@
 <template>
   <v-card class="card-content" @click.stop="$emit('click')">
-    <v-card-subtitle>
-      <p class="p-card-subtitle" style="margin: 0px;">
+    <v-card-subtitle style="padding-bottom: 0px;">
+      <p class="p-card-subtitle" style="margin: 0px; padding: 0px;">
         {{ subtitle }}
+      </p>
+      <p class="p-card-subtitle-count" style="margin: 0px; padding: 0px;">
+        &nbsp;&nbsp;{{ count }}
       </p>
     </v-card-subtitle>
     <v-card-text class="card-text">
@@ -30,6 +33,10 @@ export default {
       type: String,
       default: ''
     },
+    count: {
+      type: String,
+      default: ''
+    },
     link: {
       type: String,
       default: ''
@@ -45,6 +52,12 @@ export default {
   font-family: 'Nico Moji';
   font-size: 16px;
   line-height: 0px;
+  display: inline-block;
+}
+.p-card-subtitle-count {
+  font-size: 12px;
+  line-height: 0px;
+  display: inline-block;
 }
 .card-text {
   margin-left: 8px;

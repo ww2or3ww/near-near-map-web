@@ -39,6 +39,7 @@
           :subtitle="$t('index.menu[' + index + '].title')"
           :text1="$t('index.menu[' + index + '].text_1')"
           :text2="$t('index.menu[' + index + '].text_2')"
+          :count="counts[index]"
           @click="onSwitchPage(index)"
         >
         </subtitle-text2-clickable-card>
@@ -73,7 +74,9 @@ export default {
     SubtitleText2ClickableCard
   },
   data() {
-    return {}
+    return {
+      counts: ['(0)', '(473)', '(2)', '(50)', '(0)', '(325)', '(0)', '(0)', '']
+    }
   },
   methods: {
     onSwitchPage(index) {

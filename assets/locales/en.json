@@ -41,14 +41,9 @@
         "text_2": "Take advantage of take-out delivery."
       },
       {
-        "title": "Drink",
+        "title": "Drink/Dessert",
         "text_1": "家でのもう。",
-        "text_2": "コーヒー、お茶、ジュース、タピオカ、アルコール、、。"
-      },
-      {
-        "title": "Dessert",
-        "text_1": "甘いものは別腹。",
-        "text_2": "自分へのご褒美・特別な日のお供にどうですか。"
+        "text_2": "甘いものは別腹。"
       },
       {
         "title": "Mask",
@@ -61,14 +56,19 @@
         "text_2": "自然を感じられる空間ってステキじゃないですか。"
       },
       {
-        "title": "Study",
-        "text_1": "成長しよう。",
-        "text_2": "オンライン、もしくは適切な環境で、学ぼう。"
-      },
-      {
-        "title": "Firework",
+        "title": "Firework (325)",
         "text_1": "庭で花火しようぜ。",
         "text_2": "ちょっといい特別な花火しようぜ。"
+      },
+      {
+        "title": "Hot Spring",
+        "text_1": "温泉に入りたい。",
+        "text_2": "近くでいい。近くがいい。"
+      },
+      {
+        "title": "Camp",
+        "text_1": "キャンプしようぜ。",
+        "text_2": "密を避け、近くにある自然の中へ。"
       },
       {
         "title": "About",
