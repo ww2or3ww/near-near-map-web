@@ -110,17 +110,34 @@
           <p></p>
           <ul>
             <li class="font-card-text">
-              誰でも登録できるようにしています
+              誰でも登録・更新できるようにしています。
             </li>
           </ul>
           <p class="font-card-text" style="margin: 0px; padding-left: 24px">
             お気に入りのお店を登録してみてください。
           </p>
           <p class="font-card-text" style="margin: 0px; padding-left: 24px">
+            情報の修正・改善・追加、歓迎です。(※すぐには反映されません。)
+          </p>
+          <p class="font-card-text" style="margin: 0px; padding-left: 24px">
             ->
             <a href="https://near-near-map-manage.w2or3w.com/" target="_blank">
               Near Near Map Manage
             </a>
+          </p>
+        </v-card-text>
+
+        <v-card-title class="common-card-title">
+          <p class="common-p-card-title" style="margin: 0px;">
+            クローリング・スクレイピング
+          </p>
+        </v-card-title>
+        <v-card-text class="card-text">
+          <p class="font-card-text" style="margin: 0px;">
+            当サイトは、各種ホームページやメディアサイト様から情報を収集させていただいております。
+          </p>
+          <p class="font-card-text" style="margin: 0px;">
+            礼儀と敬意を忘れぬように努めます。
           </p>
         </v-card-text>
 

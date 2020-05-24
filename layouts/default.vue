@@ -130,10 +130,6 @@ export default {
           icon: 'mdi-coffee'
         },
         {
-          link: '/dessert',
-          icon: 'mdi-cake'
-        },
-        {
           link: '/mask',
           icon: '',
           image: require('~/assets/img/icon-mask.png')
@@ -143,12 +139,16 @@ export default {
           icon: 'mdi-flower'
         },
         {
-          link: '/study',
-          icon: 'mdi-lead-pencil'
-        },
-        {
           link: '/fire',
           icon: 'mdi-fire'
+        },
+        {
+          link: '/study',
+          icon: 'mdi-hot-tub'
+        },
+        {
+          link: '/study',
+          icon: 'mdi-tent'
         },
         {
           link: '/about',
