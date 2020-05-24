@@ -1,6 +1,6 @@
 <template>
   <v-card class="card-content" @click.stop="$emit('click')">
-    <v-card-subtitle style="padding-bottom: 0px;">
+    <v-card-subtitle style="padding-bottom: 0px; padding-top: 4px;">
       <p class="p-card-subtitle" style="margin: 0px; padding: 0px;">
         {{ subtitle }}
       </p>
