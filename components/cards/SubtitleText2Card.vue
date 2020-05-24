@@ -1,6 +1,9 @@
 <template>
   <v-card class="card-content">
-    <v-card-subtitle v-if="subtitle">
+    <v-card-subtitle
+      v-if="subtitle"
+      style="padding-bottom: 0px; padding-top: 4px;"
+    >
       <p class="p-card-subtitle" style="margin: 0px;">
         {{ subtitle }}
       </p>
