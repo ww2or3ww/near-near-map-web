@@ -27,7 +27,7 @@
 
             <!-- IFRAME -->
             <v-row justify="space-between" :style="styleMapIFrameRow">
-              <v-col v-if="marker.image" class="map-info-col">
+              <v-col class="map-info-col">
                 <iframe
                   :src="srcIFrame"
                   class="map-info-iframe"
