@@ -17,14 +17,15 @@
         @closeclick="infoWinOpen = false"
       >
         <v-card :style="styleMapInfoCard">
-          <v-container :style="styleMapInfoContainer">
+          <v-container :style="styleMapInfoTitle">
             <!-- TITLE -->
             <v-card-subtitle class="map-info-subtitle">
               <p class="map-info-p-subtitle" style="margin: 4px;">
                 {{ marker.title }}
               </p>
             </v-card-subtitle>
-
+          </v-container>
+          <v-container :style="styleMapInfoContainer">
             <!-- IFRAME -->
             <v-row justify="space-between" :style="styleMapIFrameRow">
               <v-col class="map-info-col">
@@ -35,7 +36,8 @@
                 ></iframe>
               </v-col>
             </v-row>
-
+          </v-container>
+          <v-container :style="styleMapInfoMenus">
             <!-- SNS -->
             <v-row
               justify="space-between"
@@ -131,10 +133,29 @@
                 </div>
               </v-col>
             </v-row>
-
             <!-- ACCESS -->
             <v-row justify="space-between" class="map-info-row">
-              <v-col class="map-info-col">
+              <v-col class="map-info-col" cols="3" sm="3">
+                <div style="text-align: left;">
+                  <v-btn
+                    class="map-info-btn"
+                    fab
+                    width="28px"
+                    height="28px"
+                    color="#888888"
+                    :href="
+                      'https://www.near-near-map-manage.w2or3w.com/update/?type=' +
+                        marker.type +
+                        '&tel=' +
+                        marker.tel
+                    "
+                    target="_blank"
+                  >
+                    <v-icon size="20px">mdi-circle-edit-outline</v-icon>
+                  </v-btn>
+                </div>
+              </v-col>
+              <v-col class="map-info-col" cols="6" sm="6">
                 <div class="d-flex flex-row-reverse">
                   <v-btn
                     class="map-info-btn"
@@ -201,14 +222,30 @@ export default {
         height: '440px'
       },
       styleMapInfoCard: {
-        height: '340px',
+        height: '400px',
         margin: '0px',
         padding: '0px',
+        backgroundColor: 'rgba(255, 255, 255, 1)',
         border: '0px solid',
         borderColor: 'red'
       },
+      styleMapInfoTitle: {
+        margin: '0px',
+        padding: '0px',
+        backgroundColor: 'rgba(255, 255, 255, 1)',
+        border: '0px solid',
+        borderColor: 'green'
+      },
       styleMapInfoContainer: {
-        height: '340px',
+        height: '400px',
+        margin: '0px',
+        padding: '0px',
+        backgroundColor: 'rgba(255, 255, 255, 1)',
+        border: '0px solid',
+        borderColor: 'blue'
+      },
+      styleMapInfoMenus: {
+        height: '400px',
         margin: '0px',
         padding: '0px',
         backgroundColor: 'rgba(255, 255, 255, 1)',
@@ -216,7 +253,7 @@ export default {
         borderColor: 'red'
       },
       styleMapIFrameRow: {
-        height: '160px',
+        height: '100px',
         margin: '0px',
         padding: '0px',
         border: '0px solid',
@@ -281,11 +318,15 @@ export default {
     handleResize() {
       const mapHeight = window.innerHeight - 120
       const infoHeight = window.innerHeight / 2
-      const iframeHeight = infoHeight - 128
+      const titleHeight = 64
+      const menusHeight = 80
+      const containerHeight = infoHeight - menusHeight - titleHeight
+      const iframeHeight = infoHeight - titleHeight - menusHeight
       this.styleMap.height = mapHeight + 'px'
       this.styleMapInfoCard.height = infoHeight + 'px'
-      this.styleMapInfoContainer.height = infoHeight + 'px'
-      this.styleMapIFrameRow.height = iframeHeight + 'px'
+      this.styleMapInfoContainer.height = containerHeight + 'px'
+      this.styleMapIFrameRow.height = 100 + '%'
+      this.styleMapInfoMenus.height = menusHeight + 'px'
     },
     async onClickMap(event) {
       this.infoWinOpen = false
