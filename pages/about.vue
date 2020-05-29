@@ -92,7 +92,7 @@
           </p>
           <ul>
             <li class="font-card-text">
-              オープンソースにしています
+              一部をオープンソースにしています
             </li>
           </ul>
           <p class="font-card-text" style="margin: 0px; padding-left: 24px">
@@ -138,6 +138,13 @@
           </p>
           <p class="font-card-text" style="margin: 0px;">
             礼儀と敬意を忘れぬように努めます。
+          </p>
+          <p class="font-card-text" style="margin: 0px;">
+            参照させて頂いたサイト様は ->
+            <router-link :to="localePath('/thanks')">
+              こちら
+            </router-link>
+            にまとめています。
           </p>
         </v-card-text>
 
