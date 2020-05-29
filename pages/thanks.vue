@@ -44,6 +44,18 @@
           <p class="font-card-text" style="margin: 0px;">
             参照すべき、オススメのメディアサイトを教えて下さい。自薦他薦は問いません。
           </p>
+          <p class="font-card-text" style="margin: 0px;">
+            誰でも登録・更新できるようにしています。お気に入りのお店を登録してみてください。
+          </p>
+          <p class="font-card-text" style="margin: 0px">
+            情報の修正・改善・追加、歓迎です。(※すぐには反映されません。)
+          </p>
+          <p class="font-card-text" style="margin: 0px">
+            ->
+            <a href="https://near-near-map-manage.w2or3w.com/" target="_blank">
+              Near Near Map Manage
+            </a>
+          </p>
         </v-card-text>
       </v-card>
     </v-flex>
