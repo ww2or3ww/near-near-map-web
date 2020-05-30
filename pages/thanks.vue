@@ -44,6 +44,7 @@
           <p class="font-card-text" style="margin: 0px;">
             参照すべき、オススメのメディアサイトを教えて下さい。自薦他薦は問いません。
           </p>
+          <p></p>
           <p class="font-card-text" style="margin: 0px;">
             誰でも登録・更新できるようにしています。お気に入りのお店を登録してみてください。
           </p>
@@ -54,6 +55,19 @@
             ->
             <a href="https://near-near-map-manage.w2or3w.com/" target="_blank">
               Near Near Map Manage
+            </a>
+          </p>
+          <p></p>
+          <p class="font-card-text" style="margin: 0px;">
+            たくさん登録したいけど、UIからポチポチは大変だわ、、。という方。
+          </p>
+          <p class="font-card-text" style="margin: 0px;">
+            CSVでください。サンプルは ->
+            <a
+              href="https://near-near-map.s3-ap-northeast-1.amazonaws.com/data/near-near-map-data-sample.csv"
+              target="_blank"
+            >
+              こちら
             </a>
           </p>
         </v-card-text>
