@@ -70,6 +70,59 @@
               こちら
             </a>
           </p>
+          <p></p>
+          <p class="font-card-text" style="margin: 0px;">
+            何かございましたら、お気軽にSNS等へメッセージください♪
+          </p>
+        </v-card-text>
+      </v-card>
+      <v-card>
+        <v-card-title>
+          <v-btn
+            class="mx-2"
+            fab
+            small
+            color="white"
+            href="https://twitter.com/w2or3w"
+            target="_blank"
+          >
+            <v-icon color="#333333" size="28px">mdi-twitter</v-icon>
+          </v-btn>
+          <v-btn
+            class="mx-2"
+            fab
+            small
+            color="white"
+            href="https://www.facebook.com/w2or3w"
+            target="_blank"
+          >
+            <v-icon color="#333333" size="28px">mdi-facebook</v-icon>
+          </v-btn>
+          <v-btn
+            class="mx-2"
+            fab
+            small
+            color="white"
+            href="https://www.instagram.com/w2or3w"
+            target="_blank"
+          >
+            <v-icon color="#333333" size="28px">mdi-instagram</v-icon>
+          </v-btn>
+          <v-btn
+            class="mx-2"
+            fab
+            small
+            color="white"
+            href="https://github.com/ww2or3ww"
+            target="_blank"
+          >
+            <v-icon color="#333333" size="28px">mdi-github</v-icon>
+          </v-btn>
+        </v-card-title>
+        <v-card-text>
+          <p class="index-foot" style="margin: 0px; padding-left: 8px;">
+            near-near-map.w2or3w.com
+          </p>
         </v-card-text>
       </v-card>
     </v-flex>
