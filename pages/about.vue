@@ -81,7 +81,7 @@
           </v-dialog>
         </v-card-text>
 
-        <v-card-title class="common-card-title">
+        <v-card-title class="common-card-title" style="margin-top: 8px;">
           <p class="common-p-card-title" style="margin: 0px;">
             コントリビューションねがい
           </p>
@@ -123,6 +123,24 @@
             ->
             <a href="https://near-near-map-manage.w2or3w.com/" target="_blank">
               Near Near Map Manage
+            </a>
+          </p>
+          <p></p>
+          <ul>
+            <li class="font-card-text">
+              共通フォーマットCSVでの情報提供もお待ちしています。
+            </li>
+          </ul>
+          <p class="font-card-text" style="margin: 0px; padding-left: 24px">
+            たくさん登録したいけど、UIからポチポチは大変だわ、、。という方。
+          </p>
+          <p class="font-card-text" style="margin: 0px; padding-left: 24px">
+            CSVでください。サンプルは ->
+            <a
+              href="https://near-near-map.s3-ap-northeast-1.amazonaws.com/data/near-near-map-data-sample.csv"
+              target="_blank"
+            >
+              こちら
             </a>
           </p>
         </v-card-text>
