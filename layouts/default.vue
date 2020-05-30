@@ -15,17 +15,34 @@
           @click="onSwitchPage(index)"
         >
           <v-list-item-action>
-            <v-icon v-if="getIcon(index)">{{ getIcon(index) }}</v-icon>
+            <v-icon
+              v-if="contents[index].icon && contents[index].hilite == false"
+            >
+              {{ contents[index].icon }}
+            </v-icon>
+            <v-icon v-else-if="contents[index].icon" color="#E91E63">
+              {{ contents[index].icon }}
+            </v-icon>
             <v-img
-              v-if="getImage(index)"
-              :src="getImage(index)"
+              v-if="contents[index].image"
+              :src="contents[index].image"
               height="24"
               width="24"
             >
             </v-img>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title class="font-drawer-title" v-text="item.title" />
+            <v-list-item-title
+              v-if="contents[index].hilite == false"
+              class="font-drawer-title"
+              v-text="item.title"
+            />
+            <v-list-item-title
+              v-else
+              class="font-drawer-title"
+              v-text="item.title"
+              style="color: #E91E63;"
+            />
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -116,45 +133,7 @@ export default {
       drawer: false,
       fixed: false,
       notSupportCtrl: false,
-      contents: [
-        {
-          link: '/',
-          icon: 'mdi-home'
-        },
-        {
-          link: '/food',
-          icon: 'mdi-food'
-        },
-        {
-          link: '/drink',
-          icon: 'mdi-coffee'
-        },
-        {
-          link: '/mask',
-          icon: '',
-          image: require('~/assets/img/icon-mask.png')
-        },
-        {
-          link: '/plant',
-          icon: 'mdi-flower'
-        },
-        {
-          link: '/fire',
-          icon: 'mdi-fire'
-        },
-        {
-          link: '/study',
-          icon: 'mdi-hot-tub'
-        },
-        {
-          link: '/study',
-          icon: 'mdi-tent'
-        },
-        {
-          link: '/about',
-          icon: 'mdi-map-marker-question-outline'
-        }
-      ],
+      contents: this.$getContents(),
       miniVariant: false,
       right: true,
       rightDrawer: false
@@ -188,12 +167,6 @@ export default {
         const item = this.$i18n.t('index.menu')[index]
         this.selectedTitle = item.title + '    }'
       }
-    },
-    getIcon(index) {
-      return this.contents[index].icon
-    },
-    getImage(index) {
-      return this.contents[index].image
     },
     onClickCurrentPosition() {
       this.rightDrawer = false

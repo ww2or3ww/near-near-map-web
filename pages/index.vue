@@ -39,7 +39,8 @@
           :subtitle="$t('index.menu[' + index + '].title')"
           :text1="$t('index.menu[' + index + '].text_1')"
           :text2="$t('index.menu[' + index + '].text_2')"
-          :count="counts[index]"
+          :text3="$t('index.menu[' + index + '].text_3')"
+          :content="contents[index]"
           @click="onSwitchPage(index)"
         >
         </subtitle-text2-clickable-card>
@@ -75,7 +76,7 @@ export default {
   },
   data() {
     return {
-      counts: ['(0)', '(473)', '(2)', '(50)', '(0)', '(325)', '(0)', '(0)', '']
+      contents: this.$getContents()
     }
   },
   methods: {
