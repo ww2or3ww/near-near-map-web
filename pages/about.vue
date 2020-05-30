@@ -7,15 +7,7 @@
         </v-card-title>
         <v-card-text class="card-text">
           <p class="font-card-text" style="margin: 0px;">
-            当Webサービスは、管理人であり開発者である
-            <a
-              href="https://twitter.com/w2or3w"
-              target="_blank"
-              style="color: lightgray;"
-            >
-              2or3 (ツカサ)
-            </a>
-            が、以下の目的・動機のために開発・運用しています。
+            当Webサービスは、以下の目的・動機のために開発・運用しています。
           </p>
           <ul>
             <li class="font-card-text">

@@ -9,13 +9,13 @@ const getContentsFunc = () => {
     {
       link: '/food',
       icon: 'mdi-food',
-      count: '(473)',
+      count: '(591)',
       hilite: false
     },
     {
       link: '/drink',
       icon: 'mdi-coffee',
-      count: '(2)',
+      count: '(72)',
       hilite: false
     },
     {
@@ -26,16 +26,16 @@ const getContentsFunc = () => {
       hilite: false
     },
     {
-      link: '/plant',
-      icon: 'mdi-flower',
-      count: '(0)',
-      hilite: false
-    },
-    {
       link: '/fire',
       icon: 'mdi-fire',
       count: '(325)',
       hilite: true
+    },
+    {
+      link: '/plant',
+      icon: 'mdi-flower',
+      count: '(0)',
+      hilite: false
     },
     {
       link: '/study',

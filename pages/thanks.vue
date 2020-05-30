@@ -155,6 +155,10 @@ export default {
         {
           title: '公益社団法人 日本煙火協会',
           address: 'http://www.hanabi-jpa.jp/'
+        },
+        {
+          title: 'ココハマ｜浜松の“おいしい”と“楽しい”を集めた地域WEBマガジン',
+          address: 'https://www.murakichi.net/'
         }
       ]
     }

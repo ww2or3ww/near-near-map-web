@@ -1,13 +1,6 @@
 <template>
   <v-layout justify-center>
     <v-flex xs12 sm12 md12>
-      <p
-        class="common-p-card-title"
-        style="margin-bottom:8px; margin-left: 16px; font-size: 16px;"
-      >
-        ※現在トライアル中です※
-      </p>
-
       <v-card>
         <v-card-title class="common-card-title">
           <p class="common-p-card-title" style="margin:0px;">

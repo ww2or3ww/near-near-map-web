@@ -332,6 +332,9 @@ export default {
       this.infoWinOpen = false
     },
     async onClickMarker(index, marker) {
+      if (index === 0) {
+        return
+      }
       this.$refs.gmp.panTo(marker.position)
       this.infoWindowPos = marker.position
       this.marker = marker
@@ -382,6 +385,7 @@ export default {
       response.unshift({
         position: this.maplocation,
         title: "I'm here!",
+        me: true,
         pinicon: {
           url: require('~/assets/img/pin-here-1.png'),
           scaledSize: { width: 32, height: 32, f: 'px', b: 'px' }
