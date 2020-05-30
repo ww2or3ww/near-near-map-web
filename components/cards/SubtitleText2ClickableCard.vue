@@ -1,11 +1,36 @@
 <template>
   <v-card class="card-content" @click.stop="$emit('click')">
     <v-card-subtitle style="padding-bottom: 0px; padding-top: 4px;">
-      <p class="p-card-subtitle" style="margin: 0px; padding: 0px;">
+      <v-icon v-if="content.icon && content.hilite == false" size="16">
+        {{ content.icon }}
+      </v-icon>
+      <v-icon v-else-if="content.icon" size="16" color="#E91E63">
+        {{ content.icon }}
+      </v-icon>
+      <v-img
+        v-if="content.image"
+        :src="content.image"
+        height="16"
+        width="16"
+        style="display: inline-block;"
+      >
+      </v-img>
+      <p
+        v-if="content.hilite == false"
+        class="p-card-subtitle"
+        style="margin: 0px; padding: 0px;"
+      >
+        {{ subtitle }}
+      </p>
+      <p
+        v-else
+        class="p-card-subtitle"
+        style="margin: 0px; padding: 0px; color: #E91E63;"
+      >
         {{ subtitle }}
       </p>
       <p class="p-card-subtitle-count" style="margin: 0px; padding: 0px;">
-        &nbsp;&nbsp;{{ count }}
+        &nbsp;&nbsp;{{ content.count }}
       </p>
     </v-card-subtitle>
     <v-card-text class="card-text">
@@ -14,6 +39,9 @@
       </p>
       <p class="p-card-text" style="margin: 0px;">
         {{ text2 }}
+      </p>
+      <p class="p-card-text" style="margin: 0px;">
+        {{ text3 }}
       </p>
     </v-card-text>
   </v-card>
@@ -25,6 +53,10 @@ export default {
       type: String,
       default: ''
     },
+    hilite: {
+      type: Boolean,
+      default: false
+    },
     text1: {
       type: String,
       default: ''
@@ -33,9 +65,13 @@ export default {
       type: String,
       default: ''
     },
-    count: {
+    text3: {
       type: String,
       default: ''
+    },
+    content: {
+      type: Object,
+      default: null
     },
     link: {
       type: String,
