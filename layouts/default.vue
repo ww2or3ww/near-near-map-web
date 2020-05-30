@@ -40,8 +40,8 @@
             <v-list-item-title
               v-else
               class="font-drawer-title"
-              v-text="item.title"
               style="color: #E91E63;"
+              v-text="item.title"
             />
           </v-list-item-content>
         </v-list-item>

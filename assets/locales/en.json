@@ -44,27 +44,27 @@
       },
       {
         "title": "Drink/Dessert",
-        "text_1": "家でのもう。",
-        "text_2": "甘いものは別腹。",
+        "text_1": "Let's drink at home.",
+        "text_2": "We always have room for dessert...",
         "text_3": ""
       },
       {
         "title": "Mask",
-        "text_1": "マスクをしよう。",
-        "text_2": "オシャレなマスクで差をつけよう。",
+        "text_1": "Let's put on the mask.",
+        "text_2": "Leave behind with a stylish mask!",
         "text_3": ""
+      },
+      {
+        "title": "Firework",
+        "text_1": "Fireworks are a part of Japanese culture.",
+        "text_2": "The countdown to the fireworks display project has begun all over the country!",
+        "text_3": "Also crowdfunding. Search on 「日本の花火エールプロジェクト」!"
       },
       {
         "title": "Plant",
         "text_1": "花を愛でよう。植物を育てよう。",
         "text_2": "自然を感じられる空間ってステキじゃないですか。",
         "text_3": ""
-      },
-      {
-        "title": "Firework (325)",
-        "text_1": "花火は日本の文化です。",
-        "text_2": "全国各地で一斉に花火を打ち上げるプロジェクト、カウントダウンはじまってます！",
-        "text_3": "クラウドファウンディングも。「日本の花火エールプロジェクト」で検索！"
       },
       {
         "title": "Hot Spring",
