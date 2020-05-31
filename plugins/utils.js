@@ -38,7 +38,7 @@ const getContentsFunc = () => {
     {
       link: '/outdoor',
       icon: 'mdi-tent',
-      count: '(24)',
+      count: '(61)',
       hilite: false
     },
     {
