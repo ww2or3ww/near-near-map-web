@@ -171,6 +171,10 @@ export default {
         {
           title: '静岡バーべキュー＆キャンプ場特集｜TNC',
           address: 'https://www.tnc.ne.jp/special/bbq/index.html'
+        },
+        {
+          title: 'スーパー銭湯全国検索(静岡県,愛知県)',
+          address: 'https://www.supersento.com/'
         }
       ]
     }
