@@ -75,6 +75,8 @@
           <v-list-item-content></v-list-item-content>
         </v-list-item>
         <v-list-item v-if="notSupportCtrl" @click="onClickCurrentPosition">
+          <pin-count-selector />
+          <language-selector />
           <v-list-item-action>
             <v-icon>
               mdi-human-male
@@ -122,9 +124,11 @@
 
 <script>
 import LanguageSelector from '@/components/controls/LanguageSelector.vue'
+import PinCountSelector from '@/components/controls/PinCountSelector.vue'
 export default {
   components: {
-    LanguageSelector
+    LanguageSelector,
+    PinCountSelector
   },
   data() {
     return {
@@ -168,12 +172,8 @@ export default {
         this.selectedTitle = item.title + '    }'
       }
     },
-    onClickCurrentPosition() {
-      this.rightDrawer = false
-    },
-    onClickSearch() {
-      this.rightDrawer = false
-    }
+    onClickCurrentPosition() {},
+    onClickSearch() {}
   }
 }
 </script>

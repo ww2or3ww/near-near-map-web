@@ -17,7 +17,7 @@ export default {
   },
   methods: {
     async getMarkersData() {
-      this.markers = await this.$refs.mapBase.getMarkersData('study')
+      this.markers = await this.$refs.mapBase.getMarkersData('hotspring')
     }
   }
 }

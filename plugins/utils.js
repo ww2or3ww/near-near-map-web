@@ -1,3 +1,7 @@
+const getPinCountListFunc = () => {
+  return [10, 25, 50, 100]
+}
+
 const getContentsFunc = () => {
   return [
     {
@@ -32,20 +36,20 @@ const getContentsFunc = () => {
       hilite: true
     },
     {
+      link: '/outdoor',
+      icon: 'mdi-tent',
+      count: '(24)',
+      hilite: false
+    },
+    {
+      link: '/hotspring',
+      icon: 'mdi-hot-tub',
+      count: '(14)',
+      hilite: false
+    },
+    {
       link: '/plant',
       icon: 'mdi-flower',
-      count: '(0)',
-      hilite: false
-    },
-    {
-      link: '/study',
-      icon: 'mdi-hot-tub',
-      count: '(0)',
-      hilite: false
-    },
-    {
-      link: '/study',
-      icon: 'mdi-tent',
       count: '(0)',
       hilite: false
     },
@@ -59,5 +63,6 @@ const getContentsFunc = () => {
 }
 
 export default (context, inject) => {
+  inject('getPinCountList', getPinCountListFunc)
   inject('getContents', getContentsFunc)
 }
