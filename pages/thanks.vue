@@ -167,6 +167,10 @@ export default {
         {
           title: 'キラッと奥三河観光ナビ',
           address: 'https://www.okuminavi.jp/'
+        },
+        {
+          title: '静岡バーべキュー＆キャンプ場特集｜TNC',
+          address: 'https://www.tnc.ne.jp/special/bbq/index.html'
         }
       ]
     }
