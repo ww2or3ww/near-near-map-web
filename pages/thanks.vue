@@ -72,7 +72,7 @@
           </p>
           <p></p>
           <p class="font-card-text" style="margin: 0px;">
-            何かございましたら、お気軽にSNS等へメッセージください♪
+            何かございましたら、お気軽にSNS等へメッセージください。
           </p>
         </v-card-text>
       </v-card>
