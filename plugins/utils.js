@@ -44,7 +44,7 @@ const getContentsFunc = () => {
     {
       link: '/hotspring',
       icon: 'mdi-hot-tub',
-      count: '(14)',
+      count: '(142)',
       hilite: false
     },
     {
