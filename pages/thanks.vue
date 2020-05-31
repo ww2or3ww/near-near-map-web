@@ -145,6 +145,10 @@ export default {
           address: 'https://www.okuminavi.jp/takeout/'
         },
         {
+          title: '遠州マスクマップ',
+          address: 'https://enshumask.hamazo.tv/'
+        },
+        {
           title: '浜松のテイクアウト情報まとめサイト│はままつ飯.net',
           address: 'https://machimeshi.net/'
         },
@@ -159,6 +163,10 @@ export default {
         {
           title: 'ココハマ｜浜松の“おいしい”と“楽しい”を集めた地域WEBマガジン',
           address: 'https://www.murakichi.net/'
+        },
+        {
+          title: 'キラッと奥三河観光ナビ',
+          address: 'https://www.okuminavi.jp/'
         }
       ]
     }

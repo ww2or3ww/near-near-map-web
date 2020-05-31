@@ -2,14 +2,13 @@
   <v-container fluid>
     <v-select
       prepend-icon="mdi-earth"
-      label="Lang:"
       item-text="name"
       item-key="code"
       :items="this.$i18n.locales"
       :value="currentLocale"
       single-line
       return-object
-      @change="onLocaleChanged"
+      @change="onChanged"
     >
     </v-select>
   </v-container>
@@ -18,9 +17,7 @@
 <script>
 export default {
   data() {
-    return {
-      data: 'availableLocales()'
-    }
+    return {}
   },
   computed: {
     currentLocaleCode() {
@@ -33,7 +30,7 @@ export default {
     }
   },
   methods: {
-    onLocaleChanged(locale) {
+    onChanged(locale) {
       const path = this.switchLocalePath(locale.code)
       this.$router.push(path)
     }
