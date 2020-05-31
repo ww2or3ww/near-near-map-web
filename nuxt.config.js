@@ -38,7 +38,7 @@ export default {
       {
         hid: 'og:description',
         property: 'og:description',
-        content: 'Stay NEAR, Safe NEAR ♪'
+        content: 'Stay NEAR, Enjoy NEAR ♪'
       },
       {
         hid: 'og:image',
@@ -126,7 +126,7 @@ export default {
   ],
   manifest: {
     name: 'にゃーにゃーマップ',
-    description: 'Stay NEAR, Safe NEAR ♪',
+    description: 'Stay NEAR, Enjoy NEAR ♪',
     theme_color: '#2300a0',
     background_color: '#000000',
     display: 'standalone',
