@@ -348,9 +348,17 @@ export default {
     },
     getIFrameSrc(marker) {
       let src = ''
-      if (marker.homepage) {
+      if (marker.homepage && marker.homepage.indexOf('https') == 0) {
         src = marker.homepage
-      } else if (marker.media1) {
+      } else if (marker.media1 && marker.media1.indexOf('https') == 0) {
+        src = marker.media1
+      } else if (marker.media2 && marker.media2.indexOf('https') == 0) {
+        src = marker.media1
+      } else if (marker.media3 && marker.media3.indexOf('https') == 0) {
+        src = marker.media1
+      } else if (marker.media4 && marker.media4.indexOf('https') == 0) {
+        src = marker.media1
+      } else if (marker.media5 && marker.media5.indexOf('https') == 0) {
         src = marker.media1
       }
       return src
