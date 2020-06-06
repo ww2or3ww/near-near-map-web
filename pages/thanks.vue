@@ -175,6 +175,18 @@ export default {
         {
           title: 'スーパー銭湯全国検索(静岡県,愛知県)',
           address: 'https://www.supersento.com/'
+        },
+        {
+          title: '浜松パワーフード',
+          address: 'https://hamamatsu-pf.jp/'
+        },
+        {
+          title: '遠鉄ストア',
+          address: 'https://www.entstore.co.jp/'
+        },
+        {
+          title: '杏林堂薬局',
+          address: 'https://www.kyorindo.co.jp/'
         }
       ]
     }
