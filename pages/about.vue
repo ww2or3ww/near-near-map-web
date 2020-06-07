@@ -59,14 +59,14 @@
             アーキテクチャは以下のような感じ。
           </p>
           <v-img
-            :src="require('~/assets/img/architecture.png')"
+            src="https://near-near-map.s3-ap-northeast-1.amazonaws.com/resource/image/architecture.png"
             width="50%"
             max-width="160px"
             @click.stop="showArchitecture = true"
           ></v-img>
           <v-dialog v-model="showArchitecture" max-width="85vw">
             <img
-              :src="require('~/assets/img/architecture.png')"
+              src="https://near-near-map.s3-ap-northeast-1.amazonaws.com/resource/image/architecture.png"
               width="100%"
               @click.stop="showArchitecture = false"
             />
