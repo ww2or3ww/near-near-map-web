@@ -182,7 +182,7 @@ export default {
 @import 'https://fonts.googleapis.com/earlyaccess/nicomoji.css';
 .font-title {
   font-family: 'Nico Moji';
-  font-size: 28px;
+  font-size: 28px !important;
 }
 .font-drawer-title {
   font-family: 'Nico Moji';
