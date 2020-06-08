@@ -27,7 +27,7 @@
         </v-card-title>
 
         <subtitle-text2-clickable-card
-          v-for="index in 8"
+          v-for="index in 9"
           :key="index"
           :subtitle="$t('index.menu[' + index + '].title')"
           :text1="$t('index.menu[' + index + '].text_1')"
