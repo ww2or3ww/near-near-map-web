@@ -27,13 +27,13 @@
         </v-card-title>
 
         <subtitle-text2-clickable-card
-          v-for="index in 9"
+          v-for="(item, index) in contents"
           :key="index"
           :subtitle="$t('index.menu[' + index + '].title')"
           :text1="$t('index.menu[' + index + '].text_1')"
           :text2="$t('index.menu[' + index + '].text_2')"
           :text3="$t('index.menu[' + index + '].text_3')"
-          :content="contents[index]"
+          :content="item"
           @click="onSwitchPage(index)"
         >
         </subtitle-text2-clickable-card>
