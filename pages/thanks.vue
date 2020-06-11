@@ -187,6 +187,10 @@ export default {
         {
           title: '杏林堂薬局',
           address: 'https://www.kyorindo.co.jp/'
+        },
+        {
+          title: 'トクバイ(遠鉄ストア, 杏林堂薬局)',
+          address: 'https://tokubai.co.jp/'
         }
       ]
     }
