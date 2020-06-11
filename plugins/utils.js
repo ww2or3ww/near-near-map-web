@@ -30,8 +30,7 @@ const getContentsFunc = () => {
     },
     {
       link: '/mask',
-      icon: '',
-      image: require('~/assets/img/icon-mask.png'),
+      icon: 'mdi-alpha-m-circle-outline',
       count: '(50)',
       hilite: false
     },
