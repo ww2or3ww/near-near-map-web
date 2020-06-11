@@ -30,10 +30,17 @@
             <v-row justify="space-between" :style="styleMapIFrameRow">
               <v-col class="map-info-col">
                 <iframe
+                  v-if="srcIFrame"
                   :src="srcIFrame"
                   class="map-info-iframe"
                   sandbox="allow-scripts allow-same-origin"
                 ></iframe>
+                <img
+                  v-else-if="srcImage"
+                  :src="srcImage"
+                  :style="styleMapImageRow"
+                  class="map-info-image"
+                />
               </v-col>
             </v-row>
           </v-container>
@@ -259,7 +266,15 @@ export default {
         border: '0px solid',
         borderColor: 'green'
       },
+      styleMapImageRow: {
+        height: '100px',
+        margin: '0px',
+        padding: '0px',
+        border: '0px solid',
+        borderColor: 'red'
+      },
       srcIFrame: '',
+      srcImage: '',
       infoOptions: {
         minWidth: 1024,
         pixelOffset: {
@@ -326,6 +341,7 @@ export default {
       this.styleMapInfoCard.height = infoHeight + 'px'
       this.styleMapInfoContainer.height = containerHeight + 'px'
       this.styleMapIFrameRow.height = 100 + '%'
+      this.styleMapImageRow.height = containerHeight + 'px'
       this.styleMapInfoMenus.height = menusHeight + 'px'
     },
     async onClickMap(event) {
@@ -339,6 +355,9 @@ export default {
       this.infoWindowPos = marker.position
       this.marker = marker
       this.srcIFrame = this.getIFrameSrc(marker)
+      if (!this.srcIFrame) {
+        this.srcImage = marker.image
+      }
       this.infoWinOpen = true
       const data = {}
       data.lat = marker.position.lat
