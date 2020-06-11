@@ -1,5 +1,5 @@
 <template>
-  <v-card class="card-content" @click.stop="$emit('click')">
+  <v-card v-if="visible" class="card-content" @click.stop="$emit('click')">
     <v-card-subtitle style="padding-bottom: 0px; padding-top: 4px;">
       <v-icon v-if="content.icon && content.hilite == false" size="16">
         {{ content.icon }}
@@ -76,6 +76,10 @@ export default {
     link: {
       type: String,
       default: ''
+    },
+    visible: {
+      type: Boolean,
+      default: false
     }
   }
 }
