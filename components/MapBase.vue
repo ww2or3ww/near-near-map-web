@@ -424,8 +424,8 @@ export default {
       })
       const gray = require('~/assets/img/pin/mm_20_gray.png')
       const red = require('~/assets/img/pin/red-dot.png')
-      const orange = require('~/assets/img/pin/red-dot.png')
-      const blue = require('~/assets/img/pin/red-dot.png')
+      const orange = require('~/assets/img/pin/orange-dot.png')
+      const blue = require('~/assets/img/pin/blue-dot.png')
       for (let i = 1; i < response.length; i++) {
         let path = '~/assets/img/pin/blue-dot.png'
         let iwidth = 32
