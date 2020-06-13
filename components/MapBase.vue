@@ -222,6 +222,7 @@ export default {
   },
   data() {
     return {
+      pageType: '',
       currentLoc: {},
       maplocation: { lng: 0, lat: 0 },
       styleMap: {
@@ -331,7 +332,10 @@ export default {
   },
   methods: {
     handleResize() {
-      const mapHeight = window.innerHeight - 120
+      let mapHeight = window.innerHeight - 140
+      if (this.pageType == 'fire') {
+        mapHeight = mapHeight - 32
+      }
       const infoHeight = window.innerHeight / 2
       const titleHeight = 64
       const menusHeight = 80
@@ -399,6 +403,7 @@ export default {
       })
     },
     async getMarkersData(type) {
+      this.pageType = type
       await this.onClickCurrentPositon()
 
       const requestAddress =
