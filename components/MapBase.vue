@@ -218,6 +218,10 @@ export default {
     markers: {
       type: Array,
       default: ''
+    },
+    has_clowd: {
+      type: Boolean(),
+      default: false
     }
   },
   data() {
@@ -419,9 +423,10 @@ export default {
         title: "I'm here!",
         pinicon: {
           url: require('~/assets/img/pin-here-1.png'),
-          scaledSize: { width: 32, height: 32, f: 'px', b: 'px' }
+          scaledSize: { width: 24, height: 24, f: 'px', b: 'px' }
         }
       })
+      const noclowd = require('~/assets/img/pin/mm_20_red.png')
       const gray = require('~/assets/img/pin/mm_20_gray.png')
       const red = require('~/assets/img/pin/red-dot.png')
       const orange = require('~/assets/img/pin/orange-dot.png')
@@ -430,14 +435,20 @@ export default {
         let path = '~/assets/img/pin/blue-dot.png'
         let iwidth = 32
         let iheight = 32
-        if (response[i].crowd_lv == 3) {
-          path = red
-        } else if (response[i].crowd_lv == 2) {
-          path = orange
-        } else if (response[i].crowd_lv == 1) {
-          path = blue
+        if (this.has_clowd) {
+          if (response[i].crowd_lv == 3) {
+            path = red
+          } else if (response[i].crowd_lv == 2) {
+            path = orange
+          } else if (response[i].crowd_lv == 1) {
+            path = blue
+          } else {
+            path = gray
+            iwidth = 18
+            iheight = 30
+          }
         } else {
-          path = gray
+          path = noclowd
           iwidth = 18
           iheight = 30
         }
