@@ -1,5 +1,5 @@
 <template>
-  <map-base ref="mapBase" :markers="markers"></map-base>
+  <map-base ref="mapBase" :markers="markers" :has_clowd="false"></map-base>
 </template>
 <script>
 import MapBase from '@/components/MapBase.vue'
