@@ -218,6 +218,10 @@ export default {
     markers: {
       type: Array,
       default: ''
+    },
+    has_clowd: {
+      type: Boolean(),
+      default: false
     }
   },
   data() {
@@ -407,7 +411,7 @@ export default {
       await this.onClickCurrentPositon()
 
       const requestAddress =
-        'https://l8h2fp9jcf.execute-api.ap-northeast-1.amazonaws.com/work/near-near-map?type=' +
+        'https://l8h2fp9jcf.execute-api.ap-northeast-1.amazonaws.com/work/near-near-map-dev?type=' +
         type +
         '&latlon=' +
         this.maplocation.lat +
@@ -417,12 +421,42 @@ export default {
       response.unshift({
         position: this.maplocation,
         title: "I'm here!",
-        me: true,
         pinicon: {
           url: require('~/assets/img/pin-here-1.png'),
-          scaledSize: { width: 32, height: 32, f: 'px', b: 'px' }
+          scaledSize: { width: 24, height: 24, f: 'px', b: 'px' }
         }
       })
+      const noclowd = require('~/assets/img/pin/mm_20_red.png')
+      const gray = require('~/assets/img/pin/mm_20_gray.png')
+      const red = require('~/assets/img/pin/red-dot.png')
+      const orange = require('~/assets/img/pin/orange-dot.png')
+      const blue = require('~/assets/img/pin/blue-dot.png')
+      for (let i = 1; i < response.length; i++) {
+        let path = '~/assets/img/pin/blue-dot.png'
+        let iwidth = 32
+        let iheight = 32
+        if (this.has_clowd) {
+          if (response[i].crowd_lv == 3) {
+            path = red
+          } else if (response[i].crowd_lv == 2) {
+            path = orange
+          } else if (response[i].crowd_lv == 1) {
+            path = blue
+          } else {
+            path = gray
+            iwidth = 18
+            iheight = 30
+          }
+        } else {
+          path = noclowd
+          iwidth = 18
+          iheight = 30
+        }
+        response[i].pinicon = {
+          url: path,
+          scaledSize: { width: iwidth, height: iheight, f: 'px', b: 'px' }
+        }
+      }
       return response
     }
   }
