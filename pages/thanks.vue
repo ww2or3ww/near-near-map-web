@@ -141,6 +141,10 @@ export default {
       ],
       items: [
         {
+          title: 'モチカエル',
+          address: 'https://www.mochikaeru.com/'
+        },
+        {
           title: '奥三河エール飯 | キラッと奥三河観光ナビ',
           address: 'https://www.okuminavi.jp/takeout/'
         },

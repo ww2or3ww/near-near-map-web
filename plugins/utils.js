@@ -13,13 +13,13 @@ const getContentsFunc = () => {
     {
       link: '/food',
       icon: 'mdi-food',
-      count: '(605)',
+      count: '(624)',
       hilite: false
     },
     {
       link: '/drink',
       icon: 'mdi-coffee',
-      count: '(72)',
+      count: '(74)',
       hilite: false
     },
     {
