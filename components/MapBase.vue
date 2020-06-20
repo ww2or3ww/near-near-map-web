@@ -60,7 +60,11 @@
                     width="28px"
                     height="28px"
                     color="#888888"
-                    :href="marker.homepage"
+                    :href="
+                      typeof marker.homepage == 'string'
+                        ? marker.homepage
+                        : marker.homepage.address
+                    "
                     target="_blank"
                   >
                     <v-icon size="20px">mdi-home</v-icon>
@@ -108,7 +112,11 @@
                     width="28px"
                     height="28px"
                     color="#888888"
-                    :href="marker.media1"
+                    :href="
+                      typeof marker.media1 == 'string'
+                        ? marker.media1
+                        : marker.media1.address
+                    "
                     target="_blank"
                   >
                     <v-icon size="20px">mdi-newspaper-variant-outline</v-icon>
@@ -120,7 +128,11 @@
                     width="28px"
                     height="28px"
                     color="#888888"
-                    :href="marker.media2"
+                    :href="
+                      typeof marker.media2 == 'string'
+                        ? marker.media2
+                        : marker.media2.address
+                    "
                     target="_blank"
                   >
                     <v-icon size="20px">mdi-newspaper-variant-outline</v-icon>
@@ -132,7 +144,43 @@
                     width="28px"
                     height="28px"
                     color="#888888"
-                    :href="marker.media3"
+                    :href="
+                      typeof marker.media3 == 'string'
+                        ? marker.media3
+                        : marker.media3.address
+                    "
+                    target="_blank"
+                  >
+                    <v-icon size="20px">mdi-newspaper-variant-outline</v-icon>
+                  </v-btn>
+                  <v-btn
+                    v-if="marker.media4"
+                    class="map-info-btn"
+                    fab
+                    width="28px"
+                    height="28px"
+                    color="#888888"
+                    :href="
+                      typeof marker.media4 == 'string'
+                        ? marker.media4
+                        : marker.media4.address
+                    "
+                    target="_blank"
+                  >
+                    <v-icon size="20px">mdi-newspaper-variant-outline</v-icon>
+                  </v-btn>
+                  <v-btn
+                    v-if="marker.media5"
+                    class="map-info-btn"
+                    fab
+                    width="28px"
+                    height="28px"
+                    color="#888888"
+                    :href="
+                      typeof marker.media5 == 'string'
+                        ? marker.media5
+                        : marker.media5.address
+                    "
                     target="_blank"
                   >
                     <v-icon size="20px">mdi-newspaper-variant-outline</v-icon>
@@ -374,7 +422,7 @@ export default {
       this.$set(this.currentLoc, 'coords', data)
     },
     getIFrameSrcByValue(item) {
-      let src = ''
+      let src = null
       if (typeof item == 'string') {
         src = item
       } else if ('address' in item && item.address.indexOf('https') == 0) {
