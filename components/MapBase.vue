@@ -373,20 +373,48 @@ export default {
       data.title = this.markers[index].title
       this.$set(this.currentLoc, 'coords', data)
     },
+    getIFrameSrcByValue(item) {
+      let src = ''
+      if (typeof item == 'string') {
+        src = item
+      } else if ('address' in item && item.address.indexOf('https') == 0) {
+        if (item.has_xframe_options == 0) {
+          src = item.address
+        }
+      }
+      return src
+    },
     getIFrameSrc(marker) {
       let src = ''
-      if (marker.homepage && marker.homepage.indexOf('https') == 0) {
-        src = marker.homepage
-      } else if (marker.media1 && marker.media1.indexOf('https') == 0) {
-        src = marker.media1
-      } else if (marker.media2 && marker.media2.indexOf('https') == 0) {
-        src = marker.media1
-      } else if (marker.media3 && marker.media3.indexOf('https') == 0) {
-        src = marker.media1
-      } else if (marker.media4 && marker.media4.indexOf('https') == 0) {
-        src = marker.media1
-      } else if (marker.media5 && marker.media5.indexOf('https') == 0) {
-        src = marker.media1
+      if (marker.homepage) {
+        if ((src = this.getIFrameSrcByValue(marker.homepage)) != null) {
+          return src
+        }
+      }
+      if (marker.media1) {
+        if ((src = this.getIFrameSrcByValue(marker.media1)) != null) {
+          return src
+        }
+      }
+      if (marker.media2) {
+        if ((src = this.getIFrameSrcByValue(marker.media2)) != null) {
+          return src
+        }
+      }
+      if (marker.media3) {
+        if ((src = this.getIFrameSrcByValue(marker.media3)) != null) {
+          return src
+        }
+      }
+      if (marker.media4) {
+        if ((src = this.getIFrameSrcByValue(marker.media4)) != null) {
+          return src
+        }
+      }
+      if (marker.media5) {
+        if ((src = this.getIFrameSrcByValue(marker.media5)) != null) {
+          return src
+        }
       }
       return src
     },
