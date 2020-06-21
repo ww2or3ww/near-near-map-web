@@ -266,10 +266,6 @@ export default {
     markers: {
       type: Array,
       default: ''
-    },
-    has_clowd: {
-      type: Boolean(),
-      default: false
     }
   },
   data() {
@@ -494,7 +490,7 @@ export default {
         ',' +
         this.maplocation.lng
       const response = await this.$axios.$get(requestAddress)
-      response.unshift({
+      response.list.unshift({
         position: this.maplocation,
         title: "I'm here!",
         pinicon: {
@@ -507,16 +503,16 @@ export default {
       const red = require('~/assets/img/pin/red-dot.png')
       const orange = require('~/assets/img/pin/orange-dot.png')
       const blue = require('~/assets/img/pin/blue-dot.png')
-      for (let i = 1; i < response.length; i++) {
+      for (let i = 1; i < response.list.length; i++) {
         let path = '~/assets/img/pin/blue-dot.png'
         let iwidth = 32
         let iheight = 32
-        if (this.has_clowd) {
-          if (response[i].crowd_lv == 3) {
+        if (response.has_clowd) {
+          if (response.list[i].crowd_lv == 3) {
             path = red
-          } else if (response[i].crowd_lv == 2) {
+          } else if (response.list[i].crowd_lv == 2) {
             path = orange
-          } else if (response[i].crowd_lv == 1) {
+          } else if (response.list[i].crowd_lv == 1) {
             path = blue
           } else {
             path = gray
@@ -528,12 +524,12 @@ export default {
           iwidth = 18
           iheight = 30
         }
-        response[i].pinicon = {
+        response.list[i].pinicon = {
           url: path,
           scaledSize: { width: iwidth, height: iheight, f: 'px', b: 'px' }
         }
       }
-      return response
+      return response.list
     }
   }
 }
