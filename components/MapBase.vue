@@ -6,7 +6,7 @@
       :style="styleMap"
       :draggable="true"
       :center="maplocation"
-      :zoom="13"
+      :zoom="14"
       :options="mapOptions"
       @click="onClickMap($event)"
     >
@@ -386,7 +386,7 @@ export default {
     handleResize() {
       let mapHeight = window.innerHeight - 140
       if (this.pageType == 'fire') {
-        mapHeight = mapHeight - 32
+        mapHeight = mapHeight - 40
       }
       const infoHeight = window.innerHeight / 2
       const titleHeight = 64
