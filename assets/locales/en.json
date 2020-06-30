@@ -10,6 +10,9 @@
       "drivethru": "Drive Thru"
     }
   },
+  "hamapay": {
+    "text": "Fight Hamamatsu! Campaign to get up to 30% back at participating stores."
+  },
   "fire": {
     "link1": "Pyrotechnicians Support Project",
     "link2": "Japanese Fireworks 'Yell' Project"
@@ -41,6 +44,12 @@
         "title": "Top",
         "text_1": "",
         "text_2": "",
+        "text_3": ""
+      },
+      {
+        "title": "Hamamatsu PayPay",
+        "text_1": "July Limited! Max 30% back!",
+        "text_2": "Let's shop 'a lot' and 'save' in Hamamatsu City!",
         "text_3": ""
       },
       {
