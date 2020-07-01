@@ -47,12 +47,6 @@
         "text_3": ""
       },
       {
-        "title": "Hamamatsu PayPay",
-        "text_1": "July Limited! Max 30% back!",
-        "text_2": "Let's shop 'a lot' and 'save' in Hamamatsu City!",
-        "text_3": ""
-      },
-      {
         "title": "Food",
         "text_1": "Let's eat at near store. Let's take it back.",
         "text_2": "Take advantage of take-out delivery.",
@@ -98,6 +92,12 @@
         "title": "Plant",
         "text_1": "花を愛でよう。植物を育てよう。",
         "text_2": "自然を感じられる空間ってステキじゃないですか。",
+        "text_3": ""
+      },
+      {
+        "title": "Hamamatsu PayPay",
+        "text_1": "July Limited! Max 30% back!",
+        "text_2": "Let's shop 'a lot' and 'save' in Hamamatsu City!",
         "text_3": ""
       },
       {
