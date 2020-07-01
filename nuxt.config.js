@@ -48,8 +48,8 @@ export default {
       }
     ],
     script: [
-      { 'data-ad-client': 'ca-pub-8379523585300362' },
       {
+        'data-ad-client': 'ca-pub-8379523585300362',
         async: true,
         src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
       }
