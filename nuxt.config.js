@@ -22,7 +22,7 @@ export default {
       {
         hid: 'og:site_name',
         property: 'og:site_name',
-        content: 'にゃーにゃマップ'
+        content: 'にゃーにゃーマップ'
       },
       { hid: 'og:type', property: 'og:type', content: 'website' },
       {
@@ -48,8 +48,8 @@ export default {
       }
     ],
     script: [
-      { 'data-ad-client': 'ca-pub-8379523585300362' },
       {
+        'data-ad-client': 'ca-pub-8379523585300362',
         async: true,
         src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
       }
