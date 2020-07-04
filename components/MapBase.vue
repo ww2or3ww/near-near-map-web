@@ -6,7 +6,7 @@
       :style="styleMap"
       :draggable="true"
       :center="maplocation"
-      :zoom="13"
+      :zoom="18"
       :options="mapOptions"
       @click="onClickMap($event)"
     >
@@ -481,6 +481,9 @@ export default {
     async getMarkersData(type) {
       this.pageType = type
       await this.onClickCurrentPositon()
+
+      this.maplocation.lat = 34.7064393
+      this.maplocation.lng = 137.7309768
 
       const requestAddress =
         'https://l8h2fp9jcf.execute-api.ap-northeast-1.amazonaws.com/work/near-near-map-dev?type=' +
