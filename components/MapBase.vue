@@ -54,17 +54,13 @@
               <v-col class="map-info-col">
                 <div class="d-flex flex-row-reverse">
                   <v-btn
-                    v-if="marker.homepage"
+                    v-if="marker.homepage && marker.homepage.address"
                     class="map-info-btn"
                     fab
                     width="28px"
                     height="28px"
                     color="#888888"
-                    :href="
-                      typeof marker.homepage == 'string'
-                        ? marker.homepage
-                        : marker.homepage.address
-                    "
+                    :href="marker.homepage.address"
                     target="_blank"
                   >
                     <v-icon size="20px">mdi-home</v-icon>
@@ -106,81 +102,61 @@
                     <v-icon size="20px">mdi-twitter</v-icon>
                   </v-btn>
                   <v-btn
-                    v-if="marker.media1"
+                    v-if="marker.media1 && marker.media1.address"
                     class="map-info-btn"
                     fab
                     width="28px"
                     height="28px"
                     color="#888888"
-                    :href="
-                      typeof marker.media1 == 'string'
-                        ? marker.media1
-                        : marker.media1.address
-                    "
+                    :href="marker.media1.address"
                     target="_blank"
                   >
                     <v-icon size="20px">mdi-newspaper-variant-outline</v-icon>
                   </v-btn>
                   <v-btn
-                    v-if="marker.media2"
+                    v-if="marker.media2 && marker.media2.address"
                     class="map-info-btn"
                     fab
                     width="28px"
                     height="28px"
                     color="#888888"
-                    :href="
-                      typeof marker.media2 == 'string'
-                        ? marker.media2
-                        : marker.media2.address
-                    "
+                    :href="marker.media2.address"
                     target="_blank"
                   >
                     <v-icon size="20px">mdi-newspaper-variant-outline</v-icon>
                   </v-btn>
                   <v-btn
-                    v-if="marker.media3"
+                    v-if="marker.media3 && marker.media3.address"
                     class="map-info-btn"
                     fab
                     width="28px"
                     height="28px"
                     color="#888888"
-                    :href="
-                      typeof marker.media3 == 'string'
-                        ? marker.media3
-                        : marker.media3.address
-                    "
+                    :href="marker.media3.address"
                     target="_blank"
                   >
                     <v-icon size="20px">mdi-newspaper-variant-outline</v-icon>
                   </v-btn>
                   <v-btn
-                    v-if="marker.media4"
+                    v-if="marker.media4 && marker.media4.address"
                     class="map-info-btn"
                     fab
                     width="28px"
                     height="28px"
                     color="#888888"
-                    :href="
-                      typeof marker.media4 == 'string'
-                        ? marker.media4
-                        : marker.media4.address
-                    "
+                    :href="marker.media4.address"
                     target="_blank"
                   >
                     <v-icon size="20px">mdi-newspaper-variant-outline</v-icon>
                   </v-btn>
                   <v-btn
-                    v-if="marker.media5"
+                    v-if="marker.media5 && marker.media5.address"
                     class="map-info-btn"
                     fab
                     width="28px"
                     height="28px"
                     color="#888888"
-                    :href="
-                      typeof marker.media5 == 'string'
-                        ? marker.media5
-                        : marker.media5.address
-                    "
+                    :href="marker.media5.address"
                     target="_blank"
                   >
                     <v-icon size="20px">mdi-newspaper-variant-outline</v-icon>
@@ -482,11 +458,8 @@ export default {
       this.pageType = type
       await this.onClickCurrentPositon()
 
-      this.maplocation.lat = 34.7064393
-      this.maplocation.lng = 137.7309768
-
       const requestAddress =
-        'https://l8h2fp9jcf.execute-api.ap-northeast-1.amazonaws.com/work/near-near-map-dev?type=' +
+        'https://l8h2fp9jcf.execute-api.ap-northeast-1.amazonaws.com/work/near-near-map-es?type=' +
         type +
         '&latlon=' +
         this.maplocation.lat +
@@ -508,8 +481,8 @@ export default {
       const blue = require('~/assets/img/pin/blue-dot.png')
       for (let i = 1; i < response.list.length; i++) {
         let path = '~/assets/img/pin/blue-dot.png'
-        let iwidth = 32
-        let iheight = 32
+        let iwidth = 42
+        let iheight = 42
         if (response.has_clowd) {
           if (response.list[i].crowd_lv == 3) {
             path = red

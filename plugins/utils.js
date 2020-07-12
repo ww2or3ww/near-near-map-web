@@ -59,6 +59,12 @@ const getContentsFunc = () => {
       hilite: false
     },
     {
+      link: '/hamapay',
+      icon: 'mdi-shopping-outline',
+      count: '(---)',
+      hilite: true
+    },
+    {
       link: '/about',
       icon: 'mdi-map-marker-question-outline',
       count: '',
