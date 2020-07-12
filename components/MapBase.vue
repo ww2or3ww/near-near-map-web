@@ -356,10 +356,7 @@ export default {
   },
   methods: {
     handleResize() {
-      let mapHeight = window.innerHeight - 140
-      if (this.pageType == 'fire') {
-        mapHeight = mapHeight - 32
-      }
+      let mapHeight = window.innerHeight - 150
       const infoHeight = window.innerHeight / 2
       const titleHeight = 64
       const menusHeight = 80
