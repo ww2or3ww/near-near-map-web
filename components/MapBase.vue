@@ -6,7 +6,7 @@
       :style="styleMap"
       :draggable="true"
       :center="maplocation"
-      :zoom="14"
+      :zoom="18"
       :options="mapOptions"
       @click="onClickMap($event)"
     >
@@ -54,17 +54,13 @@
               <v-col class="map-info-col">
                 <div class="d-flex flex-row-reverse">
                   <v-btn
-                    v-if="marker.homepage"
+                    v-if="marker.homepage && marker.homepage.address"
                     class="map-info-btn"
                     fab
                     width="28px"
                     height="28px"
                     color="#888888"
-                    :href="
-                      typeof marker.homepage == 'string'
-                        ? marker.homepage
-                        : marker.homepage.address
-                    "
+                    :href="marker.homepage.address"
                     target="_blank"
                   >
                     <v-icon size="20px">mdi-home</v-icon>
@@ -106,81 +102,61 @@
                     <v-icon size="20px">mdi-twitter</v-icon>
                   </v-btn>
                   <v-btn
-                    v-if="marker.media1"
+                    v-if="marker.media1 && marker.media1.address"
                     class="map-info-btn"
                     fab
                     width="28px"
                     height="28px"
                     color="#888888"
-                    :href="
-                      typeof marker.media1 == 'string'
-                        ? marker.media1
-                        : marker.media1.address
-                    "
+                    :href="marker.media1.address"
                     target="_blank"
                   >
                     <v-icon size="20px">mdi-newspaper-variant-outline</v-icon>
                   </v-btn>
                   <v-btn
-                    v-if="marker.media2"
+                    v-if="marker.media2 && marker.media2.address"
                     class="map-info-btn"
                     fab
                     width="28px"
                     height="28px"
                     color="#888888"
-                    :href="
-                      typeof marker.media2 == 'string'
-                        ? marker.media2
-                        : marker.media2.address
-                    "
+                    :href="marker.media2.address"
                     target="_blank"
                   >
                     <v-icon size="20px">mdi-newspaper-variant-outline</v-icon>
                   </v-btn>
                   <v-btn
-                    v-if="marker.media3"
+                    v-if="marker.media3 && marker.media3.address"
                     class="map-info-btn"
                     fab
                     width="28px"
                     height="28px"
                     color="#888888"
-                    :href="
-                      typeof marker.media3 == 'string'
-                        ? marker.media3
-                        : marker.media3.address
-                    "
+                    :href="marker.media3.address"
                     target="_blank"
                   >
                     <v-icon size="20px">mdi-newspaper-variant-outline</v-icon>
                   </v-btn>
                   <v-btn
-                    v-if="marker.media4"
+                    v-if="marker.media4 && marker.media4.address"
                     class="map-info-btn"
                     fab
                     width="28px"
                     height="28px"
                     color="#888888"
-                    :href="
-                      typeof marker.media4 == 'string'
-                        ? marker.media4
-                        : marker.media4.address
-                    "
+                    :href="marker.media4.address"
                     target="_blank"
                   >
                     <v-icon size="20px">mdi-newspaper-variant-outline</v-icon>
                   </v-btn>
                   <v-btn
-                    v-if="marker.media5"
+                    v-if="marker.media5 && marker.media5.address"
                     class="map-info-btn"
                     fab
                     width="28px"
                     height="28px"
                     color="#888888"
-                    :href="
-                      typeof marker.media5 == 'string'
-                        ? marker.media5
-                        : marker.media5.address
-                    "
+                    :href="marker.media5.address"
                     target="_blank"
                   >
                     <v-icon size="20px">mdi-newspaper-variant-outline</v-icon>
@@ -266,10 +242,6 @@ export default {
     markers: {
       type: Array,
       default: ''
-    },
-    has_clowd: {
-      type: Boolean(),
-      default: false
     }
   },
   data() {
@@ -386,7 +358,7 @@ export default {
     handleResize() {
       let mapHeight = window.innerHeight - 140
       if (this.pageType == 'fire') {
-        mapHeight = mapHeight - 40
+        mapHeight = mapHeight - 32
       }
       const infoHeight = window.innerHeight / 2
       const titleHeight = 64
@@ -487,14 +459,14 @@ export default {
       await this.onClickCurrentPositon()
 
       const requestAddress =
-        'https://l8h2fp9jcf.execute-api.ap-northeast-1.amazonaws.com/work/near-near-map?type=' +
+        'https://l8h2fp9jcf.execute-api.ap-northeast-1.amazonaws.com/work/near-near-map-es?type=' +
         type +
         '&latlon=' +
         this.maplocation.lat +
         ',' +
         this.maplocation.lng
       const response = await this.$axios.$get(requestAddress)
-      response.unshift({
+      response.list.unshift({
         position: this.maplocation,
         title: "I'm here!",
         pinicon: {
@@ -507,16 +479,16 @@ export default {
       const red = require('~/assets/img/pin/red-dot.png')
       const orange = require('~/assets/img/pin/orange-dot.png')
       const blue = require('~/assets/img/pin/blue-dot.png')
-      for (let i = 1; i < response.length; i++) {
+      for (let i = 1; i < response.list.length; i++) {
         let path = '~/assets/img/pin/blue-dot.png'
-        let iwidth = 32
-        let iheight = 32
-        if (this.has_clowd) {
-          if (response[i].crowd_lv == 3) {
+        let iwidth = 42
+        let iheight = 42
+        if (response.has_clowd) {
+          if (response.list[i].crowd_lv == 3) {
             path = red
-          } else if (response[i].crowd_lv == 2) {
+          } else if (response.list[i].crowd_lv == 2) {
             path = orange
-          } else if (response[i].crowd_lv == 1) {
+          } else if (response.list[i].crowd_lv == 1) {
             path = blue
           } else {
             path = gray
@@ -528,12 +500,12 @@ export default {
           iwidth = 18
           iheight = 30
         }
-        response[i].pinicon = {
+        response.list[i].pinicon = {
           url: path,
           scaledSize: { width: iwidth, height: iheight, f: 'px', b: 'px' }
         }
       }
-      return response
+      return response.list
     }
   }
 }
