@@ -316,6 +316,14 @@ export default {
         streetViewControl: false,
         styles: [
           {
+            elementType: 'labels',
+            stylers: [
+              {
+                visibility: 'off'
+              }
+            ]
+          },
+          {
             featureType: 'administrative.land_parcel',
             elementType: 'labels',
             stylers: [
@@ -356,10 +364,7 @@ export default {
   },
   methods: {
     handleResize() {
-      let mapHeight = window.innerHeight - 140
-      if (this.pageType == 'fire') {
-        mapHeight = mapHeight - 32
-      }
+      let mapHeight = window.innerHeight - 150
       const infoHeight = window.innerHeight / 2
       const titleHeight = 64
       const menusHeight = 80
@@ -459,7 +464,7 @@ export default {
       await this.onClickCurrentPositon()
 
       const requestAddress =
-        'https://l8h2fp9jcf.execute-api.ap-northeast-1.amazonaws.com/work/near-near-map-es?type=' +
+        'https://l8h2fp9jcf.execute-api.ap-northeast-1.amazonaws.com/work/near-near-map-dev?type=' +
         type +
         '&latlon=' +
         this.maplocation.lat +
