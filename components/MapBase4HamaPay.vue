@@ -21,7 +21,7 @@ export default {
     const pos = await this.getCurrentPosition()
     const latlon = 'll=' + pos.coords.latitude + ',' + pos.coords.longitude
     this.mymapsrc =
-      'https://www.google.com/maps/d/embed?mid=1F_A7PW1UVLk57ADjQvRCYmIz9RFvSGev&z=16&' +
+      'https://www.google.com/maps/d/embed?mid=16vGjDkluI9ySL80xB0huSsDMnL3-hRFe&z=16&' +
       latlon
     window.addEventListener('resize', this.handleResize)
     this.handleResize()
