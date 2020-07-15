@@ -9,7 +9,7 @@
   </v-layout>
 </template>
 <script>
-import MapBase from '@/components/MapBase.vue'
+import MapBase from '@/components/MapBaseLoco.vue'
 export default {
   components: {
     MapBase
@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     async getMarkersData() {
-      this.markers = await this.$refs.mapBase.getMarkersData('drink')
+      this.markers = await this.$refs.mapBase.getMarkersData()
     }
   }
 }

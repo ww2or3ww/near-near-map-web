@@ -17,8 +17,8 @@
     "link1": "Pyrotechnicians Support Project",
     "link2": "Japanese Fireworks 'Yell' Project"
   },
-  "life": {
-    "text": ""
+  "crowdlamp": {
+    "text": "Let's use the crowd ramp!"
   },
   "index": {
     "title": [
@@ -40,6 +40,12 @@
       }
     ],
     "menu": [
+      {
+        "title": "LocoGuide",
+        "text_1": "Crowd Ramp Demonstration experiment in progress！！",
+        "text_2": "",
+        "text_3": ""
+      },
       {
         "title": "Top",
         "text_1": "",
