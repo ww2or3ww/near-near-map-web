@@ -11,6 +11,12 @@ const getContentsFunc = () => {
       hilite: false
     },
     {
+      link: '/loco',
+      icon: 'mdi-lightbulb-on-outline',
+      count: '(---)',
+      hilite: true
+    },
+    {
       link: '/food',
       icon: 'mdi-food',
       count: '(624)',

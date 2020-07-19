@@ -66,42 +66,6 @@
                     <v-icon size="20px">mdi-home</v-icon>
                   </v-btn>
                   <v-btn
-                    v-if="marker.facebook"
-                    class="map-info-btn"
-                    fab
-                    width="28px"
-                    height="28px"
-                    color="#888888"
-                    :href="marker.facebook"
-                    target="_blank"
-                  >
-                    <v-icon size="20px">mdi-facebook</v-icon>
-                  </v-btn>
-                  <v-btn
-                    v-if="marker.instagram"
-                    class="map-info-btn"
-                    fab
-                    width="28px"
-                    height="28px"
-                    :href="marker.instagram"
-                    color="#888888"
-                    target="_blank"
-                  >
-                    <v-icon size="20px">mdi-instagram</v-icon>
-                  </v-btn>
-                  <v-btn
-                    v-if="marker.twitter"
-                    class="map-info-btn"
-                    fab
-                    width="28px"
-                    height="28px"
-                    color="#888888"
-                    :href="marker.twitter"
-                    target="_blank"
-                  >
-                    <v-icon size="20px">mdi-twitter</v-icon>
-                  </v-btn>
-                  <v-btn
                     v-if="marker.media1 && marker.media1.address"
                     class="map-info-btn"
                     fab
@@ -113,80 +77,16 @@
                   >
                     <v-icon size="20px">mdi-newspaper-variant-outline</v-icon>
                   </v-btn>
-                  <v-btn
-                    v-if="marker.media2 && marker.media2.address"
-                    class="map-info-btn"
-                    fab
-                    width="28px"
-                    height="28px"
-                    color="#888888"
-                    :href="marker.media2.address"
-                    target="_blank"
-                  >
-                    <v-icon size="20px">mdi-newspaper-variant-outline</v-icon>
-                  </v-btn>
-                  <v-btn
-                    v-if="marker.media3 && marker.media3.address"
-                    class="map-info-btn"
-                    fab
-                    width="28px"
-                    height="28px"
-                    color="#888888"
-                    :href="marker.media3.address"
-                    target="_blank"
-                  >
-                    <v-icon size="20px">mdi-newspaper-variant-outline</v-icon>
-                  </v-btn>
-                  <v-btn
-                    v-if="marker.media4 && marker.media4.address"
-                    class="map-info-btn"
-                    fab
-                    width="28px"
-                    height="28px"
-                    color="#888888"
-                    :href="marker.media4.address"
-                    target="_blank"
-                  >
-                    <v-icon size="20px">mdi-newspaper-variant-outline</v-icon>
-                  </v-btn>
-                  <v-btn
-                    v-if="marker.media5 && marker.media5.address"
-                    class="map-info-btn"
-                    fab
-                    width="28px"
-                    height="28px"
-                    color="#888888"
-                    :href="marker.media5.address"
-                    target="_blank"
-                  >
-                    <v-icon size="20px">mdi-newspaper-variant-outline</v-icon>
-                  </v-btn>
                 </div>
               </v-col>
             </v-row>
             <!-- ACCESS -->
-            <v-row justify="space-between" class="map-info-row">
-              <v-col class="map-info-col" cols="3" sm="3">
-                <div style="text-align: left;">
-                  <v-btn
-                    class="map-info-btn"
-                    fab
-                    width="28px"
-                    height="28px"
-                    color="#888888"
-                    :href="
-                      'https://www.near-near-map-manage.w2or3w.com/update/?type=' +
-                        marker.type +
-                        '&tel=' +
-                        marker.tel
-                    "
-                    target="_blank"
-                  >
-                    <v-icon size="20px">mdi-circle-edit-outline</v-icon>
-                  </v-btn>
-                </div>
-              </v-col>
-              <v-col class="map-info-col" cols="6" sm="6">
+            <v-row
+              justify="space-between"
+              class="map-info-row"
+              style="padding-top: 4px; padding-bottom: 4px;"
+            >
+              <v-col class="map-info-col">
                 <div class="d-flex flex-row-reverse">
                   <v-btn
                     class="map-info-btn"
@@ -246,7 +146,6 @@ export default {
   },
   data() {
     return {
-      pageType: '',
       currentLoc: {},
       maplocation: { lng: 0, lat: 0 },
       styleMap: {
@@ -365,9 +264,6 @@ export default {
   methods: {
     onResize() {
       let isIFrame = this.srcIFrame != null && this.srcIFrame != ''
-      if (!this.srcIFrame) {
-        isIFrame = this.srcImage != null && this.srcImage != ''
-      }
       this.handleResize(isIFrame)
     },
     handleResize(hasIFrame) {
@@ -404,12 +300,7 @@ export default {
       this.infoWindowPos = marker.position
       this.marker = marker
       this.srcIFrame = this.getIFrameSrc(marker)
-      this.srcImage = null
       let isIFrame = this.srcIFrame != null && this.srcIFrame != ''
-      if (!this.srcIFrame) {
-        this.srcImage = marker.image
-        isIFrame = this.srcImage != null && this.srcImage != ''
-      }
       this.handleResize(isIFrame)
 
       this.infoWinOpen = true
@@ -423,8 +314,14 @@ export default {
       let src = null
       if (typeof item == 'string') {
         src = item
-      } else if ('address' in item && item.address.indexOf('https') == 0) {
-        if (item.has_xframe_options == 0) {
+      } else if ('address' in item && item.address) {
+        if (
+          item.address.indexOf('https') == 0 &&
+          item.address.indexOf('e-map.ne.jp') < 0 &&
+          item.address.indexOf('facebook.com/') < 0 &&
+          item.address.indexOf('instagram.com/') < 0 &&
+          item.address.indexOf('twitter.com/') < 0
+        ) {
           src = item.address
         }
       }
@@ -439,26 +336,6 @@ export default {
       }
       if (marker.media1) {
         if ((src = this.getIFrameSrcByValue(marker.media1)) != null) {
-          return src
-        }
-      }
-      if (marker.media2) {
-        if ((src = this.getIFrameSrcByValue(marker.media2)) != null) {
-          return src
-        }
-      }
-      if (marker.media3) {
-        if ((src = this.getIFrameSrcByValue(marker.media3)) != null) {
-          return src
-        }
-      }
-      if (marker.media4) {
-        if ((src = this.getIFrameSrcByValue(marker.media4)) != null) {
-          return src
-        }
-      }
-      if (marker.media5) {
-        if ((src = this.getIFrameSrcByValue(marker.media5)) != null) {
           return src
         }
       }
@@ -480,14 +357,12 @@ export default {
         navigator.geolocation.getCurrentPosition(resolve, reject)
       })
     },
-    async getMarkersData(type) {
-      this.pageType = type
+    async getMarkersData() {
       await this.onClickCurrentPositon()
 
       const requestAddress =
-        'https://l8h2fp9jcf.execute-api.ap-northeast-1.amazonaws.com/work/near-near-map-dev?type=' +
-        type +
-        '&latlon=' +
+        'https://l8h2fp9jcf.execute-api.ap-northeast-1.amazonaws.com/work/near-near-map-loco?' +
+        'latlon=' +
         this.maplocation.lat +
         ',' +
         this.maplocation.lng
