@@ -364,7 +364,11 @@ export default {
   },
   methods: {
     onResize() {
-      this.handleResize(true)
+      let isIFrame = this.srcIFrame != null && this.srcIFrame != ''
+      if (!this.srcIFrame) {
+        isIFrame = this.srcImage != null && this.srcImage != ''
+      }
+      this.handleResize(isIFrame)
     },
     handleResize(hasIFrame) {
       let mapHeight = window.innerHeight - 150
@@ -377,6 +381,9 @@ export default {
         infoHeight = 120
         containerHeight = 0
         infoWidth = window.innerWidth / 2
+        if (infoWidth > 500) {
+          infoWidth = 450
+        }
       }
       this.styleMap.height = mapHeight + 'px'
       this.styleMapInfoCard.height = infoHeight + 'px'
@@ -401,7 +408,7 @@ export default {
       let isIFrame = this.srcIFrame != null && this.srcIFrame != ''
       if (!this.srcIFrame) {
         this.srcImage = marker.image
-        isIFrame = marker.image != null && marker.image != ''
+        isIFrame = this.srcImage != null && this.srcImage != ''
       }
       this.handleResize(isIFrame)
 
