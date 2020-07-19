@@ -381,8 +381,10 @@ export default {
         infoHeight = 120
         containerHeight = 0
         infoWidth = window.innerWidth / 2
-        if (infoWidth > 500) {
-          infoWidth = 450
+        if (window.innerWidth <= 500) {
+          infoWidth = window.innerWidth - 40
+        } else if (window.innerWidth > 800) {
+          infoWidth = window.innerWidth / 3
         }
       }
       this.styleMap.height = mapHeight + 'px'
@@ -485,7 +487,7 @@ export default {
       await this.onClickCurrentPositon()
 
       const requestAddress =
-        'https://l8h2fp9jcf.execute-api.ap-northeast-1.amazonaws.com/work/near-near-map-dev?type=' +
+        'https://l8h2fp9jcf.execute-api.ap-northeast-1.amazonaws.com/work/near-near-map-es?type=' +
         type +
         '&latlon=' +
         this.maplocation.lat +
