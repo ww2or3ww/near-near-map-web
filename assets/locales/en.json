@@ -41,6 +41,12 @@
     ],
     "menu": [
       {
+        "title": "LocoGuide",
+        "text_1": "Crowd Ramp Demonstration experiment in progress！！",
+        "text_2": "",
+        "text_3": ""
+      },
+      {
         "title": "Top",
         "text_1": "",
         "text_2": "",
