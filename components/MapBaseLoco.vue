@@ -81,27 +81,12 @@
               </v-col>
             </v-row>
             <!-- ACCESS -->
-            <v-row justify="space-between" class="map-info-row">
-              <v-col class="map-info-col" cols="3" sm="3">
-                <div style="text-align: left;">
-                  <v-btn
-                    class="map-info-btn"
-                    fab
-                    width="28px"
-                    height="28px"
-                    color="#888888"
-                    :href="
-                      'https://www.near-near-map-manage.w2or3w.com/update/?type=loco' +
-                        '&tel=' +
-                        marker.tel
-                    "
-                    target="_blank"
-                  >
-                    <v-icon size="20px">mdi-circle-edit-outline</v-icon>
-                  </v-btn>
-                </div>
-              </v-col>
-              <v-col class="map-info-col" cols="6" sm="6">
+            <v-row
+              justify="space-between"
+              class="map-info-row"
+              style="padding-top: 4px; padding-bottom: 4px;"
+            >
+              <v-col class="map-info-col">
                 <div class="d-flex flex-row-reverse">
                   <v-btn
                     class="map-info-btn"
@@ -270,26 +255,35 @@ export default {
   },
   mounted() {},
   created() {
-    window.addEventListener('resize', this.handleResize)
-    this.handleResize()
+    window.addEventListener('resize', this.onResize)
+    this.onResize()
   },
   destroyed() {
-    window.removeEventListener('resize', this.handleResize)
+    window.removeEventListener('resize', this.onResize)
   },
   methods: {
-    handleResize() {
+    onResize() {
+      this.handleResize(true)
+    },
+    handleResize(hasIFrame) {
       let mapHeight = window.innerHeight - 150
-      const infoHeight = window.innerHeight / 2
+      let infoHeight = window.innerHeight / 2
+      let infoWidth = 1024
       const titleHeight = 64
       const menusHeight = 80
-      const containerHeight = infoHeight - menusHeight - titleHeight
-      const iframeHeight = infoHeight - titleHeight - menusHeight
+      let containerHeight = infoHeight - menusHeight - titleHeight
+      if (hasIFrame == false) {
+        infoHeight = 120
+        containerHeight = 0
+        infoWidth = window.innerWidth / 2
+      }
       this.styleMap.height = mapHeight + 'px'
       this.styleMapInfoCard.height = infoHeight + 'px'
       this.styleMapInfoContainer.height = containerHeight + 'px'
       this.styleMapIFrameRow.height = 100 + '%'
       this.styleMapImageRow.height = containerHeight + 'px'
       this.styleMapInfoMenus.height = menusHeight + 'px'
+      this.infoOptions.minWidth = infoWidth
     },
     async onClickMap(event) {
       this.infoWinOpen = false
@@ -298,14 +292,13 @@ export default {
       if (index === 0) {
         return
       }
-      console.log(marker)
       this.$refs.gmp.panTo(marker.position)
       this.infoWindowPos = marker.position
       this.marker = marker
       this.srcIFrame = this.getIFrameSrc(marker)
-      if (!this.srcIFrame) {
-        this.srcImage = marker.image
-      }
+      let isIFrame = this.srcIFrame != null && this.srcIFrame != ''
+      this.handleResize(isIFrame)
+
       this.infoWinOpen = true
       const data = {}
       data.lat = marker.position.lat
@@ -317,12 +310,14 @@ export default {
       let src = null
       if (typeof item == 'string') {
         src = item
-      } else if (
-        'address' in item &&
-        item.address &&
-        item.address.indexOf('https') == 0
-      ) {
-        if (item.has_xframe_options == 0) {
+      } else if ('address' in item && item.address) {
+        if (
+          item.address.indexOf('https') == 0 &&
+          item.address.indexOf('e-map.ne.jp') < 0 &&
+          item.address.indexOf('facebook.com/') < 0 &&
+          item.address.indexOf('instagram.com/') < 0 &&
+          item.address.indexOf('twitter.com/') < 0
+        ) {
           src = item.address
         }
       }

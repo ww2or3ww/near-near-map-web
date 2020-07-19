@@ -6,7 +6,7 @@
       :style="styleMap"
       :draggable="true"
       :center="maplocation"
-      :zoom="18"
+      :zoom="15"
       :options="mapOptions"
       @click="onClickMap($event)"
     >
@@ -356,26 +356,35 @@ export default {
   },
   mounted() {},
   created() {
-    window.addEventListener('resize', this.handleResize)
-    this.handleResize()
+    window.addEventListener('resize', this.onResize)
+    this.onResize()
   },
   destroyed() {
-    window.removeEventListener('resize', this.handleResize)
+    window.removeEventListener('resize', this.onResize)
   },
   methods: {
-    handleResize() {
+    onResize() {
+      this.handleResize(true)
+    },
+    handleResize(hasIFrame) {
       let mapHeight = window.innerHeight - 150
-      const infoHeight = window.innerHeight / 2
+      let infoHeight = window.innerHeight / 2
+      let infoWidth = 1024
       const titleHeight = 64
       const menusHeight = 80
-      const containerHeight = infoHeight - menusHeight - titleHeight
-      const iframeHeight = infoHeight - titleHeight - menusHeight
+      let containerHeight = infoHeight - menusHeight - titleHeight
+      if (hasIFrame == false) {
+        infoHeight = 120
+        containerHeight = 0
+        infoWidth = window.innerWidth / 2
+      }
       this.styleMap.height = mapHeight + 'px'
       this.styleMapInfoCard.height = infoHeight + 'px'
       this.styleMapInfoContainer.height = containerHeight + 'px'
       this.styleMapIFrameRow.height = 100 + '%'
       this.styleMapImageRow.height = containerHeight + 'px'
       this.styleMapInfoMenus.height = menusHeight + 'px'
+      this.infoOptions.minWidth = infoWidth
     },
     async onClickMap(event) {
       this.infoWinOpen = false
@@ -388,9 +397,14 @@ export default {
       this.infoWindowPos = marker.position
       this.marker = marker
       this.srcIFrame = this.getIFrameSrc(marker)
+      this.srcImage = null
+      let isIFrame = this.srcIFrame != null && this.srcIFrame != ''
       if (!this.srcIFrame) {
         this.srcImage = marker.image
+        isIFrame = marker.image != null && marker.image != ''
       }
+      this.handleResize(isIFrame)
+
       this.infoWinOpen = true
       const data = {}
       data.lat = marker.position.lat
