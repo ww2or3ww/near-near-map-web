@@ -364,7 +364,11 @@ export default {
   },
   methods: {
     onResize() {
-      this.handleResize(true)
+      let isIFrame = this.srcIFrame != null && this.srcIFrame != ''
+      if (!this.srcIFrame) {
+        isIFrame = this.srcImage != null && this.srcImage != ''
+      }
+      this.handleResize(isIFrame)
     },
     handleResize(hasIFrame) {
       let mapHeight = window.innerHeight - 150
@@ -377,6 +381,11 @@ export default {
         infoHeight = 120
         containerHeight = 0
         infoWidth = window.innerWidth / 2
+        if (window.innerWidth <= 500) {
+          infoWidth = window.innerWidth - 40
+        } else if (window.innerWidth > 800) {
+          infoWidth = window.innerWidth / 3
+        }
       }
       this.styleMap.height = mapHeight + 'px'
       this.styleMapInfoCard.height = infoHeight + 'px'
@@ -401,7 +410,7 @@ export default {
       let isIFrame = this.srcIFrame != null && this.srcIFrame != ''
       if (!this.srcIFrame) {
         this.srcImage = marker.image
-        isIFrame = marker.image != null && marker.image != ''
+        isIFrame = this.srcImage != null && this.srcImage != ''
       }
       this.handleResize(isIFrame)
 
@@ -478,7 +487,7 @@ export default {
       await this.onClickCurrentPositon()
 
       const requestAddress =
-        'https://l8h2fp9jcf.execute-api.ap-northeast-1.amazonaws.com/work/near-near-map-dev?type=' +
+        'https://l8h2fp9jcf.execute-api.ap-northeast-1.amazonaws.com/work/near-near-map-es?type=' +
         type +
         '&latlon=' +
         this.maplocation.lat +
