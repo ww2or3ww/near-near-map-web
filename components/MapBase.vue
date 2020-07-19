@@ -6,9 +6,12 @@
       :style="styleMap"
       :draggable="true"
       :center="maplocation"
-      :zoom="15"
+      :zoom="zoom"
       :options="mapOptions"
       @click="onClickMap($event)"
+      @zoom_changed="onZoomChanged($event)"
+      @center_changed="onCenterChanged($event)"
+      @dragend="onDragEnd()"
     >
       <GmapInfoWindow
         :options="infoOptions"
@@ -247,8 +250,9 @@ export default {
   data() {
     return {
       pageType: '',
-      currentLoc: {},
       maplocation: { lng: 0, lat: 0 },
+      maplocationTmp: { lng: 0, lat: 0 },
+      zoom: 15,
       styleMap: {
         width: '100%',
         height: '440px'
@@ -397,6 +401,18 @@ export default {
     },
     async onClickMap(event) {
       this.infoWinOpen = false
+      this.updateMapPrmToCookie()
+    },
+    async onZoomChanged(event) {
+      this.zoom = event
+      this.updateMapPrmToCookie()
+    },
+    async onCenterChanged(event) {
+      this.maplocationTmp.lat = event.lat()
+      this.maplocationTmp.lng = event.lng()
+    },
+    async onDragEnd() {
+      this.updateMapPrmToCookie()
     },
     async onClickMarker(index, marker) {
       if (index === 0) {
@@ -419,7 +435,21 @@ export default {
       data.lat = marker.position.lat
       data.lng = marker.position.lng
       data.title = this.markers[index].title
-      this.$set(this.currentLoc, 'coords', data)
+      this.updateMapPrmToCookie()
+    },
+    updateMapPrmToCookie() {
+      this.$cookies.set('near-near-map.w2or3w.com/zoom', this.zoom, {
+        path: '/',
+        maxAge: 60 * 60 * 24 * 1
+      })
+      this.$cookies.set(
+        'near-near-map.w2or3w.com/latlon',
+        this.maplocationTmp,
+        {
+          path: '/',
+          maxAge: 60 * 60 * 24 * 1
+        }
+      )
     },
     getIFrameSrcByValue(item) {
       let src = null
@@ -466,17 +496,6 @@ export default {
       }
       return src
     },
-    async onClickCurrentPositon() {
-      const pos = await this.getCurrentPosition()
-      const data = {}
-      data.lat = pos.coords.latitude
-      data.lng = pos.coords.longitude
-      data.accuracy = pos.coords.accuracy
-      this.$set(this.currentLoc, 'coords', data)
-      this.maplocation.lat = data.lat
-      this.maplocation.lng = data.lng
-      this.$refs.gmp.panTo(this.maplocation)
-    },
     getCurrentPosition() {
       return new Promise(function(resolve, reject) {
         navigator.geolocation.getCurrentPosition(resolve, reject)
@@ -484,7 +503,30 @@ export default {
     },
     async getMarkersData(type) {
       this.pageType = type
-      await this.onClickCurrentPositon()
+
+      const currentPosTmp = await this.getCurrentPosition()
+      const currentPos = {
+        lat: currentPosTmp.coords.latitude,
+        lng: currentPosTmp.coords.longitude
+      }
+      const zoomCookies = this.$cookies.get('near-near-map.w2or3w.com/zoom')
+      if (zoomCookies == null || zoomCookies == 0) {
+        this.zoom = 15
+      } else {
+        this.zoom = zoomCookies
+      }
+      const latlonCookies = this.$cookies.get('near-near-map.w2or3w.com/latlon')
+      if (
+        latlonCookies != null &&
+        latlonCookies.lat != null &&
+        latlonCookies.lng != null
+      ) {
+        this.maplocation.lat = latlonCookies.lat
+        this.maplocation.lng = latlonCookies.lng
+      } else {
+        this.maplocation = currentPos
+      }
+      this.$refs.gmp.panTo(this.maplocation)
 
       const requestAddress =
         'https://l8h2fp9jcf.execute-api.ap-northeast-1.amazonaws.com/work/near-near-map-es?type=' +
@@ -495,7 +537,7 @@ export default {
         this.maplocation.lng
       const response = await this.$axios.$get(requestAddress)
       response.list.unshift({
-        position: this.maplocation,
+        position: currentPos,
         title: "I'm here!",
         pinicon: {
           url: require('~/assets/img/pin-here-1.png'),

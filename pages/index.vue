@@ -73,6 +73,16 @@ export default {
       contents: this.$getContents()
     }
   },
+  mounted() {
+    const latlon = {
+      lat: null,
+      lng: null
+    }
+    this.$cookies.set('near-near-map.w2or3w.com/latlon', latlon, {
+      path: '/',
+      maxAge: 60 * 60 * 24 * 1
+    })
+  },
   methods: {
     onSwitchPage(index) {
       this.$nuxt.$emit('onSwitchPage', index)
