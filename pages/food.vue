@@ -4,7 +4,7 @@
       <p style="margin: 0px; padding: 0px; font-size: 15px;">
         {{ $t('crowdlamp.text') }}
       </p>
-      <map-base ref="mapBase" :markers="markers"></map-base>
+      <map-base ref="mapBase"></map-base>
     </v-flex>
   </v-layout>
 </template>
@@ -14,18 +14,8 @@ export default {
   components: {
     MapBase
   },
-  data() {
-    return {
-      markers: []
-    }
-  },
   mounted() {
-    this.getMarkersData()
-  },
-  methods: {
-    async getMarkersData() {
-      this.markers = await this.$refs.mapBase.getMarkersData('food')
-    }
+    this.$refs.mapBase.initialize('food')
   }
 }
 </script>

@@ -29,9 +29,6 @@
       >
         {{ subtitle }}
       </p>
-      <p class="p-card-subtitle-count" style="margin: 0px; padding: 0px;">
-        &nbsp;&nbsp;{{ content.count }}
-      </p>
     </v-card-subtitle>
     <v-card-text class="card-text">
       <p class="p-card-text" style="margin: 0px;">
@@ -91,11 +88,6 @@ export default {
 .p-card-subtitle {
   font-family: 'Nico Moji';
   font-size: 16px;
-  line-height: 0px;
-  display: inline-block;
-}
-.p-card-subtitle-count {
-  font-size: 12px;
   line-height: 0px;
   display: inline-block;
 }
