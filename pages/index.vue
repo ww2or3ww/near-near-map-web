@@ -74,14 +74,7 @@ export default {
     }
   },
   mounted() {
-    const latlon = {
-      lat: null,
-      lng: null
-    }
-    this.$cookies.set('near-near-map.w2or3w.com/latlon', latlon, {
-      path: '/',
-      maxAge: 60 * 60 * 24 * 1
-    })
+    this.$resetLatLon()
   },
   methods: {
     onSwitchPage(index) {

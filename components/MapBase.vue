@@ -226,7 +226,7 @@
         </v-card>
       </GmapInfoWindow>
       <GmapMarker
-        v-for="(m, index) in markers"
+        v-for="(m, index) in myMarkers"
         :key="index"
         :title="m.title"
         :position="m.position"
@@ -236,20 +236,45 @@
         @click="onClickMarker(index, m)"
       />
     </GmapMap>
+    <transition name="fade">
+      <v-btn
+        v-show="!infoWinOpen"
+        fixed
+        fab
+        small
+        bottom
+        right
+        color="#44444488"
+        style="bottom: 240px; right: 22px;"
+        @click="onClickSearch"
+      >
+        <v-icon color="white">mdi-selection-search t</v-icon>
+      </v-btn>
+    </transition>
+    <transition name="fade">
+      <v-btn
+        v-show="!infoWinOpen"
+        fixed
+        fab
+        small
+        bottom
+        right
+        color="#44444488"
+        style="bottom: 185px; right: 22px;"
+        @click="onClickHome"
+      >
+        <v-icon color="white">mdi-home-circle-outline</v-icon>
+      </v-btn>
+    </transition>
   </v-layout>
 </template>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script>
 export default {
-  props: {
-    markers: {
-      type: Array,
-      default: ''
-    }
-  },
   data() {
     return {
       pageType: '',
+      myMarkers: [],
       maplocation: { lng: 0, lat: 0 },
       maplocationTmp: { lng: 0, lat: 0 },
       zoom: 15,
@@ -358,7 +383,9 @@ export default {
       }
     }
   },
-  mounted() {},
+  mounted() {
+    this.$refs.gmp.panTo(this.maplocation)
+  },
   created() {
     window.addEventListener('resize', this.onResize)
     this.onResize()
@@ -414,6 +441,24 @@ export default {
     async onDragEnd() {
       this.updateMapPrmToCookie()
     },
+    async onClickSearch() {
+      this.myMarkers = []
+      this.myMarkers = await this.getMarkersData(this.pageType)
+    },
+    async initialize(type) {
+      this.pageType = type
+      this.myMarkers = await this.getMarkersData(this.pageType)
+    },
+    async onClickHome() {
+      const currentPosTmp = await this.getCurrentPosition()
+      const currentPos = {
+        lat: currentPosTmp.coords.latitude,
+        lng: currentPosTmp.coords.longitude
+      }
+      this.maplocationTmp = currentPos
+      this.$refs.gmp.panTo(this.maplocationTmp)
+      this.$setLatLng(this.maplocationTmp)
+    },
     async onClickMarker(index, marker) {
       if (index === 0) {
         return
@@ -434,22 +479,12 @@ export default {
       const data = {}
       data.lat = marker.position.lat
       data.lng = marker.position.lng
-      data.title = this.markers[index].title
+      data.title = this.myMarkers[index].title
       this.updateMapPrmToCookie()
     },
     updateMapPrmToCookie() {
-      this.$cookies.set('near-near-map.w2or3w.com/zoom', this.zoom, {
-        path: '/',
-        maxAge: 60 * 60 * 24 * 1
-      })
-      this.$cookies.set(
-        'near-near-map.w2or3w.com/latlon',
-        this.maplocationTmp,
-        {
-          path: '/',
-          maxAge: 60 * 60 * 24 * 1
-        }
-      )
+      this.$setZoom(this.zoom)
+      this.$setLatLng(this.maplocationTmp)
     },
     getIFrameSrcByValue(item) {
       let src = null
@@ -509,13 +544,13 @@ export default {
         lat: currentPosTmp.coords.latitude,
         lng: currentPosTmp.coords.longitude
       }
-      const zoomCookies = this.$cookies.get('near-near-map.w2or3w.com/zoom')
+      const zoomCookies = this.$getZoom()
       if (zoomCookies == null || zoomCookies == 0) {
         this.zoom = 15
       } else {
         this.zoom = zoomCookies
       }
-      const latlonCookies = this.$cookies.get('near-near-map.w2or3w.com/latlon')
+      const latlonCookies = this.$getLatLng()
       if (
         latlonCookies != null &&
         latlonCookies.lat != null &&
@@ -526,7 +561,8 @@ export default {
       } else {
         this.maplocation = currentPos
       }
-      this.$refs.gmp.panTo(this.maplocation)
+      this.maplocationTmp.lat = this.maplocation.lat
+      this.maplocationTmp.lng = this.maplocation.lng
 
       const requestAddress =
         'https://l8h2fp9jcf.execute-api.ap-northeast-1.amazonaws.com/work/near-near-map-es?type=' +
@@ -629,5 +665,13 @@ export default {
 }
 .gm-style-iw-d {
   overflow: unset !important;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
