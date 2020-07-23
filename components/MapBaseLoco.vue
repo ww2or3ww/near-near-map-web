@@ -453,7 +453,7 @@ export default {
           scaledSize: { width: 24, height: 24, f: 'px', b: 'px' }
         }
       })
-      const noclowd = require('~/assets/img/pin/mm_20_red.png')
+      const noclowd = require('~/assets/img/pin/mm_20_gray.png')
       const gray = require('~/assets/img/pin/mm_20_gray.png')
       const red = require('~/assets/img/pin/red-dot.png')
       const orange = require('~/assets/img/pin/orange-dot.png')
