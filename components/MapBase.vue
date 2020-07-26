@@ -238,7 +238,7 @@
     </GmapMap>
     <transition name="fade">
       <v-btn
-        v-show="!infoWinOpen"
+        v-show="!infoWinOpen && !loading"
         fixed
         fab
         small
@@ -253,7 +253,7 @@
     </transition>
     <transition name="fade">
       <v-btn
-        v-show="!infoWinOpen"
+        v-show="!infoWinOpen && !loading"
         fixed
         fab
         small
@@ -266,6 +266,22 @@
         <v-icon color="white">mdi-home-circle-outline</v-icon>
       </v-btn>
     </transition>
+    <v-layout justify-center>
+      <transition name="fade">
+        <v-progress-circular
+          v-show="loading"
+          :size="80"
+          :width="7"
+          color="blue"
+          fixed
+          fab
+          bottom
+          center
+          indeterminate
+          :style="styleProgressCircular"
+        ></v-progress-circular>
+      </transition>
+    </v-layout>
   </v-layout>
 </template>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -274,6 +290,7 @@ export default {
   data() {
     return {
       pageType: '',
+      loading: true,
       myMarkers: [],
       maplocation: { lng: 0, lat: 0 },
       maplocationTmp: { lng: 0, lat: 0 },
@@ -326,6 +343,9 @@ export default {
         padding: '0px',
         border: '0px solid',
         borderColor: 'red'
+      },
+      styleProgressCircular: {
+        bottom: '100px'
       },
       srcIFrame: '',
       srcImage: '',
@@ -425,6 +445,7 @@ export default {
       this.styleMapImageRow.height = containerHeight + 'px'
       this.styleMapInfoMenus.height = menusHeight + 'px'
       this.infoOptions.minWidth = infoWidth
+      this.styleProgressCircular.bottom = mapHeight / 2 + 40 + 'px'
     },
     async onClickMap(event) {
       this.infoWinOpen = false
@@ -442,12 +463,14 @@ export default {
       this.updateMapPrmToCookie()
     },
     async onClickSearch() {
+      this.loading = true
       this.myMarkers = []
       this.myMarkers = await this.getMarkersData(this.pageType)
+      this.loading = false
     },
     async initialize(type) {
       this.pageType = type
-      this.myMarkers = await this.getMarkersData(this.pageType)
+      this.onClickSearch()
     },
     async onClickHome() {
       const currentPosTmp = await this.getCurrentPosition()
