@@ -433,9 +433,17 @@ export default {
         containerHeight = 0
         infoWidth = window.innerWidth / 2
         if (window.innerWidth <= 500) {
-          infoWidth = window.innerWidth - 40
+          infoWidth = window.innerWidth - 48
         } else if (window.innerWidth > 800) {
           infoWidth = window.innerWidth / 3
+        }
+      } else {
+        if (window.innerWidth <= 500) {
+          infoWidth = window.innerWidth - 48
+        } else if (window.innerWidth <= 800) {
+          infoWidth = window.innerWidth / 1.5
+        } else {
+          infoWidth = window.innerWidth / 2
         }
       }
       this.styleMap.height = mapHeight + 'px'

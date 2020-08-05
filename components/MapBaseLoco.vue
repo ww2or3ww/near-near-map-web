@@ -329,9 +329,17 @@ export default {
         containerHeight = 0
         infoWidth = window.innerWidth / 2
         if (window.innerWidth <= 500) {
-          infoWidth = window.innerWidth - 40
+          infoWidth = window.innerWidth - 48
         } else if (window.innerWidth > 800) {
           infoWidth = window.innerWidth / 3
+        }
+      } else {
+        if (window.innerWidth <= 500) {
+          infoWidth = window.innerWidth - 48
+        } else if (window.innerWidth <= 800) {
+          infoWidth = window.innerWidth / 1.5
+        } else {
+          infoWidth = window.innerWidth / 2
         }
       }
       this.styleMap.height = mapHeight + 'px'
@@ -401,9 +409,7 @@ export default {
     },
     getIFrameSrcByValue(item) {
       let src = null
-      if (typeof item == 'string') {
-        src = item
-      } else if ('address' in item && item.address) {
+      if ('address' in item && item.address) {
         if (
           item.address.indexOf('https') == 0 &&
           item.address.indexOf('e-map.ne.jp') < 0 &&
@@ -411,7 +417,11 @@ export default {
           item.address.indexOf('instagram.com/') < 0 &&
           item.address.indexOf('twitter.com/') < 0
         ) {
-          src = item.address
+          if (item.has_xframe_options == 0) {
+            src = item.address
+          }
+        } else if (item.address.indexOf('http://www.entstore.co.jp') == 0) {
+          src = item.address.replace('http://', 'https://')
         }
       }
       return src
