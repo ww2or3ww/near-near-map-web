@@ -264,7 +264,8 @@ export default {
         streetViewControl: false,
         styles: [
           {
-            elementType: 'labels',
+            featureType: 'administrative',
+            elementType: 'all',
             stylers: [
               {
                 visibility: 'off'
@@ -272,8 +273,8 @@ export default {
             ]
           },
           {
-            featureType: 'administrative.land_parcel',
-            elementType: 'labels',
+            featureType: 'landscape',
+            elementType: 'labels.icon',
             stylers: [
               {
                 visibility: 'off'
@@ -286,6 +287,15 @@ export default {
             stylers: [
               {
                 visibility: 'off'
+              }
+            ]
+          },
+          {
+            featureType: 'transit',
+            elementType: 'all',
+            stylers: [
+              {
+                visibility: 'on'
               }
             ]
           },
@@ -392,15 +402,14 @@ export default {
       this.$refs.gmp.panTo(marker.position)
       this.infoWindowPos = marker.position
       this.marker = marker
-      this.srcIFrame = this.getIFrameSrc(marker)
+      this.marker.title = marker.list[0].title
+      this.marker.homepage = marker.list[0].homepage
+      this.marker.media1 = marker.list[0].media1
+      this.srcIFrame = this.getIFrameSrc(marker.list[0])
       let isIFrame = this.srcIFrame != null && this.srcIFrame != ''
       this.handleResize(isIFrame)
 
       this.infoWinOpen = true
-      const data = {}
-      data.lat = marker.position.lat
-      data.lng = marker.position.lng
-      data.title = this.myMarkers[index].title
       this.updateMapPrmToCookie()
     },
     updateMapPrmToCookie() {
@@ -472,7 +481,7 @@ export default {
       this.maplocationTmp.lng = this.maplocation.lng
 
       const requestAddress =
-        'https://l8h2fp9jcf.execute-api.ap-northeast-1.amazonaws.com/work/near-near-map-loco?' +
+        'https://l8h2fp9jcf.execute-api.ap-northeast-1.amazonaws.com/work/near-near-map-dev?' +
         'latlon=' +
         this.maplocation.lat +
         ',' +
@@ -496,11 +505,11 @@ export default {
         let iwidth = 42
         let iheight = 42
         if (response.has_clowd) {
-          if (response.list[i].crowd_lv == 3) {
+          if (response.list[i].list[0].crowd_lv == 3) {
             path = red
-          } else if (response.list[i].crowd_lv == 2) {
+          } else if (response.list[i].list[0].crowd_lv == 2) {
             path = orange
-          } else if (response.list[i].crowd_lv == 1) {
+          } else if (response.list[i].list[0].crowd_lv == 1) {
             path = blue
           } else {
             path = gray
