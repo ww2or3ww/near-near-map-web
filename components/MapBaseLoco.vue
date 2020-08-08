@@ -20,69 +20,82 @@
         @closeclick="infoWinOpen = false"
       >
         <v-card :style="styleMapInfoCard">
-          <v-container :style="styleMapInfoTitle">
-            <!-- TITLE -->
-            <v-card-subtitle class="map-info-subtitle">
-              <p class="map-info-p-subtitle" style="margin: 4px;">
-                {{ marker.title }}
-              </p>
-            </v-card-subtitle>
-          </v-container>
-          <v-container :style="styleMapInfoContainer">
-            <!-- IFRAME -->
-            <v-row justify="space-between" :style="styleMapIFrameRow">
-              <v-col class="map-info-col">
-                <iframe
-                  v-if="srcIFrame"
-                  :src="srcIFrame"
-                  class="map-info-iframe"
-                  sandbox="allow-scripts allow-same-origin"
-                ></iframe>
-                <img
-                  v-else-if="srcImage"
-                  :src="srcImage"
-                  :style="styleMapImageRow"
-                  class="map-info-image"
-                />
-              </v-col>
-            </v-row>
-          </v-container>
-          <v-container :style="styleMapInfoMenus">
-            <!-- SNS -->
-            <v-row
-              justify="space-between"
-              class="map-info-row"
-              style="padding-top: 4px; padding-bottom: 4px;"
+          <div v-for="(item, key) in marker.list" :key="key">
+            <v-container
+              :style="[
+                styleMapInfoTitle,
+                { backgroundColor: convertLv2Color(item.crowd_lv) }
+              ]"
             >
-              <v-col class="map-info-col">
-                <div class="d-flex flex-row-reverse">
-                  <v-btn
-                    v-if="marker.homepage && marker.homepage.address"
-                    class="map-info-btn"
-                    fab
-                    width="28px"
-                    height="28px"
-                    color="#888888"
-                    :href="marker.homepage.address"
-                    target="_blank"
-                  >
-                    <v-icon size="20px">mdi-home</v-icon>
-                  </v-btn>
-                  <v-btn
-                    v-if="marker.media1 && marker.media1.address"
-                    class="map-info-btn"
-                    fab
-                    width="28px"
-                    height="28px"
-                    color="#888888"
-                    :href="marker.media1.address"
-                    target="_blank"
-                  >
-                    <v-icon size="20px">mdi-newspaper-variant-outline</v-icon>
-                  </v-btn>
-                </div>
-              </v-col>
-            </v-row>
+              <!-- TITLE -->
+              <p class="map-info-p-subtitle-loco">
+                {{ item.title }}
+              </p>
+            </v-container>
+            <v-container v-if="isIFrame" :style="styleMediaContainer">
+              <!-- IFRAME -->
+              <v-row justify="space-between" :style="styleMapIFrameRow">
+                <v-col class="map-info-col">
+                  <iframe
+                    v-if="srcIFrame"
+                    :src="srcIFrame"
+                    class="map-info-iframe"
+                    sandbox="allow-scripts allow-same-origin"
+                  ></iframe>
+                </v-col>
+              </v-row>
+            </v-container>
+            <v-container :style="styleMapInfoMenus">
+              <!-- LINKS -->
+              <v-row
+                justify="space-between"
+                class="map-info-row"
+                style="padding-top: 4px; padding-bottom: 4px;"
+              >
+                <v-col class="map-info-col">
+                  <div class="d-flex flex-row-reverse">
+                    <v-btn
+                      v-if="item.homepage && item.homepage.address"
+                      class="map-info-btn"
+                      fab
+                      width="28px"
+                      height="28px"
+                      color="#888888"
+                      :href="item.homepage.address"
+                      target="_blank"
+                    >
+                      <v-icon size="20px">mdi-home</v-icon>
+                    </v-btn>
+                    <v-btn
+                      v-if="item.media1 && item.media1.address"
+                      class="map-info-btn"
+                      fab
+                      width="28px"
+                      height="28px"
+                      color="#888888"
+                      :href="item.media1.address"
+                      target="_blank"
+                    >
+                      <v-icon size="20px">mdi-newspaper-variant-outline</v-icon>
+                    </v-btn>
+                    <v-btn
+                      v-if="item.tel"
+                      class="map-info-btn"
+                      fab
+                      width="28px"
+                      height="28px"
+                      color="#888888"
+                      :href="'tel:' + item.tel"
+                      target="_blank"
+                    >
+                      <v-icon size="20px">mdi-phone</v-icon>
+                    </v-btn>
+                  </div>
+                </v-col>
+              </v-row>
+            </v-container>
+          </div>
+          <v-container :style="styleMapInfoMenus">
             <!-- ACCESS -->
             <v-row
               justify="space-between"
@@ -106,18 +119,6 @@
                     target="_blank"
                   >
                     <v-icon size="20px">mdi-google-maps</v-icon>
-                  </v-btn>
-                  <v-btn
-                    v-if="marker.tel"
-                    class="map-info-btn"
-                    fab
-                    width="28px"
-                    height="28px"
-                    color="#888888"
-                    :href="'tel:' + marker.tel"
-                    target="_blank"
-                  >
-                    <v-icon size="20px">mdi-phone</v-icon>
                   </v-btn>
                 </div>
               </v-col>
@@ -200,20 +201,20 @@ export default {
       },
       styleMapInfoCard: {
         height: '400px',
-        margin: '0px',
-        padding: '0px',
+        margin: '2px 12px 4px 0px',
+        padding: '0px 0px 2px 0px',
         backgroundColor: 'rgba(255, 255, 255, 1)',
         border: '0px solid',
-        borderColor: 'red'
+        borderColor: 'red',
+        overflow: 'auto'
       },
       styleMapInfoTitle: {
-        margin: '0px',
-        padding: '0px',
-        backgroundColor: 'rgba(255, 255, 255, 1)',
+        margin: '0px !important',
+        padding: '0px !important',
         border: '0px solid',
-        borderColor: 'green'
+        borderColor: 'blue'
       },
-      styleMapInfoContainer: {
+      styleMediaContainer: {
         height: '400px',
         margin: '0px',
         padding: '0px',
@@ -222,32 +223,25 @@ export default {
         borderColor: 'blue'
       },
       styleMapInfoMenus: {
-        height: '400px',
+        height: '48',
         margin: '0px',
         padding: '0px',
         backgroundColor: 'rgba(255, 255, 255, 1)',
         border: '0px solid',
-        borderColor: 'red'
+        borderColor: 'blue'
       },
       styleMapIFrameRow: {
-        height: '100px',
+        height: '100%',
         margin: '0px',
         padding: '0px',
         border: '0px solid',
         borderColor: 'green'
       },
-      styleMapImageRow: {
-        height: '100px',
-        margin: '0px',
-        padding: '0px',
-        border: '0px solid',
-        borderColor: 'red'
-      },
       styleProgressCircular: {
         bottom: '100px'
       },
       srcIFrame: '',
-      srcImage: '',
+      isIFrame: false,
       infoOptions: {
         minWidth: 1024,
         pixelOffset: {
@@ -258,7 +252,12 @@ export default {
       infoWindowPos: null,
       infoWinOpen: false,
       marker: {
-        position: { lng: 0, lat: 0 }
+        position: { lng: 0, lat: 0 },
+        list: [
+          {
+            title: ''
+          }
+        ]
       },
       mapOptions: {
         streetViewControl: false,
@@ -327,16 +326,12 @@ export default {
       let isIFrame = this.srcIFrame != null && this.srcIFrame != ''
       this.handleResize(isIFrame)
     },
-    handleResize(hasIFrame) {
+    handleResize(isIFrame) {
+      this.isIFrame = isIFrame
       let mapHeight = window.innerHeight - 150
-      let infoHeight = window.innerHeight / 2
-      let infoWidth = 1024
-      const titleHeight = 64
-      const menusHeight = 80
-      let containerHeight = infoHeight - menusHeight - titleHeight
-      if (hasIFrame == false) {
-        infoHeight = 160
-        containerHeight = 0
+      let infoWidth = 0
+      let mediaContainerHeight = 0
+      if (isIFrame == false) {
         infoWidth = window.innerWidth / 2
         if (window.innerWidth <= 500) {
           infoWidth = window.innerWidth - 48
@@ -344,6 +339,7 @@ export default {
           infoWidth = window.innerWidth / 3
         }
       } else {
+        mediaContainerHeight = mapHeight / 3
         if (window.innerWidth <= 500) {
           infoWidth = window.innerWidth - 48
         } else if (window.innerWidth <= 800) {
@@ -352,14 +348,20 @@ export default {
           infoWidth = window.innerWidth / 2
         }
       }
+      // let infoHeight = window.innerHeight / 2
+      let infoHeight =
+        Number(mediaContainerHeight) +
+        Number(this.styleMapInfoMenus.height) * 2 +
+        this.styleMapInfoMenus.height * this.marker.list.length -
+        16
+      if (infoHeight > (mapHeight / 3) * 2 - 32) {
+        infoHeight = (mapHeight / 3) * 2 - 32
+      }
       this.styleMap.height = mapHeight + 'px'
       this.styleMapInfoCard.height = infoHeight + 'px'
-      this.styleMapInfoContainer.height = containerHeight + 'px'
-      this.styleMapIFrameRow.height = 100 + '%'
-      this.styleMapImageRow.height = containerHeight + 'px'
-      this.styleMapInfoMenus.height = menusHeight + 'px'
+      this.styleMediaContainer.height = mediaContainerHeight + 'px'
       this.infoOptions.minWidth = infoWidth
-      this.styleProgressCircular.bottom = mapHeight / 2 + 40 + 'px'
+      this.styleProgressCircular.bottom = mapHeight / 2 + 80 + 'px'
     },
     async onClickMap(event) {
       this.infoWinOpen = false
@@ -405,7 +407,11 @@ export default {
       this.marker.title = marker.list[0].title
       this.marker.homepage = marker.list[0].homepage
       this.marker.media1 = marker.list[0].media1
-      this.srcIFrame = this.getIFrameSrc(marker.list[0])
+      if (marker.list.length == 1) {
+        this.srcIFrame = this.getIFrameSrc(marker.list[0])
+      } else {
+        this.srcIFrame = ''
+      }
       let isIFrame = this.srcIFrame != null && this.srcIFrame != ''
       this.handleResize(isIFrame)
 
@@ -454,6 +460,16 @@ export default {
         navigator.geolocation.getCurrentPosition(resolve, reject)
       })
     },
+    convertLv2Color(lv) {
+      if (lv == 1) {
+        return 'rgba(105, 145, 253, 1)'
+      } else if (lv == 2) {
+        return 'rgba(255, 174, 0, 1)'
+      } else if (lv == 3) {
+        return 'rgba(255, 110, 115, 1)'
+      }
+      return 'rgba(222, 222, 222, 1)'
+    },
     async getMarkersData() {
       const currentPosTmp = await this.getCurrentPosition()
       const currentPos = {
@@ -490,6 +506,11 @@ export default {
       response.list.unshift({
         position: currentPos,
         title: "I'm here!",
+        list: [
+          {
+            title: "I'm here!"
+          }
+        ],
         pinicon: {
           url: require('~/assets/img/pin-here-1.png'),
           scaledSize: { width: 24, height: 24, f: 'px', b: 'px' }
@@ -532,18 +553,20 @@ export default {
 }
 </script>
 <style>
-.map-info-subtitle {
-  margin: 0px;
-  padding: 0px;
+.map-info-subtitle-loco {
+  margin: 0px !important;
+  padding: 0px !important;
   background-color: rgba(255, 255, 255, 1);
-  border: 0px solid;
+  border: 1px solid;
 }
-.map-info-p-subtitle {
-  font-size: 20px;
+.map-info-p-subtitle-loco {
+  font-size: 16px;
   font-weight: bold;
-  margin: 0px;
-  padding: 0px;
+  margin: 0px !important;
+  padding: 0px !important;
   color: rgba(8, 8, 8, 1);
+  border: 0px solid;
+  border-color: green;
 }
 .map-info-row {
   margin: 0px;
