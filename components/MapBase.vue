@@ -463,7 +463,7 @@ export default {
       this.styleMapImageRow.height = containerHeight + 'px'
       this.styleMapInfoMenus.height = menusHeight + 'px'
       this.infoOptions.minWidth = infoWidth
-      this.styleProgressCircular.bottom = mapHeight / 2 + 40 + 'px'
+      this.styleProgressCircular.bottom = mapHeight / 2 + 80 + 'px'
     },
     async onClickMap(event) {
       this.infoWinOpen = false
