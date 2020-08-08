@@ -335,7 +335,7 @@ export default {
       const menusHeight = 80
       let containerHeight = infoHeight - menusHeight - titleHeight
       if (hasIFrame == false) {
-        infoHeight = 120
+        infoHeight = 160
         containerHeight = 0
         infoWidth = window.innerWidth / 2
         if (window.innerWidth <= 500) {
