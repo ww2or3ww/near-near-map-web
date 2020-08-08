@@ -365,6 +365,7 @@ export default {
         streetViewControl: false,
         styles: [
           {
+            featureType: 'administrative.land_parcel',
             elementType: 'labels',
             stylers: [
               {
@@ -373,8 +374,8 @@ export default {
             ]
           },
           {
-            featureType: 'administrative.land_parcel',
-            elementType: 'labels',
+            featureType: 'landscape',
+            elementType: 'labels.icon',
             stylers: [
               {
                 visibility: 'off'
@@ -387,6 +388,15 @@ export default {
             stylers: [
               {
                 visibility: 'off'
+              }
+            ]
+          },
+          {
+            featureType: 'transit',
+            elementType: 'all',
+            stylers: [
+              {
+                visibility: 'on'
               }
             ]
           },
