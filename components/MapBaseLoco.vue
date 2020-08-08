@@ -19,82 +19,91 @@
         :opened="infoWinOpen"
         @closeclick="infoWinOpen = false"
       >
-        <v-card :style="styleMapInfoCard">
-          <div v-for="(item, key) in marker.list" :key="key">
-            <v-container
-              :style="[
-                styleMapInfoTitle,
-                { backgroundColor: convertLv2Color(item.crowd_lv) }
-              ]"
-            >
-              <!-- TITLE -->
-              <p class="map-info-p-subtitle-loco">
-                {{ item.title }}
-              </p>
-            </v-container>
-            <v-container v-if="isIFrame" :style="styleMediaContainer">
-              <!-- IFRAME -->
-              <v-row justify="space-between" :style="styleMapIFrameRow">
-                <v-col class="map-info-col">
-                  <iframe
-                    v-if="srcIFrame"
-                    :src="srcIFrame"
-                    class="map-info-iframe"
-                    sandbox="allow-scripts allow-same-origin"
-                  ></iframe>
-                </v-col>
-              </v-row>
-            </v-container>
-            <v-container :style="styleMapInfoMenus">
-              <!-- LINKS -->
-              <v-row
-                justify="space-between"
-                class="map-info-row"
-                style="padding-top: 4px; padding-bottom: 4px;"
+        <div>
+          <v-card
+            :style="[
+              styleMapInfoCard,
+              { overflow: marker.list.length > 1 ? 'scroll' : 'hidden' }
+            ]"
+          >
+            <div v-for="(item, key) in marker.list" :key="key">
+              <v-container
+                :style="[
+                  styleMapInfoTitle,
+                  { backgroundColor: convertLv2Color(item.crowd_lv) }
+                ]"
               >
-                <v-col class="map-info-col">
-                  <div class="d-flex flex-row-reverse">
-                    <v-btn
-                      v-if="item.homepage && item.homepage.address"
-                      class="map-info-btn"
-                      fab
-                      width="28px"
-                      height="28px"
-                      color="#888888"
-                      :href="item.homepage.address"
-                      target="_blank"
-                    >
-                      <v-icon size="20px">mdi-home</v-icon>
-                    </v-btn>
-                    <v-btn
-                      v-if="item.media1 && item.media1.address"
-                      class="map-info-btn"
-                      fab
-                      width="28px"
-                      height="28px"
-                      color="#888888"
-                      :href="item.media1.address"
-                      target="_blank"
-                    >
-                      <v-icon size="20px">mdi-newspaper-variant-outline</v-icon>
-                    </v-btn>
-                    <v-btn
-                      v-if="item.tel"
-                      class="map-info-btn"
-                      fab
-                      width="28px"
-                      height="28px"
-                      color="#888888"
-                      :href="'tel:' + item.tel"
-                      target="_blank"
-                    >
-                      <v-icon size="20px">mdi-phone</v-icon>
-                    </v-btn>
-                  </div>
-                </v-col>
-              </v-row>
-            </v-container>
-          </div>
+                <!-- TITLE -->
+                <p class="map-info-p-subtitle-loco">
+                  {{ item.title }}
+                </p>
+              </v-container>
+              <v-container v-if="isIFrame" :style="styleMediaContainer">
+                <!-- IFRAME -->
+                <v-row justify="space-between" :style="styleMapIFrameRow">
+                  <v-col class="map-info-col">
+                    <iframe
+                      v-if="srcIFrame"
+                      :src="srcIFrame"
+                      class="map-info-iframe"
+                      sandbox="allow-scripts allow-same-origin"
+                    ></iframe>
+                  </v-col>
+                </v-row>
+              </v-container>
+              <v-container :style="styleMapInfoMenus">
+                <!-- LINKS -->
+                <v-row
+                  justify="space-between"
+                  class="map-info-row"
+                  style="padding-top: 4px; padding-bottom: 4px;"
+                >
+                  <v-col class="map-info-col">
+                    <div class="d-flex flex-row-reverse">
+                      <v-btn
+                        v-if="item.homepage && item.homepage.address"
+                        class="map-info-btn"
+                        fab
+                        width="28px"
+                        height="28px"
+                        color="#888888"
+                        :href="item.homepage.address"
+                        target="_blank"
+                      >
+                        <v-icon size="20px">mdi-home</v-icon>
+                      </v-btn>
+                      <v-btn
+                        v-if="item.media1 && item.media1.address"
+                        class="map-info-btn"
+                        fab
+                        width="28px"
+                        height="28px"
+                        color="#888888"
+                        :href="item.media1.address"
+                        target="_blank"
+                      >
+                        <v-icon size="20px">
+                          mdi-newspaper-variant-outline
+                        </v-icon>
+                      </v-btn>
+                      <v-btn
+                        v-if="item.tel"
+                        class="map-info-btn"
+                        fab
+                        width="28px"
+                        height="28px"
+                        color="#888888"
+                        :href="'tel:' + item.tel"
+                        target="_blank"
+                      >
+                        <v-icon size="20px">mdi-phone</v-icon>
+                      </v-btn>
+                    </div>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </div>
+          </v-card>
           <v-container :style="styleMapInfoMenus">
             <!-- ACCESS -->
             <v-row
@@ -124,7 +133,7 @@
               </v-col>
             </v-row>
           </v-container>
-        </v-card>
+        </div>
       </GmapInfoWindow>
       <GmapMarker
         v-for="(m, index) in myMarkers"
@@ -205,12 +214,11 @@ export default {
         padding: '0px 0px 2px 0px',
         backgroundColor: 'rgba(255, 255, 255, 1)',
         border: '0px solid',
-        borderColor: 'red',
-        overflow: 'auto'
+        borderColor: 'red'
       },
       styleMapInfoTitle: {
         margin: '0px !important',
-        padding: '0px !important',
+        padding: '2px 2px 2px 4px !important',
         border: '0px solid',
         borderColor: 'blue'
       },
@@ -351,11 +359,12 @@ export default {
       // let infoHeight = window.innerHeight / 2
       let infoHeight =
         Number(mediaContainerHeight) +
-        Number(this.styleMapInfoMenus.height) * 2 +
+        Number(this.styleMapInfoMenus.height) +
         this.styleMapInfoMenus.height * this.marker.list.length -
         16
       if (infoHeight > (mapHeight / 3) * 2 - 32) {
         infoHeight = (mapHeight / 3) * 2 - 32
+        infoHeight -= Number(this.styleMapInfoMenus.height)
       }
       this.styleMap.height = mapHeight + 'px'
       this.styleMapInfoCard.height = infoHeight + 'px'
@@ -589,7 +598,7 @@ export default {
 .map-info-iframe {
   width: 200%;
   height: 200%;
-  margin-right: 8px;
+  margin-right: 4px;
   transform: scale(0.5);
   -o-transform: scale(0.5);
   -webkit-transform: scale(0.5);
