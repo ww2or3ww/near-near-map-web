@@ -34,7 +34,7 @@
                 ]"
               >
                 <!-- TITLE -->
-                <p class="map-info-p-subtitle-loco">
+                <p class="map-info-p-subtitle">
                   {{ item.title }}
                 </p>
               </v-container>
@@ -506,7 +506,7 @@ export default {
       this.maplocationTmp.lng = this.maplocation.lng
 
       const requestAddress =
-        'https://l8h2fp9jcf.execute-api.ap-northeast-1.amazonaws.com/work/near-near-map-dev?' +
+        'https://l8h2fp9jcf.execute-api.ap-northeast-1.amazonaws.com/work/near-near-map-loco?' +
         'latlon=' +
         this.maplocation.lat +
         ',' +
@@ -562,13 +562,7 @@ export default {
 }
 </script>
 <style>
-.map-info-subtitle-loco {
-  margin: 0px !important;
-  padding: 0px !important;
-  background-color: rgba(255, 255, 255, 1);
-  border: 1px solid;
-}
-.map-info-p-subtitle-loco {
+.map-info-p-subtitle {
   font-size: 16px;
   font-weight: bold;
   margin: 0px !important;
