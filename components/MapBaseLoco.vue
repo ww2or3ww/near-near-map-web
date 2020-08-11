@@ -217,6 +217,7 @@ export default {
         borderColor: 'red'
       },
       styleMapInfoTitle: {
+        height: '28',
         margin: '0px !important',
         padding: '2px 2px 2px 4px !important',
         border: '0px solid',
@@ -359,9 +360,10 @@ export default {
       // let infoHeight = window.innerHeight / 2
       let infoHeight =
         Number(mediaContainerHeight) +
-        Number(this.styleMapInfoMenus.height) +
-        this.styleMapInfoMenus.height * this.marker.list.length -
-        16
+        (Number(this.styleMapInfoTitle.height) +
+          Number(this.styleMapInfoMenus.height)) *
+          this.marker.list.length +
+        this.marker.list.length * 8
       if (infoHeight > (mapHeight / 3) * 2 - 32) {
         infoHeight = (mapHeight / 3) * 2 - 32
         infoHeight -= Number(this.styleMapInfoMenus.height)
@@ -413,15 +415,13 @@ export default {
       this.$refs.gmp.panTo(marker.position)
       this.infoWindowPos = marker.position
       this.marker = marker
-      this.marker.title = marker.list[0].title
-      this.marker.homepage = marker.list[0].homepage
-      this.marker.media1 = marker.list[0].media1
+      let isIFrame = false
       if (marker.list.length == 1) {
         this.srcIFrame = this.getIFrameSrc(marker.list[0])
+        isIFrame = this.srcIFrame != null && this.srcIFrame != ''
       } else {
         this.srcIFrame = ''
       }
-      let isIFrame = this.srcIFrame != null && this.srcIFrame != ''
       this.handleResize(isIFrame)
 
       this.infoWinOpen = true
