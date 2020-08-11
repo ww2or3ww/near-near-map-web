@@ -20,17 +20,22 @@
         @closeclick="infoWinOpen = false"
       >
         <div>
-          <v-card :style="styleMapInfoCard">
-            <div>
+          <v-card
+            :style="[
+              styleMapInfoCard,
+              { overflow: marker.list.length > 1 ? 'scroll' : 'hidden' }
+            ]"
+          >
+            <div v-for="(item, key) in marker.list" :key="key">
               <v-container
                 :style="[
                   styleMapInfoTitle,
-                  { backgroundColor: convertLv2Color(marker.crowd_lv) }
+                  { backgroundColor: convertLv2Color(item.crowd_lv) }
                 ]"
               >
                 <!-- TITLE -->
                 <p class="map-info-p-subtitle">
-                  {{ marker.title }}
+                  {{ item.title }}
                 </p>
               </v-container>
               <v-container v-if="isIFrame" :style="styleMediaContainer">
@@ -62,61 +67,61 @@
                   <v-col class="map-info-col">
                     <div class="d-flex flex-row-reverse">
                       <v-btn
-                        v-if="marker.homepage && marker.homepage.address"
+                        v-if="item.homepage && item.homepage.address"
                         class="map-info-btn"
                         fab
                         width="28px"
                         height="28px"
                         color="#888888"
-                        :href="marker.homepage.address"
+                        :href="item.homepage.address"
                         target="_blank"
                       >
                         <v-icon size="20px">mdi-home</v-icon>
                       </v-btn>
                       <v-btn
-                        v-if="marker.facebook"
+                        v-if="item.facebook"
                         class="map-info-btn"
                         fab
                         width="28px"
                         height="28px"
                         color="#888888"
-                        :href="marker.facebook"
+                        :href="item.facebook"
                         target="_blank"
                       >
                         <v-icon size="20px">mdi-facebook</v-icon>
                       </v-btn>
                       <v-btn
-                        v-if="marker.instagram"
+                        v-if="item.instagram"
                         class="map-info-btn"
                         fab
                         width="28px"
                         height="28px"
-                        :href="marker.instagram"
+                        :href="item.instagram"
                         color="#888888"
                         target="_blank"
                       >
                         <v-icon size="20px">mdi-instagram</v-icon>
                       </v-btn>
                       <v-btn
-                        v-if="marker.twitter"
+                        v-if="item.twitter"
                         class="map-info-btn"
                         fab
                         width="28px"
                         height="28px"
                         color="#888888"
-                        :href="marker.twitter"
+                        :href="item.twitter"
                         target="_blank"
                       >
                         <v-icon size="20px">mdi-twitter</v-icon>
                       </v-btn>
                       <v-btn
-                        v-if="marker.media1 && marker.media1.address"
+                        v-if="item.media1 && item.media1.address"
                         class="map-info-btn"
                         fab
                         width="28px"
                         height="28px"
                         color="#888888"
-                        :href="marker.media1.address"
+                        :href="item.media1.address"
                         target="_blank"
                       >
                         <v-icon size="20px">
@@ -124,13 +129,13 @@
                         </v-icon>
                       </v-btn>
                       <v-btn
-                        v-if="marker.media2 && marker.media2.address"
+                        v-if="item.media2 && item.media2.address"
                         class="map-info-btn"
                         fab
                         width="28px"
                         height="28px"
                         color="#888888"
-                        :href="marker.media2.address"
+                        :href="item.media2.address"
                         target="_blank"
                       >
                         <v-icon size="20px">
@@ -138,13 +143,13 @@
                         </v-icon>
                       </v-btn>
                       <v-btn
-                        v-if="marker.media3 && marker.media3.address"
+                        v-if="item.media3 && item.media3.address"
                         class="map-info-btn"
                         fab
                         width="28px"
                         height="28px"
                         color="#888888"
-                        :href="marker.media3.address"
+                        :href="item.media3.address"
                         target="_blank"
                       >
                         <v-icon size="20px">
@@ -152,13 +157,13 @@
                         </v-icon>
                       </v-btn>
                       <v-btn
-                        v-if="marker.media4 && marker.media4.address"
+                        v-if="item.media4 && item.media4.address"
                         class="map-info-btn"
                         fab
                         width="28px"
                         height="28px"
                         color="#888888"
-                        :href="marker.media4.address"
+                        :href="item.media4.address"
                         target="_blank"
                       >
                         <v-icon size="20px">
@@ -166,13 +171,13 @@
                         </v-icon>
                       </v-btn>
                       <v-btn
-                        v-if="marker.media5 && marker.media5.address"
+                        v-if="item.media5 && item.media5.address"
                         class="map-info-btn"
                         fab
                         width="28px"
                         height="28px"
                         color="#888888"
-                        :href="marker.media5.address"
+                        :href="item.media5.address"
                         target="_blank"
                       >
                         <v-icon size="20px">
@@ -204,7 +209,7 @@
                       'https://www.near-near-map-manage.w2or3w.com/update/?type=' +
                         marker.type +
                         '&tel=' +
-                        marker.tel
+                        marker.list[0].tel
                     "
                     target="_blank"
                   >
@@ -231,13 +236,13 @@
                     <v-icon size="20px">mdi-google-maps</v-icon>
                   </v-btn>
                   <v-btn
-                    v-if="marker.tel"
+                    v-if="marker.list[0].tel"
                     class="map-info-btn"
                     fab
                     width="28px"
                     height="28px"
                     color="#888888"
-                    :href="'tel:' + marker.tel"
+                    :href="'tel:' + marker.list[0].tel"
                     target="_blank"
                   >
                     <v-icon size="20px">mdi-phone</v-icon>
@@ -332,6 +337,7 @@ export default {
         overflow: 'hidden'
       },
       styleMapInfoTitle: {
+        height: '28',
         margin: '0px !important',
         padding: '2px 2px 2px 4px !important',
         border: '0px solid',
@@ -485,9 +491,10 @@ export default {
       // let infoHeight = window.innerHeight / 2
       let infoHeight =
         Number(mediaContainerHeight) +
-        Number(this.styleMapInfoMenus.height) +
-        this.styleMapInfoMenus.height * 1 -
-        16
+        (Number(this.styleMapInfoTitle.height) +
+          Number(this.styleMapInfoMenus.height)) *
+          this.marker.list.length +
+        this.marker.list.length * 8
       if (infoHeight > (mapHeight / 3) * 2 - 32) {
         infoHeight = (mapHeight / 3) * 2 - 32
         infoHeight -= Number(this.styleMapInfoMenus.height)
@@ -541,12 +548,17 @@ export default {
       this.$refs.gmp.panTo(marker.position)
       this.infoWindowPos = marker.position
       this.marker = marker
-      this.srcIFrame = this.getIFrameSrc(marker)
       this.srcImage = null
-      let isIFrame = this.srcIFrame != null && this.srcIFrame != ''
-      if (!this.srcIFrame) {
-        this.srcImage = marker.image
-        isIFrame = this.srcImage != null && this.srcImage != ''
+      let isIFrame = false
+      if (marker.list.length == 1) {
+        this.srcIFrame = this.getIFrameSrc(marker.list[0])
+        isIFrame = this.srcIFrame != null && this.srcIFrame != ''
+        if (!this.srcIFrame) {
+          this.srcImage = marker.image
+          isIFrame = this.srcImage != null && this.srcImage != ''
+        }
+      } else {
+        this.srcIFrame = ''
       }
       this.handleResize(isIFrame)
 
@@ -559,11 +571,11 @@ export default {
     },
     getIFrameSrcByValue(item) {
       let src = null
-      if (typeof item == 'string') {
-        src = item
-      } else if ('address' in item && item.address.indexOf('https') == 0) {
-        if (item.has_xframe_options == 0) {
-          src = item.address
+      if ('address' in item && item.address) {
+        if (item.address.indexOf('https') == 0) {
+          if (item.has_xframe_options == 0) {
+            src = item.address
+          }
         }
       }
       return src
@@ -646,7 +658,7 @@ export default {
       this.maplocationTmp.lng = this.maplocation.lng
 
       const requestAddress =
-        'https://l8h2fp9jcf.execute-api.ap-northeast-1.amazonaws.com/work/near-near-map-es?type=' +
+        'https://l8h2fp9jcf.execute-api.ap-northeast-1.amazonaws.com/work/near-near-map-dev?type=' +
         type +
         '&latlon=' +
         this.maplocation.lat +
@@ -676,11 +688,11 @@ export default {
         let iwidth = 42
         let iheight = 42
         if (response.has_clowd) {
-          if (response.list[i].crowd_lv == 3) {
+          if (response.list[i].list[0].crowd_lv == 3) {
             path = red
-          } else if (response.list[i].crowd_lv == 2) {
+          } else if (response.list[i].list[0].crowd_lv == 2) {
             path = orange
-          } else if (response.list[i].crowd_lv == 1) {
+          } else if (response.list[i].list[0].crowd_lv == 1) {
             path = blue
           } else {
             path = gray
