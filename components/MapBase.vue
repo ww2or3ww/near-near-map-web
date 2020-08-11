@@ -554,7 +554,7 @@ export default {
         this.srcIFrame = this.getIFrameSrc(marker.list[0])
         isIFrame = this.srcIFrame != null && this.srcIFrame != ''
         if (!this.srcIFrame) {
-          this.srcImage = marker.image
+          this.srcImage = marker.list[0].image
           isIFrame = this.srcImage != null && this.srcImage != ''
         }
       } else {
