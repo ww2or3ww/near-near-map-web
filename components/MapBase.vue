@@ -208,8 +208,8 @@
                     :href="
                       'https://www.near-near-map-manage.w2or3w.com/update/?type=' +
                         marker.type +
-                        '&tel=' +
-                        marker.list[0].tel
+                        '&guid=' +
+                        marker.list[0].guid
                     "
                     target="_blank"
                   >
