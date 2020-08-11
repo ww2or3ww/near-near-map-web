@@ -148,17 +148,18 @@ export default {
     this.setListener()
   },
   mounted() {
-    const index = this.$i18n.t('index.menu').findIndex((e) => {
-      const link = '/' + this.$i18n.locale + e.link
-      return e.link === this.$route.path || link === this.$route.path
-    })
-    if (index > 0) {
-      this.onSwitchPage(index)
-    }
+    this.updateBottomWord()
   },
   methods: {
     setListener() {
       this.$nuxt.$on('onSwitchPage', this.onSwitchPage)
+    },
+    updateBottomWord() {
+      const index = this.contents.findIndex((e) => {
+        const link = '/' + this.$i18n.locale + e.link
+        return e.link === this.$route.path || link === this.$route.path
+      })
+      this.onSwitchPage(index < 0 ? 0 : index)
     },
     onSwitchPage(index) {
       const path = this.localePath(this.contents[index].link)
@@ -170,7 +171,7 @@ export default {
         this.selectedTitle = '♪'
       } else {
         const item = this.$i18n.t('index.menu')[index]
-        this.selectedTitle = item.title + '    }'
+        this.selectedTitle = item.title + ' ♪  }'
       }
     },
     onClickCurrentPosition() {},
