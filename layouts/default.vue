@@ -155,15 +155,11 @@ export default {
       this.$nuxt.$on('onSwitchPage', this.onSwitchPage)
     },
     updateBottomWord() {
-      console.log(this.$i18n.locale)
-      console.log(this.$route.path)
       const path = this.$route.path.replace(/\/$/, '')
-      console.log(path)
       const index = this.contents.findIndex((e) => {
         const link = '/' + this.$i18n.locale + e.link
         return e.link === path || link === path
       })
-      console.log(index)
       this.onSwitchPage(index < 0 ? 0 : index)
     },
     onSwitchPage(index) {

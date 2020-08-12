@@ -47,13 +47,6 @@ export default {
           'https://near-near-map.s3-ap-northeast-1.amazonaws.com/images/resources/ogpimg.png'
       }
     ],
-    script: [
-      {
-        'data-ad-client': 'ca-pub-8379523585300362',
-        async: true,
-        src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
-      }
-    ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/img/favicon.png' }]
   },
   /*
