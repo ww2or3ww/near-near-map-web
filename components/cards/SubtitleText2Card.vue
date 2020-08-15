@@ -52,14 +52,16 @@ export default {
   border: 0px solid;
 }
 .p-card-subtitle {
-  font-family: 'Nico Moji';
-  font-size: 16px;
+  font-family: 'Kosugi Maru';
+  font-weight: bold;
+  font-size: 14px;
   line-height: 0px;
 }
 .card-text {
   margin-left: 8px;
 }
 .p-card-text {
+  font-family: 'Kosugi Maru';
   font-size: 12px;
   margin: 0px;
   padding: 0px;
