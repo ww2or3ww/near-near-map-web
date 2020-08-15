@@ -3,7 +3,7 @@ export default (context, inject) => {
     return [
       {
         link: '/',
-        icon: 'mdi-home',
+        icon: 'mdi-cat',
         hilite: false
       },
       {

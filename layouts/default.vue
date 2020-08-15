@@ -107,13 +107,15 @@
       <v-container fluid style="margin:0px; padding:0px; ">
         <div class="d-flex flex-row-reverse" style="align-items: center;">
           <div>
-            <p class="foot-cat" style="margin: 0px; padding: 0px;">
+            <p class="font-foot-cat" style="margin: 0px; padding: 0px;">
               &nbsp;∧ ∧&nbsp;&nbsp;
             </p>
-            <p class="foot-cat" style="margin: 0px; padding: 0px;">(ﾟーﾟ*)</p>
+            <p class="font-foot-cat" style="margin: 0px; padding: 0px;">
+              (ﾟーﾟ*)
+            </p>
           </div>
           <div>
-            <p class="foot-text" style="margin: 0px; padding: 0px;">
+            <p class="font-foot-text" style="margin: 0px; padding: 0px;">
               {{ selectedTitle }}&nbsp;&nbsp;
             </p>
           </div>
@@ -187,22 +189,27 @@ export default {
   font-size: 28px !important;
 }
 .font-drawer-title {
-  font-family: 'Nico Moji';
-  font-size: 20px;
+  font-family: 'Kosugi Maru';
+  font-weight: bold;
+  font-size: 18px;
 }
 .font-drawer-text {
-  font-family: 'Nico Moji';
+  font-family: 'Kosugi Maru';
+  font-weight: bold;
   font-size: 16px;
 }
-.foot-text {
-  font-family: 'Nico Moji';
-  font-size: 16px;
+.font-foot-text {
+  font-family: 'Kosugi Maru';
+  font-weight: bold;
+  font-size: 14px;
   text-align: right;
   margin: 0px;
   padding: 0px;
   border: 0px solid;
 }
-.foot-cat {
+.font-foot-cat {
+  font-family: 'Roboto';
+  font-weight: bold;
   font-size: 8px;
   text-align: right;
   color: white;
@@ -213,12 +220,6 @@ export default {
 .common-card-title {
   padding: 0px;
   padding-left: 16px;
-  border: 0px solid;
-}
-.common-p-card-title {
-  padding: 0px;
-  font-family: 'Nico Moji';
-  font-size: 20px;
   border: 0px solid;
 }
 </style>
