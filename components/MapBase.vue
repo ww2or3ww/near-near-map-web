@@ -658,7 +658,7 @@ export default {
       this.maplocationTmp.lng = this.maplocation.lng
 
       const requestAddress =
-        'https://l8h2fp9jcf.execute-api.ap-northeast-1.amazonaws.com/work/near-near-map-dev?type=' +
+        'https://l8h2fp9jcf.execute-api.ap-northeast-1.amazonaws.com/work/near-near-map-es?type=' +
         type +
         '&latlon=' +
         this.maplocation.lat +
@@ -683,6 +683,8 @@ export default {
       const red = require('~/assets/img/pin/red-dot.png')
       const orange = require('~/assets/img/pin/orange-dot.png')
       const blue = require('~/assets/img/pin/blue-dot.png')
+      const star = require('~/assets/img/pin/icon47.png')
+      let starList = []
       for (let i = 1; i < response.list.length; i++) {
         let path = '~/assets/img/pin/blue-dot.png'
         let iwidth = 42
@@ -708,7 +710,21 @@ export default {
           url: path,
           scaledSize: { width: iwidth, height: iheight, f: 'px', b: 'px' }
         }
+
+        if (
+          response.list[i].list[0].star &&
+          response.list[i].list[0].star > 0
+        ) {
+          let starItem = { ...response.list[i] }
+          starItem.pinicon = {
+            url: star,
+            scaledSize: { width: 18, height: 18, f: 'px', b: 'px' }
+          }
+          starList.push(starItem)
+        }
       }
+
+      Array.prototype.push.apply(response.list, starList)
       return response.list
     }
   }

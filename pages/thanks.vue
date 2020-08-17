@@ -145,7 +145,7 @@ export default {
           address: 'https://www.mochikaeru.com/'
         },
         {
-          title: '奥三河エール飯 | キラッと奥三河観光ナビ',
+          title: '奥三河エール飯',
           address: 'https://www.okuminavi.jp/takeout/'
         },
         {
@@ -153,16 +153,12 @@ export default {
           address: 'https://enshumask.hamazo.tv/'
         },
         {
-          title: '浜松のテイクアウト情報まとめサイト│はままつ飯.net',
+          title: 'はままつ飯.net',
           address: 'https://machimeshi.net/'
         },
         {
-          title: 'テイクアウト浜松｜おいしい浜松、持ち帰ろう。',
+          title: 'テイクアウト浜松',
           address: 'https://take-out-hamamatsu.com/'
-        },
-        {
-          title: '公益社団法人 日本煙火協会',
-          address: 'http://www.hanabi-jpa.jp/'
         },
         {
           title: 'ココハマ｜浜松の“おいしい”と“楽しい”を集めた地域WEBマガジン',
@@ -195,6 +191,10 @@ export default {
         {
           title: 'トクバイ(遠鉄ストア, 杏林堂薬局)',
           address: 'https://tokubai.co.jp/'
+        },
+        {
+          title: 'テイクアウト いわた',
+          address: 'https://take-out-iwata.com/'
         }
       ]
     }
