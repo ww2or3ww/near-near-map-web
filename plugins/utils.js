@@ -44,7 +44,7 @@ export default (context, inject) => {
       {
         link: '/loco',
         icon: 'mdi-lightbulb-on-outline',
-        hilite: false
+        hilite: true
       },
       {
         link: '/about',
