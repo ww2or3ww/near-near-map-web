@@ -511,7 +511,13 @@ export default {
         this.maplocation.lat +
         ',' +
         this.maplocation.lng
-      const response = await this.$axios.$get(requestAddress)
+      const params = {
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': 'T7E9eH0LNf10LeritjSbu672wKyKeLQC7rTNVhpe'
+        }
+      }
+      const response = await this.$axios.$get(requestAddress, params)
       response.list.unshift({
         position: currentPos,
         title: "I'm here!",

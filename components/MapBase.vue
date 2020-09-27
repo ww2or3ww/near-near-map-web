@@ -658,13 +658,21 @@ export default {
       this.maplocationTmp.lng = this.maplocation.lng
 
       const requestAddress =
-        'https://l8h2fp9jcf.execute-api.ap-northeast-1.amazonaws.com/work/near-near-map-es?type=' +
+        'https://l8h2fp9jcf.execute-api.ap-northeast-1.amazonaws.com/work/near-near-map-search?type=' +
         type +
         '&latlon=' +
         this.maplocation.lat +
         ',' +
-        this.maplocation.lng
-      const response = await this.$axios.$get(requestAddress)
+        this.maplocation.lng +
+        '&zoom=' +
+        this.zoom
+      const params = {
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': 'T7E9eH0LNf10LeritjSbu672wKyKeLQC7rTNVhpe'
+        }
+      }
+      const response = await this.$axios.$get(requestAddress, params)
       response.list.unshift({
         position: currentPos,
         title: "I'm here!",
