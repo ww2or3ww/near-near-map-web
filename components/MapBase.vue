@@ -686,49 +686,84 @@ export default {
           scaledSize: { width: 24, height: 24, f: 'px', b: 'px' }
         }
       })
-      const noclowd = require('~/assets/img/pin/mm_20_gray.png')
-      const gray = require('~/assets/img/pin/mm_20_gray.png')
-      const red = require('~/assets/img/pin/red-dot.png')
-      const orange = require('~/assets/img/pin/orange-dot.png')
-      const blue = require('~/assets/img/pin/blue-dot.png')
-      const star = require('~/assets/img/pin/icon47.png')
+      const widhtA = 24
+      const heightA = 32
+      const gray = require('~/assets/img/pin/gray.png')
+      const gray_star = require('~/assets/img/pin/gray-star.png')
+      const gray_go = require('~/assets/img/pin/gray-go.png')
+      const gray_star_go = require('~/assets/img/pin/gray-star-go.png')
+      const blue = require('~/assets/img/pin/blue.png')
+      const blue_star = require('~/assets/img/pin/blue-star.png')
+      const blue_go = require('~/assets/img/pin/blue-go.png')
+      const blue_star_go = require('~/assets/img/pin/blue-star-go.png')
+      const yellow = require('~/assets/img/pin/yellow.png')
+      const yellow_star = require('~/assets/img/pin/yellow-star.png')
+      const yellow_go = require('~/assets/img/pin/yellow-go.png')
+      const yellow_star_go = require('~/assets/img/pin/yellow-star-go.png')
+      const red = require('~/assets/img/pin/red.png')
+      const red_star = require('~/assets/img/pin/red-star.png')
+      const red_go = require('~/assets/img/pin/red-go.png')
+      const red_star_go = require('~/assets/img/pin/red-star-go.png')
       let starList = []
       for (let i = 1; i < response.list.length; i++) {
         let path = '~/assets/img/pin/blue-dot.png'
-        let iwidth = 42
-        let iheight = 42
-        if (response.has_clowd) {
-          if (response.list[i].list[0].crowd_lv == 3) {
-            path = red
-          } else if (response.list[i].list[0].crowd_lv == 2) {
-            path = orange
-          } else if (response.list[i].list[0].crowd_lv == 1) {
-            path = blue
+        let iwidth = widhtA
+        let iheight = heightA
+        if (
+          !response.list[i].list[0].crowd_lv ||
+          response.list[i].list[0].crowd_lv == 0
+        ) {
+          if (!response.list[i].list[0].star) {
+            path = gray
+          } else if (response.list[i].list[0].star == 1) {
+            path = gray_star
+          } else if (response.list[i].list[0].star == 2) {
+            path = gray_go
+          } else if (response.list[i].list[0].star == 3) {
+            path = gray_star_go
           } else {
             path = gray
-            iwidth = 18
-            iheight = 30
           }
-        } else {
-          path = noclowd
-          iwidth = 18
-          iheight = 30
+        } else if (response.list[i].list[0].crowd_lv == 1) {
+          if (!response.list[i].list[0].star) {
+            path = blue
+          } else if (response.list[i].list[0].star == 1) {
+            path = blue_star
+          } else if (response.list[i].list[0].star == 2) {
+            path = blue_go
+          } else if (response.list[i].list[0].star == 3) {
+            path = blue_star_go
+          } else {
+            path = blue
+          }
+        } else if (response.list[i].list[0].crowd_lv == 2) {
+          if (!response.list[i].list[0].star) {
+            path = yellow
+          } else if (response.list[i].list[0].star == 1) {
+            path = yellow_star
+          } else if (response.list[i].list[0].star == 2) {
+            path = yellow_go
+          } else if (response.list[i].list[0].star == 3) {
+            path = yellow_star_go
+          } else {
+            path = yellow
+          }
+        } else if (response.list[i].list[0].crowd_lv == 3) {
+          if (!response.list[i].list[0].star) {
+            path = red
+          } else if (response.list[i].list[0].star == 1) {
+            path = red_star
+          } else if (response.list[i].list[0].star == 2) {
+            path = red_go
+          } else if (response.list[i].list[0].star == 3) {
+            path = red_star_go
+          } else {
+            path = red
+          }
         }
         response.list[i].pinicon = {
           url: path,
           scaledSize: { width: iwidth, height: iheight, f: 'px', b: 'px' }
-        }
-
-        if (
-          response.list[i].list[0].star &&
-          response.list[i].list[0].star > 0
-        ) {
-          let starItem = { ...response.list[i] }
-          starItem.pinicon = {
-            url: star,
-            scaledSize: { width: 18, height: 18, f: 'px', b: 'px' }
-          }
-          starList.push(starItem)
         }
       }
 

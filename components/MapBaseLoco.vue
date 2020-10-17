@@ -531,15 +531,14 @@ export default {
           scaledSize: { width: 24, height: 24, f: 'px', b: 'px' }
         }
       })
-      const noclowd = require('~/assets/img/pin/mm_20_gray.png')
-      const gray = require('~/assets/img/pin/mm_20_gray.png')
-      const red = require('~/assets/img/pin/red-dot.png')
-      const orange = require('~/assets/img/pin/orange-dot.png')
-      const blue = require('~/assets/img/pin/blue-dot.png')
+      const gray = require('~/assets/img/pin/gray.png')
+      const red = require('~/assets/img/pin/red.png')
+      const orange = require('~/assets/img/pin/yellow.png')
+      const blue = require('~/assets/img/pin/blue.png')
       for (let i = 1; i < response.list.length; i++) {
         let path = '~/assets/img/pin/blue-dot.png'
-        let iwidth = 42
-        let iheight = 42
+        let iwidth = 30
+        let iheight = 40
         if (response.has_clowd) {
           if (response.list[i].list[0].crowd_lv == 3) {
             path = red
@@ -549,13 +548,11 @@ export default {
             path = blue
           } else {
             path = gray
-            iwidth = 18
-            iheight = 30
+            iwidth = 24
+            iheight = 32
           }
         } else {
-          path = noclowd
-          iwidth = 18
-          iheight = 30
+          path = gray
         }
         response.list[i].pinicon = {
           url: path,
