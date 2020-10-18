@@ -537,7 +537,7 @@ export default {
       const blue = require('~/assets/img/pin/blue.png')
       for (let i = 1; i < response.list.length; i++) {
         let path = '~/assets/img/pin/blue-dot.png'
-        let iwidth = 30
+        let iwidth = 28
         let iheight = 40
         if (response.has_clowd) {
           if (response.list[i].list[0].crowd_lv == 3) {
