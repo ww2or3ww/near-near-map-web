@@ -686,8 +686,8 @@ export default {
           scaledSize: { width: 24, height: 24, f: 'px', b: 'px' }
         }
       })
-      const widhtA = 24
-      const heightA = 32
+      const widhtA = 28
+      const heightA = 40
       const gray = require('~/assets/img/pin/gray.png')
       const gray_star = require('~/assets/img/pin/gray-star.png')
       const gray_go = require('~/assets/img/pin/gray-go.png')
