@@ -22,11 +22,6 @@ export default (context, inject) => {
         hilite: false
       },
       {
-        link: '/mask',
-        icon: 'mdi-alpha-m-circle-outline',
-        hilite: false
-      },
-      {
         link: '/outdoor',
         icon: 'mdi-tent',
         hilite: false
@@ -37,8 +32,8 @@ export default (context, inject) => {
         hilite: false
       },
       {
-        link: '/plant',
-        icon: 'mdi-flower',
+        link: '/temple',
+        icon: 'mdi-peace',
         hilite: false
       },
       {
