@@ -50,8 +50,8 @@
               Google Maps API, Google Drive API
             </li>
             <li class="font-card-text">
-              AWS Amplify, AppSync, DynamoDB, S3, Lambda(Python), CloudSearch,
-              Rekognition
+              AWS Amplify, AppSync, DynamoDB, S3, Lambda(Python), StepFunctions,
+              CloudSearch, Athena, Rekognition
             </li>
           </ul>
           <p></p>

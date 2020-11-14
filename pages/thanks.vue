@@ -141,8 +141,8 @@ export default {
       ],
       items: [
         {
-          title: 'モチカエル',
-          address: 'https://www.mochikaeru.com/'
+          title: 'モチカエル (Closed)',
+          address: ''
         },
         {
           title: '奥三河エール飯',
@@ -161,7 +161,7 @@ export default {
           address: 'https://take-out-hamamatsu.com/'
         },
         {
-          title: 'ココハマ｜浜松の“おいしい”と“楽しい”を集めた地域WEBマガジン',
+          title: 'ココハマ',
           address: 'https://www.murakichi.net/'
         },
         {
@@ -195,6 +195,18 @@ export default {
         {
           title: 'テイクアウト いわた',
           address: 'https://take-out-iwata.com/'
+        },
+        {
+          title: '静岡県商工会Go To Eat',
+          address: 'https://gotoeat-shizuoka.com/'
+        },
+        {
+          title: 'ふじのくに静岡県GoToEat',
+          address: 'https://premium-gift.jp/fujinokunigotoeat/'
+        },
+        {
+          title: 'Go To Eat あいち',
+          address: 'https://www.gotoeat-aichi.jp/'
         }
       ]
     }
