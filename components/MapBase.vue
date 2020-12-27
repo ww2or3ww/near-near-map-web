@@ -707,8 +707,6 @@ export default {
       const red_go = require('~/assets/img/pin/red-go.png')
       const red_star_go = require('~/assets/img/pin/red-star-go.png')
       let starList = []
-      console.log('==============------------=============')
-      console.log(response)
       for (let i = 1; i < response.list.length; i++) {
         let path = '~/assets/img/pin/blue-dot.png'
         let iwidth = widhtN
