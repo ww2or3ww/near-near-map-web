@@ -686,8 +686,10 @@ export default {
           scaledSize: { width: 24, height: 24, f: 'px', b: 'px' }
         }
       })
-      const widhtA = 28
-      const heightA = 40
+      const widhtN = 28
+      const heightN = 40
+      const widhtL = 40
+      const heightL = 56
       const gray = require('~/assets/img/pin/gray.png')
       const gray_star = require('~/assets/img/pin/gray-star.png')
       const gray_go = require('~/assets/img/pin/gray-go.png')
@@ -705,10 +707,12 @@ export default {
       const red_go = require('~/assets/img/pin/red-go.png')
       const red_star_go = require('~/assets/img/pin/red-star-go.png')
       let starList = []
+      console.log('==============------------=============')
+      console.log(response)
       for (let i = 1; i < response.list.length; i++) {
         let path = '~/assets/img/pin/blue-dot.png'
-        let iwidth = widhtA
-        let iheight = heightA
+        let iwidth = widhtN
+        let iheight = heightN
         if (
           !response.list[i].list[0].crowd_lv ||
           response.list[i].list[0].crowd_lv == 0
@@ -736,6 +740,8 @@ export default {
           } else {
             path = blue
           }
+          iwidth = widhtL
+          iheight = heightL
         } else if (response.list[i].list[0].crowd_lv == 2) {
           if (!response.list[i].list[0].star) {
             path = yellow
@@ -748,6 +754,8 @@ export default {
           } else {
             path = yellow
           }
+          iwidth = widhtL
+          iheight = heightL
         } else if (response.list[i].list[0].crowd_lv == 3) {
           if (!response.list[i].list[0].star) {
             path = red
@@ -760,6 +768,8 @@ export default {
           } else {
             path = red
           }
+          iwidth = widhtL
+          iheight = heightL
         }
         response.list[i].pinicon = {
           url: path,
