@@ -4,12 +4,12 @@
       <v-card>
         <v-card-title class="common-card-title">
           <p class="common-p-card-title" style="margin: 0px;">
-            Alexaスキル「にゃーにゃーマップ」
+            「にゃーにゃーマップ」
           </p>
         </v-card-title>
         <v-card-text class="card-text">
           <p class="font-card-text" style="margin: 0px;">
-            本スキルのプライバシーポリシーと利用規約について記します。
+            本スキル・アプリのプライバシーポリシーと利用規約について記します。
           </p>
         </v-card-text>
 
@@ -20,7 +20,7 @@
         </v-card-title>
         <v-card-text class="card-text">
           <p class="font-card-text" style="margin: 0px;">
-            本スキルでは、個人情報を扱いません。
+            本スキル・アプリでは、個人情報を扱いません。
           </p>
         </v-card-text>
 
