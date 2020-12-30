@@ -15,7 +15,7 @@
           :to="localePath(item.link)"
           @click="onSwitchPage(index)"
         >
-          <v-list-item-action>
+          <v-list-item-action v-if="!contents[index].hide">
             <v-icon
               v-if="contents[index].icon && contents[index].hilite == false"
             >
@@ -32,7 +32,7 @@
             >
             </v-img>
           </v-list-item-action>
-          <v-list-item-content>
+          <v-list-item-content v-if="!contents[index].hide">
             <v-list-item-title
               v-if="contents[index].hilite == false"
               class="font-drawer-title"

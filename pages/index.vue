@@ -34,7 +34,7 @@
           :text2="$t('index.menu[' + index + '].text_2')"
           :text3="$t('index.menu[' + index + '].text_3')"
           :content="item"
-          :visible="index > 0"
+          :visible="index > 0 && !item.hide"
           @click="onSwitchPage(index)"
         >
         </subtitle-text2-clickable-card>

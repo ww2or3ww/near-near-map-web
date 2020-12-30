@@ -45,6 +45,12 @@ export default (context, inject) => {
         link: '/about',
         icon: 'mdi-map-marker-question-outline',
         hilite: false
+      },
+      {
+        link: '/about_alexa',
+        icon: 'mdi-map-marker-question-outline',
+        hilite: false,
+        hide: true
       }
     ]
   }
