@@ -33,6 +33,12 @@
               サービスをご利用された結果発生した損害について、開発者は一切の責任を負いかねます。
             </li>
           </ul>
+          <p class="font-card-text" style="margin: 0px;">
+            Alexaスキルのプライバシーポリシーは ->
+            <router-link :to="localePath('/about_alexa')">
+              こちら
+            </router-link>
+          </p>
         </v-card-text>
 
         <v-card-title class="common-card-title">
