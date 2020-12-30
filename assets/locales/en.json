@@ -93,6 +93,12 @@
         "text_1": "About this site",
         "text_2": "",
         "text_3": ""
+      },
+      {
+        "title": "Alexa",
+        "text_1": "About Alexa Skill",
+        "text_2": "",
+        "text_3": ""
       }
     ]
   }
