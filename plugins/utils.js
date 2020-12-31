@@ -47,12 +47,6 @@ export default (context, inject) => {
         hilite: false
       },
       {
-        link: '/about_alexa',
-        icon: 'mdi-map-marker-question-outline',
-        hilite: false,
-        hide: true
-      },
-      {
         link: '/about_policy',
         icon: 'mdi-map-marker-question-outline',
         hilite: false,
