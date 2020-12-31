@@ -34,8 +34,8 @@
             </li>
           </ul>
           <p class="font-card-text" style="margin: 0px;">
-            Alexaスキルのプライバシーポリシーは ->
-            <router-link :to="localePath('/about_alexa')">
+            プライバシーポリシーや利用規約の詳細については ->
+            <router-link :to="localePath('/about_policy')">
               こちら
             </router-link>
           </p>
