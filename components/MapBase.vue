@@ -658,7 +658,7 @@ export default {
       this.maplocationTmp.lng = this.maplocation.lng
 
       const requestAddress =
-        'https://l8h2fp9jcf.execute-api.ap-northeast-1.amazonaws.com/work/near-near-map-search-dev?type=' +
+        'https://l8h2fp9jcf.execute-api.ap-northeast-1.amazonaws.com/work/near-near-map-search?type=' +
         type +
         '&latlon=' +
         this.maplocation.lat +
