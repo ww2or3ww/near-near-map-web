@@ -114,4 +114,11 @@ export default {
   font-size: 16px;
   border: 0px solid;
 }
+.common-p-card-subtitle {
+  font-family: 'Kosugi Maru';
+  font-weight: bold;
+  padding: 0px;
+  font-size: 12px;
+  border: 0px solid;
+}
 </style>
