@@ -128,12 +128,4 @@
     </v-flex>
   </v-layout>
 </template>
-<script>
-export default {
-  data() {
-    return {
-      showArchitecture: false
-    }
-  }
-}
-</script>
+<script></script>
