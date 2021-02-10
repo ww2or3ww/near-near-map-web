@@ -198,24 +198,7 @@
               style="padding-top: 4px; padding-bottom: 4px;"
             >
               <v-col class="map-info-col" cols="3" sm="3">
-                <div style="text-align: left;">
-                  <v-btn
-                    class="map-info-btn"
-                    fab
-                    width="28px"
-                    height="28px"
-                    color="#888888"
-                    :href="
-                      'https://www.near-near-map-manage.w2or3w.com/update/?type=' +
-                        marker.type +
-                        '&guid=' +
-                        marker.list[0].guid
-                    "
-                    target="_blank"
-                  >
-                    <v-icon size="20px">mdi-circle-edit-outline</v-icon>
-                  </v-btn>
-                </div>
+                <div style="text-align: left;"></div>
               </v-col>
               <v-col class="map-info-col" cols="6" sm="6">
                 <div class="d-flex flex-row-reverse">
@@ -717,24 +700,22 @@ export default {
         ) {
           if (!response.list[i].list[0].star) {
             path = gray
-          } else if (response.list[i].list[0].star == 1) {
+          } else if (
+            response.list[i].list[0].star == 1 ||
+            response.list[i].list[0].star == 3
+          ) {
             path = gray_star
-          } else if (response.list[i].list[0].star == 2) {
-            path = gray_go
-          } else if (response.list[i].list[0].star == 3) {
-            path = gray_star_go
           } else {
             path = gray
           }
         } else if (response.list[i].list[0].crowd_lv == 1) {
           if (!response.list[i].list[0].star) {
             path = blue
-          } else if (response.list[i].list[0].star == 1) {
+          } else if (
+            response.list[i].list[0].star == 1 ||
+            response.list[i].list[0].star == 3
+          ) {
             path = blue_star
-          } else if (response.list[i].list[0].star == 2) {
-            path = blue_go
-          } else if (response.list[i].list[0].star == 3) {
-            path = blue_star_go
           } else {
             path = blue
           }
@@ -743,12 +724,11 @@ export default {
         } else if (response.list[i].list[0].crowd_lv == 2) {
           if (!response.list[i].list[0].star) {
             path = yellow
-          } else if (response.list[i].list[0].star == 1) {
+          } else if (
+            response.list[i].list[0].star == 1 ||
+            response.list[i].list[0].star == 3
+          ) {
             path = yellow_star
-          } else if (response.list[i].list[0].star == 2) {
-            path = yellow_go
-          } else if (response.list[i].list[0].star == 3) {
-            path = yellow_star_go
           } else {
             path = yellow
           }
@@ -757,12 +737,11 @@ export default {
         } else if (response.list[i].list[0].crowd_lv == 3) {
           if (!response.list[i].list[0].star) {
             path = red
-          } else if (response.list[i].list[0].star == 1) {
+          } else if (
+            response.list[i].list[0].star == 1 ||
+            response.list[i].list[0].star == 3
+          ) {
             path = red_star
-          } else if (response.list[i].list[0].star == 2) {
-            path = red_go
-          } else if (response.list[i].list[0].star == 3) {
-            path = red_star_go
           } else {
             path = red
           }
