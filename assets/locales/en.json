@@ -23,6 +23,9 @@
   "lineapp": {
     "text": "LINE App is now available."
   },
+  "hama-certified": {
+    "text": "★:Hamamatsu City Certified Store"
+  },
   "index": {
     "title": [
       "What is にゃーにゃー(Near-Near)",
@@ -53,13 +56,13 @@
         "title": "Food",
         "text_1": "Let's eat at near store. Let's take it back.",
         "text_2": "Take advantage of take-out delivery.",
-        "text_3": ""
+        "text_3": "★:Hamamatsu City Certified Store"
       },
       {
         "title": "Drink/Dessert",
         "text_1": "Let's drink at home.",
         "text_2": "We always have room for dessert...",
-        "text_3": ""
+        "text_3": "★:Hamamatsu City Certified Store"
       },
       {
         "title": "Supermarket・Drugstore",
