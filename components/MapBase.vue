@@ -451,7 +451,7 @@ export default {
     },
     handleResize(isIFrame) {
       this.isIFrame = isIFrame
-      let mapHeight = window.innerHeight - 150
+      let mapHeight = window.innerHeight - 180
       let infoWidth = 0
       let mediaContainerHeight = 0
       if (isIFrame == false) {
