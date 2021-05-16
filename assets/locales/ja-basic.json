@@ -23,8 +23,14 @@
   "lineapp": {
     "text": "ラインアプリはじめました"
   },
-  "vaccination": {
+  "vaccination1": {
+    "text": "いま 65さい いじょう が たいしょうです。"
+  },
+  "vaccination2": {
     "text": "さいしん の じょうほう は はままつし ホームページ へ！"
+  },
+  "vaccination3": {
+    "text": "[か] : かかりつけのみ"
   },
   "hama-certified": {
     "text": "★マーク:はままつ にんしょうてんぽ"
