@@ -23,6 +23,9 @@
   "lineapp": {
     "text": "LINE App is now available."
   },
+  "vaccination": {
+    "text": "For the latest information, please refer to the Hamamatsu City website!"
+  },
   "hama-certified": {
     "text": "★:Hamamatsu City Certified Store"
   },
@@ -92,6 +95,12 @@
         "title": "Crowd Ramp",
         "text_1": "Crowd Ramp Demonstration experiment in progress！！",
         "text_2": "",
+        "text_3": ""
+      },
+      {
+        "title": "Covid19 Vaccination",
+        "text_1": "Corona vaccination will start in earnest in Hamamatsu City on May 17 (Mon)!",
+        "text_2": "* Vaccinations for the general elderly population (65 years and older are eligible).",
         "text_3": ""
       },
       {

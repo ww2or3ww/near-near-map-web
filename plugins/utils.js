@@ -42,6 +42,11 @@ export default (context, inject) => {
         hilite: true
       },
       {
+        link: '/vaccination',
+        icon: 'mdi-virus-outline',
+        hilite: true
+      },
+      {
         link: '/about',
         icon: 'mdi-map-marker-question-outline',
         hilite: false
