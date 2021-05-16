@@ -23,8 +23,14 @@
   "lineapp": {
     "text": "LINEアプリはじめました"
   },
-  "vaccination": {
+  "vaccination1": {
+    "text": "現在65歳以上が対象です。"
+  },
+  "vaccination2": {
     "text": "最新の情報は浜松市HPへ！"
+  },
+  "vaccination3": {
+    "text": "[か] : かかりつけのみ"
   },
   "hama-certified": {
     "text": "★マーク:浜松認証店舗"
