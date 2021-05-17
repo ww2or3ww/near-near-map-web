@@ -451,7 +451,7 @@ export default {
     },
     handleResize(isIFrame) {
       this.isIFrame = isIFrame
-      let mapHeight = window.innerHeight - 180
+      let mapHeight = window.innerHeight - 190
       let infoWidth = 0
       let mediaContainerHeight = 0
       if (isIFrame == false) {
@@ -675,6 +675,7 @@ export default {
       const heightL = 56
       const gray = require('~/assets/img/pin/gray.png')
       const grayk = require('~/assets/img/pin/gray-k.png')
+      const blueshu = require('~/assets/img/pin/blue-shu.png')
       const gray_star = require('~/assets/img/pin/gray-star.png')
       const gray_go = require('~/assets/img/pin/gray-go.png')
       const gray_star_go = require('~/assets/img/pin/gray-star-go.png')
@@ -695,9 +696,6 @@ export default {
         let path = '~/assets/img/pin/blue-dot.png'
         let iwidth = widhtN
         let iheight = heightN
-        console.log(response.list[i].list[0].title)
-        console.log(response.list[i].list[0].star)
-        console.log(' ')
         if (
           !response.list[i].list[0].crowd_lv ||
           response.list[i].list[0].crowd_lv == 0
@@ -713,6 +711,10 @@ export default {
             path = gray
             if (response.list[i].list[0].star == 100) {
               path = grayk
+            } else if (response.list[i].list[0].star == 102) {
+              path = blueshu
+              iwidth = widhtL
+              iheight = heightL
             }
           }
         } else if (response.list[i].list[0].crowd_lv == 1) {
