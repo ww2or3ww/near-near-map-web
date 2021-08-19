@@ -37,13 +37,18 @@ export default (context, inject) => {
         hilite: false
       },
       {
-        link: '/loco',
-        icon: 'mdi-lightbulb-on-outline',
+        link: '/plant',
+        icon: 'mdi-flower',
         hilite: true
       },
       {
         link: '/vaccination',
         icon: 'mdi-virus-outline',
+        hilite: true
+      },
+      {
+        link: '/loco',
+        icon: 'mdi-lightbulb-on-outline',
         hilite: true
       },
       {
