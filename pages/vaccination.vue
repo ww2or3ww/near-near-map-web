@@ -1,10 +1,10 @@
 <template>
   <v-layout style="margin: 0px; padding: 0px;" justify-center>
     <v-flex style="margin: 0px; padding: 0px;" xs12 sm12 md12>
-      <p style="margin: 0px; padding: 0px; font-size: 13px;">
+      <p style="margin: 0px; padding: 0px; font-size: 16px;">
         {{ $t('vaccination1.text') }}
       </p>
-      <p style="margin: 0px; padding: 0px; font-size: 13px;">
+      <p style="margin: 0px; padding: 0px; font-size: 16px;font-weight: bold; ">
         <a
           href="https://www.city.hamamatsu.shizuoka.jp/kenkozoshin/shingatakoronawakuchin.html"
           target="_blank"

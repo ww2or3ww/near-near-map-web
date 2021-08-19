@@ -32,6 +32,12 @@
   "vaccination3": {
     "text": "[か] : Only your family doctor is accepted. | [集]:Mass vaccination site."
   },
+  "plant1": {
+    "text": ""
+  },
+  "plant2": {
+    "text": "The 'Hamamatsu Flower Garden Project' is now going!"
+  },
   "hama-certified": {
     "text": "★:Hamamatsu City Certified Store"
   },
@@ -98,15 +104,21 @@
         "text_3": ""
       },
       {
-        "title": "Crowd Ramp",
-        "text_1": "Crowd Ramp Demonstration experiment in progress！！",
-        "text_2": "",
+        "title": "Plant (Hamamatsu)",
+        "text_1": "Let's love flowers. Let's grow plants.",
+        "text_2": "Isn't it wonderful to have a space where you can feel nature!?",
+        "text_3": "The 'Hamamatsu Flower Garden Project' is now going!"
+      },
+      {
+        "title": "Covid19 Vaccination (Hamamatsu)",
+        "text_1": "Corona vaccination has begun in earnest in Hamamatsu City!",
+        "text_2": "Thank you to all medical staff!!",
         "text_3": ""
       },
       {
-        "title": "Hamamatsu Covid19 Vaccination",
-        "text_1": "Corona vaccination will start in earnest in Hamamatsu City on May 17 (Mon)!",
-        "text_2": "* Vaccinations for the general elderly population (65 years and older are eligible).",
+        "title": "Crowd Ramp",
+        "text_1": "Crowd Ramp Demonstration experiment in progress！！",
+        "text_2": "",
         "text_3": ""
       },
       {
