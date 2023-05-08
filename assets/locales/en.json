@@ -18,10 +18,10 @@
     "link2": "Japanese Fireworks 'Yell' Project"
   },
   "crowdlamp": {
-    "text": "Crowd Ramp Demonstration experiment in progress !"
+    "text": ""
   },
   "lineapp": {
-    "text": "LINE App is now available."
+    "text": ""
   },
   "vaccination1": {
     "text": ""
@@ -36,12 +36,16 @@
     "text": ""
   },
   "plant2": {
-    "text": "The 'Hamamatsu Flower Garden Project' is now going!"
+    "text": ""
   },
   "hama-certified": {
-    "text": "★:Hamamatsu City Certified Store"
+    "text": ""
   },
   "index": {
+    "title0": [
+      "にゃーにゃーマップ This website has ceased its services.",
+      "Thank you for your support. m(_ _)m"
+    ],
     "title": [
       "What is にゃーにゃー(Near-Near)",
       "Please use this site to help you live a better Near-Near life!"

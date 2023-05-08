@@ -1,6 +1,20 @@
 <template>
   <v-layout justify-center>
     <v-flex xs12 sm12 md12>
+      <v-card style="padding:50px;">
+        <v-card-title class="common-card-title">
+          <p class="common-p-card-title" style="margin:0px;">
+            {{ $t('index.title0[0]') }}
+          </p>
+        </v-card-title>
+        <v-card-title class="common-card-title">
+          <p class="common-p-card-title" style="margin:0px;">
+            {{ $t('index.title0[1]') }}
+          </p>
+        </v-card-title>
+      </v-card>
+      <hr style="margin:8px; border: none; border-top: 1px dashed gray;" />
+
       <v-card>
         <v-card-title class="common-card-title">
           <p class="common-p-card-title" style="margin:0px;">
